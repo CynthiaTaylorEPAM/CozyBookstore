@@ -1,0 +1,80 @@
+# The whole shop in one command:  docker compose up --build
+# Then open http://localhost:8080
+#
+#   browser ──> gateway (login, routing, serves the portal)
+#                 ├──> catalog    (tomes and stock)
+#                 ├──> patrons    (patrons and sales)   ──> catalog
+#                 └──> incidents  (monsters and wards)  ──> catalog
+#               all four keep their data in one Postgres, each in its own schema
+
+# All four services run from the same image; SERVICE picks which one starts.
+x-griffin-image: &griffin-image
+  image: gilded-griffin
+  build: { context: ., dockerfile: docker/Dockerfile }
+
+x-service-env: &service-env
+  DATABASE_URL: postgres://griffin:griffin@db:5432/griffin
+  JWT_SECRET: ${JWT_SECRET:-dev-only-secret-do-not-use-in-production}
+  CATALOG_URL: http://catalog:4001
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: griffin
+      POSTGRES_PASSWORD: griffin
+      POSTGRES_DB: griffin
+    ports:
+      - "5432:5432"
+    volumes:
+      - griffin-data:/var/lib/postgresql/data
+      - ./docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U griffin -d griffin"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  catalog:
+    <<: *griffin-image
+    environment:
+      <<: *service-env
+      SERVICE: catalog
+    depends_on:
+      db: { condition: service_healthy }
+
+  patrons:
+    <<: *griffin-image
+    environment:
+      <<: *service-env
+      SERVICE: patrons
+    depends_on:
+      db: { condition: service_healthy }
+
+  incidents:
+    <<: *griffin-image
+    environment:
+      <<: *service-env
+      SERVICE: incidents
+    depends_on:
+      db: { condition: service_healthy }
+
+  gateway:
+    <<: *griffin-image
+    environment:
+      <<: *service-env
+      SERVICE: gateway
+      PATRONS_URL: http://patrons:4002
+      INCIDENTS_URL: http://incidents:4003
+      OWNER_PASSWORD: ${OWNER_PASSWORD:-griffin}
+      CLERK_PASSWORD: ${CLERK_PASSWORD:-quill}
+    ports:
+      - "8080:8080"
+    depends_on:
+      db: { condition: service_healthy }
+      catalog: { condition: service_started }
+      patrons: { condition: service_started }
+      incidents: { condition: service_started }
+
+volumes:
+  griffin-data:

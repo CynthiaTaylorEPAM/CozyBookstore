@@ -1,0 +1,119 @@
+/* Shared look and feel: colours, type, buttons, badges, forms. */
+:root {
+  --ink: #2b1d14;
+  --ink-soft: #6b5846;
+  --parchment: #f8f0e0;
+  --parchment-deep: #efe1c6;
+  --paper: #fffaf0;
+  --line: #e0cfae;
+  --gold: #d9a441;
+  --gold-deep: #a9761c;
+  --ember: #b5482a;
+  --forest: #2f5d50;
+  --plum: #3a2440;
+  --night: #1c1a2e;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Nunito Sans', system-ui, sans-serif;
+  --shadow: 0 1px 2px rgb(43 29 20 / 8%), 0 8px 24px rgb(43 29 20 / 8%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--parchment);
+}
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.1; margin: 0; }
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.5rem; }
+p { margin: 0 0 0.75rem; }
+a { color: var(--forest); }
+
+.muted { color: var(--ink-soft); }
+.capitalise { text-transform: capitalize; }
+.error { color: #9b2c16; background: #fbe6df; border-radius: 8px; padding: 0.5rem 0.75rem; }
+.hint { color: var(--ink-soft); font-style: italic; margin-top: -0.35rem; }
+.eyebrow {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-deep); margin: 0 0 0.4rem;
+}
+.eyebrow--gold { color: var(--gold); }
+.text-link { font-weight: 700; text-decoration: none; }
+.text-link:hover { text-decoration: underline; }
+
+/* Buttons */
+.button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  font: 700 0.95rem var(--sans); padding: 0.6rem 1.1rem; border-radius: 999px;
+  border: 1.5px solid var(--line); background: var(--paper); color: var(--ink);
+  cursor: pointer; text-decoration: none; white-space: nowrap; transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
+}
+.button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow); }
+.button:disabled { opacity: 0.5; cursor: not-allowed; }
+.button--primary { background: var(--forest); border-color: var(--forest); color: #fff; }
+.button--danger { background: var(--ember); border-color: var(--ember); color: #fff; }
+.button--gold { background: var(--gold); border-color: var(--gold); color: var(--night); }
+.button--ghost { background: transparent; border-color: rgb(246 236 217 / 45%); color: var(--parchment); }
+.button--quiet { background: transparent; border-color: transparent; color: var(--ink-soft); }
+.button--quiet:hover:not(:disabled) { background: var(--parchment-deep); box-shadow: none; }
+.button--small { padding: 0.3rem 0.75rem; font-size: 0.85rem; }
+.button--large { padding: 0.8rem 1.5rem; font-size: 1.05rem; }
+
+/* Badges */
+.badge {
+  display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 0.1rem 0.55rem; border-radius: 999px; background: var(--parchment-deep); color: var(--ink-soft);
+  margin-left: 0.4rem; vertical-align: middle; white-space: nowrap;
+}
+.badge--owner, .badge--gold, .badge--fellow { background: #f6e3b4; color: #7a5410; }
+.badge--clerk, .badge--regular { background: #d9e8e2; color: #1f4a3e; }
+.badge--minor { background: #e3ead2; color: #47601f; }
+.badge--troublesome { background: #f8dfb8; color: #8a5208; }
+.badge--dire { background: #f6cfc4; color: #8a2410; }
+
+/* Forms */
+.form { display: grid; gap: 0.9rem; }
+.form label { display: grid; gap: 0.3rem; font-weight: 700; font-size: 0.9rem; }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.form .check { display: flex; align-items: center; gap: 0.5rem; font-weight: 400; }
+input, select, textarea {
+  font: 400 1rem var(--sans); color: var(--ink); background: #fff;
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 0.55rem 0.7rem; width: 100%;
+}
+input[type='checkbox'] { width: auto; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+/* Painted book covers */
+.book-cover {
+  position: relative; width: 132px; aspect-ratio: 2 / 3; flex: none; border-radius: 4px 8px 8px 4px;
+  color: #f6ecd9; padding: 0.9rem 0.7rem 0.7rem 1rem; display: flex; flex-direction: column; text-align: center;
+  box-shadow: inset 7px 0 0 rgb(0 0 0 / 22%), inset 0 0 0 4px rgb(0 0 0 / 0%), 3px 4px 0 #e9dcc2, 5px 6px 14px rgb(43 29 20 / 30%);
+}
+.book-cover::after {
+  content: ''; position: absolute; inset: 7px 7px 7px 13px; border: 1px solid rgb(217 164 65 / 65%); border-radius: 2px; pointer-events: none;
+}
+.book-cover__ornament { color: var(--gold); font-size: 1.1rem; }
+.book-cover__title { font: 700 1rem/1.1 var(--serif); margin-top: 0.3rem; }
+.book-cover__author { margin-top: auto; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+.book-cover--small { width: 30px; padding: 0; box-shadow: inset 4px 0 0 rgb(0 0 0 / 22%), 2px 2px 4px rgb(43 29 20 / 25%); }
+.book-cover--small::after { display: none; }
+
+/* Ward status lights (landing page and incident board) */
+.ward { display: flex; align-items: center; gap: 0.7rem; }
+.ward__dot { width: 12px; height: 12px; border-radius: 50%; flex: none; background: #6fbf8f; box-shadow: 0 0 0 4px rgb(111 191 143 / 25%); }
+.ward--flickering .ward__dot { background: #e8b14a; box-shadow: 0 0 0 4px rgb(232 177 74 / 25%); animation: flicker 1.6s infinite; }
+.ward--broken .ward__dot { background: #d6553a; box-shadow: 0 0 0 4px rgb(214 85 58 / 25%); }
+@keyframes flicker { 0%, 100% { opacity: 1; } 45% { opacity: 0.35; } 60% { opacity: 0.9; } 75% { opacity: 0.5; } }
+
+/* Modal */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgb(28 26 46 / 55%); display: grid; place-items: center; padding: 1rem; z-index: 10;
+}
+.modal { background: var(--paper); border-radius: 16px; padding: 1.5rem; width: min(520px, 100%); max-height: 90vh; overflow: auto; box-shadow: 0 24px 60px rgb(0 0 0 / 35%); }
+.modal__header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.total { font-size: 1.05rem; margin: 0; }
+.total strong { font-family: var(--serif); font-size: 1.4rem; margin-left: 0.4rem; }

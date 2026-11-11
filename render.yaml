@@ -1,0 +1,75 @@
+# Render Blueprint: deploys the whole shop to render.com with a public URL.
+# See docs/deployment.md. NOTE: this file has not yet been run against Render;
+# treat the first deploy as a test.
+#
+# The three backing services are private (reachable only by the gateway), which
+# Render bills on its "starter" plan. The gateway and database use free plans.
+
+databases:
+  - name: griffin-db
+    databaseName: griffin
+    user: griffin
+    plan: free
+
+envVarGroups:
+  - name: griffin-shared
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+
+services:
+  - type: pserv
+    name: griffin-catalog
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    envVars:
+      - { key: SERVICE, value: catalog }
+      - { key: PORT, value: 4001 }
+      - { key: DATABASE_URL, fromDatabase: { name: griffin-db, property: connectionString } }
+      - fromGroup: griffin-shared
+
+  - type: pserv
+    name: griffin-patrons
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    envVars:
+      - { key: SERVICE, value: patrons }
+      - { key: PORT, value: 4002 }
+      - { key: DATABASE_URL, fromDatabase: { name: griffin-db, property: connectionString } }
+      - { key: CATALOG_HOSTPORT, fromService: { type: pserv, name: griffin-catalog, property: hostport } }
+      - fromGroup: griffin-shared
+
+  - type: pserv
+    name: griffin-incidents
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    envVars:
+      - { key: SERVICE, value: incidents }
+      - { key: PORT, value: 4003 }
+      - { key: DATABASE_URL, fromDatabase: { name: griffin-db, property: connectionString } }
+      - { key: CATALOG_HOSTPORT, fromService: { type: pserv, name: griffin-catalog, property: hostport } }
+      - fromGroup: griffin-shared
+
+  - type: web
+    name: gilded-griffin
+    runtime: docker
+    plan: free
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - { key: SERVICE, value: gateway }
+      - { key: PORT, value: 8080 }
+      - { key: DATABASE_URL, fromDatabase: { name: griffin-db, property: connectionString } }
+      - { key: CATALOG_HOSTPORT, fromService: { type: pserv, name: griffin-catalog, property: hostport } }
+      - { key: PATRONS_HOSTPORT, fromService: { type: pserv, name: griffin-patrons, property: hostport } }
+      - { key: INCIDENTS_HOSTPORT, fromService: { type: pserv, name: griffin-incidents, property: hostport } }
+      - { key: OWNER_PASSWORD, sync: false }
+      - { key: CLERK_PASSWORD, sync: false }
+      - fromGroup: griffin-shared

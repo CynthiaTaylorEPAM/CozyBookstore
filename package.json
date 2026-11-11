@@ -1,0 +1,34 @@
+{
+  "name": "gilded-griffin",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The Gilded Griffin — management portal for a cozy fantasy bookstore",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:shared": "npm run build -w @griffin/shared",
+    "build": "npm run build:shared && npm run build -w @griffin/catalog -w @griffin/patrons -w @griffin/incidents -w @griffin/gateway -w @griffin/portal",
+    "dev": "npm run build:shared && concurrently -n catalog,patrons,incidents,gateway,portal -c yellow,green,red,blue,magenta \"npm run dev -w @griffin/catalog\" \"npm run dev -w @griffin/patrons\" \"npm run dev -w @griffin/incidents\" \"npm run dev -w @griffin/gateway\" \"npm run dev -w @griffin/portal\"",
+    "test": "npm run build:shared && npm test --workspaces --if-present",
+    "typecheck": "npm run build:shared && npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "db:up": "docker compose up -d db",
+    "up": "docker compose up --build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "concurrently": "^10.0.7",
+    "eslint": "^10.14.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
+  }
+}
