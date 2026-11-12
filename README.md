@@ -2,7 +2,7 @@
 
 A management portal for a cozy bookstore in the fantasy town of Emberhollow. Patrons of every folk buy tomes; monsters occasionally eat them.
 
-It is a small, complete example of the kind of system we usually build: a web portal, a gateway with login, three microservices and a database. It exists as the starting codebase for an SDLC hyperfactory demonstration, so it is deliberately a working skeleton with room to grow (see the [backlog](docs/backlog.md)).
+It is a small, complete example of the kind of system we usually build: a web portal, a gateway with login, three microservices and a database. It exists as the starting codebase for an SDLC hyperfactory demonstration, so it is deliberately a working skeleton with room to grow (see the [backlog](docs/backlog.md)). The reasons and the goals are in [docs/purpose.md](docs/purpose.md).
 
 | The shop front | The counter | The incident board |
 |---|---|---|
@@ -58,7 +58,7 @@ flowchart LR
   G & C & P & I --> D[(PostgreSQL<br/>one schema per service)]
 ```
 
-More detail: [architecture](docs/architecture.md) · [API](docs/api.md) · [backlog](docs/backlog.md) · [deployment](docs/deployment.md)
+More detail: [purpose](docs/purpose.md) · [architecture](docs/architecture.md) · [API](docs/api.md) · [backlog](docs/backlog.md) · [deployment](docs/deployment.md)
 
 ## Develop
 
