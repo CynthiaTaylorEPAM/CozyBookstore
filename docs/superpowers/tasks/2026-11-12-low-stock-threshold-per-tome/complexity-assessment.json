@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "task": "Add a per-tome reorder level to the catalog (new migration, API fields, owner edit) and use it in the portal's Running Low dashboard panel instead of the fixed threshold of 2.",
+  "generated": "2026-11-12T00:00:00Z",
+  "dimensions": {
+    "component_scope":      { "score": 3, "label": "M" },
+    "requirements_clarity": { "score": 4, "label": "L" },
+    "technical_risk":       { "score": 3, "label": "M" },
+    "file_change_estimate": { "score": 4, "label": "L" },
+    "dependencies":         { "score": 1, "label": "XS" },
+    "affected_layers":      { "score": 4, "label": "L" }
+  },
+  "total": 19,
+  "size": "M",
+  "size_legend": {
+    "XS": "6-9 — < half day — plan directly",
+    "S": "10-14 — 1 day — plan directly",
+    "M": "15-20 — 2-3 days — brainstorm first",
+    "L": "21-26 — 4-5 days — brainstorm first",
+    "XL": "27-31 — > 1 sprint — recommend splitting",
+    "XXL": "32-36 — > 1 sprint — must split"
+  },
+  "routing": "brainstorming",
+  "key_reasoning": [
+    { "dimension": "requirements_clarity", "reason": "Issue #8 has no acceptance criteria. Open decisions: default reorder level for existing tomes (changes what the demo dashboard shows; seed currently yields 4 tomes), inclusive vs exclusive comparison, whether clerks see the level, and whether the field is exposed on the public tomes route. Core intent is clear, gaps are design-level." },
+    { "dimension": "file_change_estimate", "reason": "One new catalog migration; modified catalog app.ts and catalog tests; portal types.ts, Dashboard.tsx and Tomes.tsx (TomeDialog); docs api.md, architecture.md ER diagram and personas.md. About 8 modified plus 1 new across services/catalog, apps/portal and docs." },
+    { "dimension": "affected_layers", "reason": "DB-Persistence (schema migration adding a column), Service/API (TOME_COLUMNS, zod newTome/tomeChanges, INSERT/UPDATE) and UI (dashboard panel and owner edit dialog). Schema change places this at L." },
+    { "dimension": "technical_risk", "reason": "Closest pattern is the existing stock column plus owner-only POST/PATCH tome edit with COALESCE updates; every mechanic exists. Bumped from S to M because the shared TOME_COLUMNS list feeds the unauthenticated /public/tomes route, and the existing pattern does not cover keeping an internal field off the public response - an output-exposure divergence. Calibration: bundled M example 10203 (REST endpoint, total 15) is lighter as it has no migration or UI; this task sits higher in the M band." }
+  ],
+  "red_flags_applied": [
+    "Requirements Clarity bumped from M to L: vague / absent acceptance criteria in issue #8",
+    "Technical Risk bumped from S to M: closest pattern (shared TOME_COLUMNS) does not cover excluding the new field from the unauthenticated /public/tomes response"
+  ],
+  "split_recommendation": null
+}

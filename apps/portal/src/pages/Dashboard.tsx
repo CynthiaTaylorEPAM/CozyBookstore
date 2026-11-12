@@ -5,8 +5,6 @@ import { formatMoney, when } from '../money';
 import type { Incident, Sale, SalesSummary, ShopStatus, Tome } from '../types';
 import { useLoad } from '../useLoad';
 
-const LOW_STOCK = 2;
-
 export function Dashboard() {
   const { staff, isOwner } = useAuth();
   const status = useLoad<ShopStatus>('/public/shop-status');
@@ -16,7 +14,7 @@ export function Dashboard() {
   // Only the owner may see the takings, so only the owner asks for them.
   const summary = useLoad<SalesSummary>(isOwner ? '/sales/summary' : null);
 
-  const lowStock = (tomes.data ?? []).filter((tome) => tome.stock <= LOW_STOCK);
+  const lowStock = (tomes.data ?? []).filter((tome) => tome.runningLow);
   const mood = status.data ? MOODS[status.data.mood] : null;
 
   return (
@@ -91,7 +89,9 @@ export function Dashboard() {
                 <span className="list-icon">📕</span>
                 <div>
                   <strong>{tome.title}</strong>
-                  <p>{tome.stock === 0 ? 'None left' : `${tome.stock} left`}</p>
+                  <p>
+                    {tome.stock === 0 ? 'None left' : `${tome.stock} left`}, reorder at {tome.reorderLevel}
+                  </p>
                 </div>
               </li>
             ))}

@@ -10,24 +10,41 @@ export interface CatalogDeps {
 }
 
 // Database columns are snake_case; the API speaks camelCase.
-const TOME_COLUMNS = `id, title, author, genre, description, price_cp AS "priceCp", stock,
+// The shop window shows only these. Staff-only fields go in TOME_COLUMNS, never here.
+const PUBLIC_TOME_COLUMNS = `id, title, author, genre, description, price_cp AS "priceCp", stock,
   condition, restricted, featured, created_at AS "createdAt"`;
+
+const TOME_COLUMNS = `${PUBLIC_TOME_COLUMNS}, reorder_level AS "reorderLevel",
+  stock <= reorder_level AS "runningLow"`;
 
 const idParam = z.object({ id: z.coerce.number().int().positive() });
 
-const newTome = z.object({
+// The fields with no defaults, so a PATCH never fills in a field it left out
+// (zod applies defaults even inside .partial()).
+const tomeFields = z.object({
   title: z.string().trim().min(1).max(200),
   author: z.string().trim().min(1).max(200),
   genre: z.enum(GENRES),
-  description: z.string().trim().max(2000).default(''),
+  description: z.string().trim().max(2000),
   priceCp: z.number().int().min(0),
-  stock: z.number().int().min(0).default(0),
-  condition: z.enum(CONDITIONS).default('pristine'),
-  restricted: z.boolean().default(false),
-  featured: z.boolean().default(false),
+  stock: z.number().int().min(0),
+  condition: z.enum(CONDITIONS),
+  restricted: z.boolean(),
+  featured: z.boolean(),
+  // Capped at the largest Postgres INTEGER, so an absurd level is a 400, not a database error.
+  reorderLevel: z.number().int().min(0).max(2147483647),
 });
 
-const tomeChanges = newTome.omit({ stock: true }).partial();
+const newTome = tomeFields.extend({
+  description: tomeFields.shape.description.default(''),
+  stock: tomeFields.shape.stock.default(0),
+  condition: tomeFields.shape.condition.default('pristine'),
+  restricted: tomeFields.shape.restricted.default(false),
+  featured: tomeFields.shape.featured.default(false),
+  reorderLevel: tomeFields.shape.reorderLevel.default(2),
+});
+
+const tomeChanges = tomeFields.omit({ stock: true }).partial();
 
 const stockAdjustment = z.object({
   delta: z.number().int().refine((n) => n !== 0, 'delta must not be zero'),
@@ -51,7 +68,7 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
   // --- Public: the shop window, shown on the landing page without signing in.
   app.get('/public/tomes', async () => {
     const { rows } = await db.query(
-      `SELECT ${TOME_COLUMNS} FROM tomes WHERE featured AND NOT restricted ORDER BY title`,
+      `SELECT ${PUBLIC_TOME_COLUMNS} FROM tomes WHERE featured AND NOT restricted ORDER BY title`,
     );
     return rows;
   });
@@ -80,8 +97,8 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
   app.post('/tomes', { preHandler: ownerOnly }, async (request, reply) => {
     const tome = newTome.parse(request.body);
     const { rows } = await db.query(
-      `INSERT INTO tomes (title, author, genre, description, price_cp, stock, condition, restricted, featured)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING ${TOME_COLUMNS}`,
+      `INSERT INTO tomes (title, author, genre, description, price_cp, stock, condition, restricted, featured, reorder_level)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING ${TOME_COLUMNS}`,
       [
         tome.title,
         tome.author,
@@ -92,6 +109,7 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
         tome.condition,
         tome.restricted,
         tome.featured,
+        tome.reorderLevel,
       ],
     );
     return reply.status(201).send(rows[0]);
@@ -109,7 +127,8 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
          price_cp = COALESCE($6, price_cp),
          condition = COALESCE($7, condition),
          restricted = COALESCE($8, restricted),
-         featured = COALESCE($9, featured)
+         featured = COALESCE($9, featured),
+         reorder_level = COALESCE($10, reorder_level)
        WHERE id = $1 RETURNING ${TOME_COLUMNS}`,
       [
         id,
@@ -121,6 +140,7 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
         changes.condition ?? null,
         changes.restricted ?? null,
         changes.featured ?? null,
+        changes.reorderLevel ?? null,
       ],
     );
     if (!rows[0]) throw notFound('Tome');

@@ -7,9 +7,9 @@
 #                 └──> incidents  (monsters and wards)  ──> catalog
 #               all four keep their data in one Postgres, each in its own schema
 
-# All four services run from the same image; SERVICE picks which one starts.
+# All four services build from the same Dockerfile; SERVICE picks which one starts.
+# Each gets its own image name so a parallel build never fights over one tag.
 x-griffin-image: &griffin-image
-  image: gilded-griffin
   build: { context: ., dockerfile: docker/Dockerfile }
 
 x-service-env: &service-env
@@ -37,6 +37,7 @@ services:
 
   catalog:
     <<: *griffin-image
+    image: gilded-griffin-catalog
     environment:
       <<: *service-env
       SERVICE: catalog
@@ -45,6 +46,7 @@ services:
 
   patrons:
     <<: *griffin-image
+    image: gilded-griffin-patrons
     environment:
       <<: *service-env
       SERVICE: patrons
@@ -53,6 +55,7 @@ services:
 
   incidents:
     <<: *griffin-image
+    image: gilded-griffin-incidents
     environment:
       <<: *service-env
       SERVICE: incidents
@@ -61,6 +64,7 @@ services:
 
   gateway:
     <<: *griffin-image
+    image: gilded-griffin-gateway
     environment:
       <<: *service-env
       SERVICE: gateway

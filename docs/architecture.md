@@ -41,7 +41,7 @@ Everything is TypeScript, in one repository managed with npm workspaces.
 | | SQL migration files | | Schema changes, applied by a small runner in the shared library |
 | Testing | Vitest | 5 | Unit tests and API tests against a real test database |
 | Code quality | ESLint with typescript-eslint | 10 / 8 | Linting |
-| Packaging | Docker, Docker Compose | | One image for all services; Compose runs the whole shop |
+| Packaging | Docker, Docker Compose | | One Dockerfile builds every service; Compose runs the whole shop |
 | Pipeline | GitHub Actions | | Lint, typecheck, test and build on every pull request |
 | Hosting options | GitHub Codespaces, Docker Compose, Render | | See [deployment.md](deployment.md) |
 
@@ -228,6 +228,7 @@ erDiagram
     text condition
     boolean restricted "locked cabinet"
     boolean featured "shown on landing page"
+    int reorder_level "running low at or below this"
     timestamptz created_at
   }
   stock_adjustments {

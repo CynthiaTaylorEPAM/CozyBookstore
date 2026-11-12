@@ -22,9 +22,16 @@ Staff routes need the header `Authorization: Bearer <token>`, using the token fr
 | GET | `/api/tomes?q=&genre=` | staff | List and search tomes |
 | GET | `/api/tomes/:id` | staff | One tome |
 | POST | `/api/tomes` | owner | Add a tome |
-| PATCH | `/api/tomes/:id` | owner | Change details, price, featured, restricted |
+| PATCH | `/api/tomes/:id` | owner | Change details, price, featured, restricted, reorder level |
 | POST | `/api/tomes/:id/stock-adjustments` | staff | `{ delta, reason }`. 409 if stock would go below zero |
 | GET | `/api/tomes/:id/stock-adjustments` | staff | The stock ledger for a tome |
+
+Every staff tome response (list, one tome, add, change, stock adjustment) includes:
+
+- `reorderLevel`: the stock level at which the tome needs reordering. A whole number, 0 or more. It is optional when adding or changing a tome (owner only) and starts at 2.
+- `runningLow`: `true` when the stock is at or below the reorder level. Worked out by the catalog; it cannot be set.
+
+Neither appears on `/api/public/tomes`.
 
 ## Patrons service
 
