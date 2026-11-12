@@ -2,6 +2,15 @@
 
 A demo codebase: fantasy bookstore management. npm workspaces monorepo, TypeScript throughout. Read `docs/architecture.md` before a change that crosses services.
 
+## Why this exists
+
+Read `docs/purpose.md` at the start of a session. In short: this is the example codebase for an EPAM Canada leadership offsite, where directors and above from delivery and account management learn to set up and use an SDLC hyperfactory (agents taking a feature request through elaboration, planning, development, testing and deployment). Many of them are not hands-on technical. So:
+
+- Keep it a small, readable, working skeleton. The gaps in `docs/backlog.md` are deliberate; build one only when asked.
+- Keep it representative: database, separate services, gateway, portal, roles.
+- Keep it runnable with one click (Codespaces) or one command (Docker), and keep `main` demonstrable.
+- Write docs, pull request descriptions and user-facing text for a non-technical reader.
+
 ## Layout
 
 - `packages/shared`: auth guard, DB pool and migration runner, error handling, money, domain vocabulary, catalog client. Used by all services.
