@@ -1,0 +1,226 @@
+{
+ "id": "mirabel",
+ "text": "For twenty years it has been kept by Mirabel Thistlewick, who had it from her aunt. She knows every book on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
+ "words": [
+  {
+   "w": "For",
+   "start": 0,
+   "end": 0.186
+  },
+  {
+   "w": "twenty",
+   "start": 0.221,
+   "end": 0.592
+  },
+  {
+   "w": "years",
+   "start": 0.685,
+   "end": 1.103
+  },
+  {
+   "w": "it",
+   "start": 1.173,
+   "end": 1.254
+  },
+  {
+   "w": "has",
+   "start": 1.289,
+   "end": 1.37
+  },
+  {
+   "w": "been",
+   "start": 1.416,
+   "end": 1.556
+  },
+  {
+   "w": "kept",
+   "start": 1.625,
+   "end": 1.939
+  },
+  {
+   "w": "by",
+   "start": 2.02,
+   "end": 2.183
+  },
+  {
+   "w": "Mirabel",
+   "start": 2.276,
+   "end": 2.798
+  },
+  {
+   "w": "Thistlewick,",
+   "start": 2.891,
+   "end": 3.831
+  },
+  {
+   "w": "who",
+   "start": 3.994,
+   "end": 4.145
+  },
+  {
+   "w": "had",
+   "start": 4.226,
+   "end": 4.412
+  },
+  {
+   "w": "it",
+   "start": 4.458,
+   "end": 4.528
+  },
+  {
+   "w": "from",
+   "start": 4.574,
+   "end": 4.714
+  },
+  {
+   "w": "her",
+   "start": 4.795,
+   "end": 4.911
+  },
+  {
+   "w": "aunt.",
+   "start": 5.004,
+   "end": 5.608
+  },
+  {
+   "w": "She",
+   "start": 6.177,
+   "end": 6.339
+  },
+  {
+   "w": "knows",
+   "start": 6.409,
+   "end": 6.664
+  },
+  {
+   "w": "every",
+   "start": 6.757,
+   "end": 7.059
+  },
+  {
+   "w": "book",
+   "start": 7.129,
+   "end": 7.338
+  },
+  {
+   "w": "on",
+   "start": 7.407,
+   "end": 7.477
+  },
+  {
+   "w": "its",
+   "start": 7.546,
+   "end": 7.697
+  },
+  {
+   "w": "shelves,",
+   "start": 7.732,
+   "end": 8.452
+  },
+  {
+   "w": "and",
+   "start": 8.615,
+   "end": 8.789
+  },
+  {
+   "w": "every",
+   "start": 8.87,
+   "end": 9.079
+  },
+  {
+   "w": "patron",
+   "start": 9.16,
+   "end": 9.636
+  },
+  {
+   "w": "by",
+   "start": 9.706,
+   "end": 9.868
+  },
+  {
+   "w": "name.",
+   "start": 9.961,
+   "end": 10.565
+  },
+  {
+   "w": "What",
+   "start": 11.343,
+   "end": 11.552
+  },
+  {
+   "w": "she",
+   "start": 11.598,
+   "end": 11.691
+  },
+  {
+   "w": "does",
+   "start": 11.761,
+   "end": 11.912
+  },
+  {
+   "w": "not",
+   "start": 11.958,
+   "end": 12.109
+  },
+  {
+   "w": "know,",
+   "start": 12.156,
+   "end": 12.562
+  },
+  {
+   "w": "most",
+   "start": 12.666,
+   "end": 12.934
+  },
+  {
+   "w": "evenings,",
+   "start": 13.003,
+   "end": 13.596
+  },
+  {
+   "w": "is",
+   "start": 13.828,
+   "end": 14.002
+  },
+  {
+   "w": "whether",
+   "start": 14.048,
+   "end": 14.304
+  },
+  {
+   "w": "the",
+   "start": 14.35,
+   "end": 14.432
+  },
+  {
+   "w": "shop",
+   "start": 14.501,
+   "end": 14.791
+  },
+  {
+   "w": "made",
+   "start": 14.884,
+   "end": 15.128
+  },
+  {
+   "w": "any",
+   "start": 15.175,
+   "end": 15.337
+  },
+  {
+   "w": "money",
+   "start": 15.418,
+   "end": 15.627
+  },
+  {
+   "w": "this",
+   "start": 15.697,
+   "end": 15.836
+  },
+  {
+   "w": "month.",
+   "start": 15.918,
+   "end": 17.09
+  }
+ ]
+}

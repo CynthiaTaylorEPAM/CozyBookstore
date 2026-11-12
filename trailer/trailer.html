@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Gilded Griffin: the trailer</title>
+<style>
+  @font-face { font-family: 'Cormorant Garamond'; font-weight: 500; font-style: normal; src: url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Cormorant Garamond'; font-weight: 700; font-style: normal; src: url(fonts/cormorant-garamond-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Cormorant Garamond'; font-weight: 500; font-style: italic; src: url(fonts/cormorant-garamond-latin-500-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Cormorant Garamond'; font-weight: 700; font-style: italic; src: url(fonts/cormorant-garamond-latin-700-italic.woff2) format('woff2'); }
+  @font-face { font-family: 'Nunito Sans'; font-weight: 400; src: url(fonts/nunito-sans-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: 'Nunito Sans'; font-weight: 700; src: url(fonts/nunito-sans-latin-700-normal.woff2) format('woff2'); }
+  html, body { margin: 0; background: #0b0a16; overflow: hidden; }
+  #frame { position: relative; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: #0b0a16; }
+  #stage, #top { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+  #shots { position: absolute; left: 330px; top: 130px; width: 1260px; height: 709px; overflow: hidden; border-radius: 14px;
+           box-shadow: 0 0 0 4px #d9a441, 0 30px 80px rgb(0 0 0 / 60%); background: #f8f0e0; opacity: 0; }
+  #shots img { position: absolute; left: 0; top: 0; width: 1260px; }
+  #bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 8px 12px; background: #000c; color: #f8f0e0; font: 14px 'Nunito Sans', sans-serif; display: flex; gap: 12px; align-items: center; }
+  #bar input { flex: 1; }
+  body.capture #bar { display: none; }
+</style>
+</head>
+<body>
+<div id="frame">
+  <svg id="stage" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="shots">
+    <img id="shot0" src="../docs/screenshots/landing.png" alt="">
+    <img id="shot1" src="../docs/screenshots/counter.png" alt="">
+    <img id="shot2" src="../docs/screenshots/incidents.png" alt="">
+  </div>
+  <svg id="top" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<div id="bar"><button id="play">Play</button><input id="scrub" type="range" min="0" max="1" step="0.001" value="0"><span id="clock"></span></div>
+<script src="timeline.js"></script>
+<script src="trailer.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+{
+ "id": "guild",
+ "text": "The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
+ "words": [
+  {
+   "w": "The",
+   "start": 0,
+   "end": 0.128
+  },
+  {
+   "w": "Scribes'",
+   "start": 0.197,
+   "end": 0.708
+  },
+  {
+   "w": "Guild",
+   "start": 0.731,
+   "end": 1.057
+  },
+  {
+   "w": "offered",
+   "start": 1.138,
+   "end": 1.416
+  },
+  {
+   "w": "to",
+   "start": 1.44,
+   "end": 1.498
+  },
+  {
+   "w": "help.",
+   "start": 1.591,
+   "end": 2.113
+  },
+  {
+   "w": "A",
+   "start": 2.473,
+   "end": 2.566
+  },
+  {
+   "w": "dozen",
+   "start": 2.659,
+   "end": 2.984
+  },
+  {
+   "w": "scribes,",
+   "start": 3.065,
+   "end": 3.738
+  },
+  {
+   "w": "a",
+   "start": 3.773,
+   "end": 3.855
+  },
+  {
+   "w": "year",
+   "start": 3.959,
+   "end": 4.18
+  },
+  {
+   "w": "and",
+   "start": 4.226,
+   "end": 4.307
+  },
+  {
+   "w": "a",
+   "start": 4.354,
+   "end": 4.377
+  },
+  {
+   "w": "day,",
+   "start": 4.447,
+   "end": 4.934
+  },
+  {
+   "w": "and",
+   "start": 5.016,
+   "end": 5.201
+  },
+  {
+   "w": "more",
+   "start": 5.294,
+   "end": 5.503
+  },
+  {
+   "w": "gold",
+   "start": 5.573,
+   "end": 5.828
+  },
+  {
+   "w": "than",
+   "start": 5.863,
+   "end": 5.979
+  },
+  {
+   "w": "the",
+   "start": 6.014,
+   "end": 6.084
+  },
+  {
+   "w": "shop",
+   "start": 6.118,
+   "end": 6.444
+  },
+  {
+   "w": "takes",
+   "start": 6.548,
+   "end": 6.873
+  },
+  {
+   "w": "in",
+   "start": 6.908,
+   "end": 6.978
+  },
+  {
+   "w": "a",
+   "start": 7.024,
+   "end": 7.047
+  },
+  {
+   "w": "decade.",
+   "start": 7.129,
+   "end": 8.313
+  }
+ ]
+}

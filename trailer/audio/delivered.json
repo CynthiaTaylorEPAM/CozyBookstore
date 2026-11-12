@@ -1,0 +1,171 @@
+{
+ "id": "delivered",
+ "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. The catalog, the guest book, the incident board. It works. And now, Mirabel has a list.",
+ "words": [
+  {
+   "w": "Chapter",
+   "start": 0,
+   "end": 0.418
+  },
+  {
+   "w": "one",
+   "start": 0.499,
+   "end": 0.708
+  },
+  {
+   "w": "is",
+   "start": 0.743,
+   "end": 0.813
+  },
+  {
+   "w": "already",
+   "start": 0.859,
+   "end": 1.138
+  },
+  {
+   "w": "written.",
+   "start": 1.184,
+   "end": 1.66
+  },
+  {
+   "w": "A",
+   "start": 1.8,
+   "end": 1.881
+  },
+  {
+   "w": "shop",
+   "start": 1.974,
+   "end": 2.206
+  },
+  {
+   "w": "front",
+   "start": 2.287,
+   "end": 2.508
+  },
+  {
+   "w": "for",
+   "start": 2.554,
+   "end": 2.635
+  },
+  {
+   "w": "the",
+   "start": 2.682,
+   "end": 2.752
+  },
+  {
+   "w": "town.",
+   "start": 2.798,
+   "end": 3.402
+  },
+  {
+   "w": "A",
+   "start": 3.634,
+   "end": 3.727
+  },
+  {
+   "w": "counter",
+   "start": 3.831,
+   "end": 4.168
+  },
+  {
+   "w": "for",
+   "start": 4.203,
+   "end": 4.296
+  },
+  {
+   "w": "Mirabel",
+   "start": 4.342,
+   "end": 4.807
+  },
+  {
+   "w": "and",
+   "start": 4.876,
+   "end": 4.946
+  },
+  {
+   "w": "Pip.",
+   "start": 5.027,
+   "end": 5.538
+  },
+  {
+   "w": "The",
+   "start": 6.026,
+   "end": 6.142
+  },
+  {
+   "w": "catalog,",
+   "start": 6.188,
+   "end": 6.873
+  },
+  {
+   "w": "the",
+   "start": 7.001,
+   "end": 7.094
+  },
+  {
+   "w": "guest",
+   "start": 7.163,
+   "end": 7.43
+  },
+  {
+   "w": "book,",
+   "start": 7.5,
+   "end": 7.883
+  },
+  {
+   "w": "the",
+   "start": 7.988,
+   "end": 8.092
+  },
+  {
+   "w": "incident",
+   "start": 8.173,
+   "end": 8.661
+  },
+  {
+   "w": "board.",
+   "start": 8.731,
+   "end": 9.195
+  },
+  {
+   "w": "It",
+   "start": 9.358,
+   "end": 9.509
+  },
+  {
+   "w": "works.",
+   "start": 9.555,
+   "end": 10.147
+  },
+  {
+   "w": "And",
+   "start": 10.414,
+   "end": 10.635
+  },
+  {
+   "w": "now,",
+   "start": 10.739,
+   "end": 11.099
+  },
+  {
+   "w": "Mirabel",
+   "start": 11.169,
+   "end": 11.668
+  },
+  {
+   "w": "has",
+   "start": 11.738,
+   "end": 11.854
+  },
+  {
+   "w": "a",
+   "start": 11.9,
+   "end": 11.935
+  },
+  {
+   "w": "list.",
+   "start": 11.981,
+   "end": 12.817
+  }
+ ]
+}
