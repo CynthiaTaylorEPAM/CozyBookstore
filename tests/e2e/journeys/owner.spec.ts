@@ -52,6 +52,32 @@ test.describe('Mirabel, the owner', () => {
     await expect(page.getByText(tome.title)).toHaveCount(0);
   });
 
+  test('sets a tome to reorder at five copies, and the counter then warns about it', async ({ page, request }) => {
+    const mirabel = await backstage(request, 'mirabel');
+    const tome = await mirabel.addTome({ title: unique('Popular Tome'), stock: 4 });
+
+    // Four copies is comfortable at the usual reorder level of two.
+    await signIn(page, 'mirabel');
+    const runningLow = page.locator('section').filter({ has: page.getByRole('heading', { name: 'Running low' }) });
+    await expect(runningLow).toBeVisible();
+    await expect(runningLow.getByText(tome.title)).toHaveCount(0);
+
+    const row = await findTome(page, tome.title);
+    await row.getByRole('button', { name: 'Edit' }).click();
+    const dialog = page.getByRole('dialog', { name: 'Edit tome' });
+    await expect(dialog.getByLabel('Reorder at')).toHaveValue('2');
+    await dialog.getByLabel('Reorder at').fill('5');
+    await dialog.getByRole('button', { name: 'Save changes' }).click();
+    await expect(dialog).toBeHidden();
+
+    await page.getByRole('link', { name: /Counter/ }).click();
+    await expect(runningLow.getByRole('listitem').filter({ hasText: tome.title })).toContainText('4 left, reorder at 5');
+
+    // Pip sees the same warning, but the level is the owner's to set.
+    const pip = await backstage(request, 'pip');
+    expect((await pip.patch(`/tomes/${tome.id}`, { reorderLevel: 1 })).status).toBe(403);
+  });
+
   test('promotes a patron, and the promotion is still there after a reload', async ({ page, request }) => {
     const mirabel = await backstage(request, 'mirabel');
     const patron = await mirabel.addPatron(unique('Loyal'));

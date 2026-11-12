@@ -16,6 +16,13 @@ test.describe('A visitor at the shop front', () => {
     await expect(item).toContainText('3 on the shelf');
     await expect(page.getByText(lockedAway.title)).toHaveCount(0);
 
+    // The shop's own buying information stays behind the counter.
+    const shopWindow = await request.get('/api/public/tomes');
+    for (const tome of await shopWindow.json()) {
+      expect(tome).not.toHaveProperty('reorderLevel');
+      expect(tome).not.toHaveProperty('runningLow');
+    }
+
     await expect(page.getByRole('heading', { name: /\d+ patrons of \d+ folk, one guest book/ })).toBeVisible();
     await expect(page.getByText(/Tonight: .+\./)).toBeVisible();
     await expect(page.getByText(/\d+ of \d+ wards holding/)).toBeVisible();

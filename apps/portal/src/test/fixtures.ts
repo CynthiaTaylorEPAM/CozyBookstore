@@ -13,9 +13,11 @@ export const dragons: Tome = {
   condition: 'pristine',
   restricted: false,
   featured: true,
+  reorderLevel: 2,
+  runningLow: false,
 };
-export const breakfast: Tome = { ...dragons, id: 8, title: 'Second Breakfast', author: 'Pim Butterburr', genre: 'cookery', priceCp: 650, stock: 0, featured: false };
-export const forbidden: Tome = { ...dragons, id: 9, title: 'Forbidden Names', author: 'Voss', genre: 'arcana', priceCp: 9900, stock: 2, restricted: true, featured: false };
+export const breakfast: Tome = { ...dragons, id: 8, title: 'Second Breakfast', author: 'Pim Butterburr', genre: 'cookery', priceCp: 650, stock: 0, featured: false, runningLow: true };
+export const forbidden: Tome = { ...dragons, id: 9, title: 'Forbidden Names', author: 'Voss', genre: 'arcana', priceCp: 9900, stock: 4, restricted: true, featured: false, reorderLevel: 5, runningLow: true };
 export const tomes = [dragons, forbidden, breakfast];
 
 export const thrain: Patron = { id: 1, name: 'Thrain Emberforge', race: 'dwarf', tier: 'regular', home: 'the Deep Halls', notes: 'Owes us a ballad.', joinedAt: '2026-01-05T10:00:00Z', totalSpentCp: 2000 };

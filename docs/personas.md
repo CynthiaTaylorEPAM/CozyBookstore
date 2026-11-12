@@ -43,7 +43,7 @@ Mirabel, Pip and the six patrons and authors above already appear in the demo da
 
 **What gets in her way**
 - Takings are a single total. She cannot see a week against the last, or profit after losses to monsters.
-- Reordering lives in her head and on scraps of paper.
+- Placing an order is still done by hand. (Her reorder points no longer live in her head: each tome now carries its own, and the counter's Running low panel uses it.)
 - Promoting a patron to a higher tier is a judgement call with nothing to base it on.
 - She is the only one who can close an incident, so they pile up when she is away.
 - She cannot add a second clerk or change a password without help.

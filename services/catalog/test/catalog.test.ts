@@ -86,7 +86,7 @@ describe('browsing the shelves', () => {
     const response = await app.inject({ method: 'GET', url: '/tomes/1', headers: clerk });
     expect(response.statusCode).toBe(200);
     expect(Object.keys(response.json()).sort()).toEqual(
-      ['author', 'condition', 'createdAt', 'description', 'featured', 'genre', 'id', 'priceCp', 'restricted', 'stock', 'title'],
+      ['author', 'condition', 'createdAt', 'description', 'featured', 'genre', 'id', 'priceCp', 'reorderLevel', 'restricted', 'runningLow', 'stock', 'title'],
     );
   });
 
@@ -99,6 +99,19 @@ describe('browsing the shelves', () => {
   it('shows only featured, unrestricted tomes in the public shop window', async () => {
     const response = await app.inject({ method: 'GET', url: '/public/tomes' });
     expect(response.json().map((t: { title: string }) => t.title)).toEqual(['Dragons at Tea']);
+  });
+
+  it('keeps reorder levels out of the public shop window', async () => {
+    const response = await app.inject({ method: 'GET', url: '/public/tomes' });
+    for (const tome of response.json()) {
+      expect(tome).not.toHaveProperty('reorderLevel');
+      expect(tome).not.toHaveProperty('runningLow');
+    }
+  });
+
+  it('gives every tome a reorder level of 2 unless told otherwise', async () => {
+    const response = await app.inject({ method: 'GET', url: '/tomes', headers: clerk });
+    expect(response.json().map((t: { reorderLevel: number }) => t.reorderLevel)).toEqual([2, 2, 2]);
   });
 });
 
@@ -122,18 +135,55 @@ describe('managing the catalog', () => {
   });
 
   it('lets the owner reprice a tome without touching anything else', async () => {
+    await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { reorderLevel: 5, description: 'Scones' } });
     const response = await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { priceCp: 1200 } });
     expect(response.json()).toMatchObject({
       title: 'Dragons at Tea',
       author: 'Orsolya',
       genre: 'bestiary',
-      description: 'Which dragons will share.',
+      description: 'Scones',
       priceCp: 1200,
       stock: 3,
       condition: 'singed',
       restricted: false,
       featured: true,
+      reorderLevel: 5,
     });
+  });
+
+  it('gives a new tome a reorder level of 2 when none is given', async () => {
+    const response = await app.inject({ method: 'POST', url: '/tomes', headers: owner, payload: tome });
+    expect(response.json().reorderLevel).toBe(2);
+  });
+
+  it('lets the owner set a reorder level on a new tome', async () => {
+    const response = await app.inject({ method: 'POST', url: '/tomes', headers: owner, payload: { ...tome, reorderLevel: 5 } });
+    expect(response.statusCode).toBe(201);
+    expect(response.json().reorderLevel).toBe(5);
+  });
+
+  it.each([-1, 1.5, 3000000000])('rejects a reorder level of %s', async (reorderLevel) => {
+    const response = await app.inject({ method: 'POST', url: '/tomes', headers: owner, payload: { ...tome, reorderLevel } });
+    expect(response.statusCode).toBe(400);
+  });
+
+  it.each([-1, 1.5, 3000000000])('rejects an edit to a reorder level of %s and keeps the old one', async (reorderLevel) => {
+    const response = await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { reorderLevel } });
+    expect(response.statusCode).toBe(400);
+    const reread = await app.inject({ method: 'GET', url: '/tomes/1', headers: clerk });
+    expect(reread.json().reorderLevel).toBe(2);
+  });
+
+  it('lets the owner set a reorder level of 0 and keeps it', async () => {
+    const response = await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { reorderLevel: 0 } });
+    expect(response.json().reorderLevel).toBe(0);
+    const reread = await app.inject({ method: 'GET', url: '/tomes/1', headers: clerk });
+    expect(reread.json().reorderLevel).toBe(0);
+  });
+
+  it('does not let a clerk change a reorder level', async () => {
+    const response = await app.inject({ method: 'PATCH', url: '/tomes/1', headers: clerk, payload: { reorderLevel: 5 } });
+    expect(response.statusCode).toBe(403);
   });
 });
 
@@ -180,6 +230,34 @@ describe('changing a tome', () => {
   it('says so when the tome does not exist', async () => {
     const response = await app.inject({ method: 'PATCH', url: '/tomes/999', headers: owner, payload: { priceCp: 1 } });
     expect(response.statusCode).toBe(404);
+  });
+});
+
+describe('running low', () => {
+  it.each([
+    { level: 0, stock: 0, runningLow: true },
+    { level: 0, stock: 1, runningLow: false },
+    { level: 1, stock: 0, runningLow: true },
+    { level: 1, stock: 1, runningLow: true },
+    { level: 1, stock: 2, runningLow: false },
+    { level: 5, stock: 4, runningLow: true },
+    { level: 5, stock: 5, runningLow: true },
+    { level: 5, stock: 6, runningLow: false },
+  ])('is $runningLow at reorder level $level with $stock left', async ({ level, stock, runningLow }) => {
+    await db.query('UPDATE tomes SET stock = $1 WHERE id = 1', [stock]);
+    await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { reorderLevel: level } });
+    const response = await app.inject({ method: 'GET', url: '/tomes/1', headers: clerk });
+    expect(response.json()).toMatchObject({ reorderLevel: level, runningLow });
+  });
+
+  it('is worked out again after a stock adjustment', async () => {
+    const response = await app.inject({
+      method: 'POST',
+      url: '/tomes/1/stock-adjustments',
+      headers: clerk,
+      payload: { delta: -1, reason: 'Sold to Pim' },
+    });
+    expect(response.json()).toMatchObject({ stock: 2, reorderLevel: 2, runningLow: true });
   });
 });
 

@@ -11,7 +11,7 @@ Each kind answers a different question. The quick ones run constantly and catch 
 | **1. Unit** | Does this one piece of logic give the right answer? | Milliseconds | About 60 |
 | **2. Service** | Does each service obey its rules: who is allowed, what is refused, what is stored? | A few seconds | About 250 |
 | **3. Cross-service** | Do the gateway and the three services work together? | A few seconds | About 30 |
-| **4. Screens and journeys** | Does the portal show the right thing, and can staff actually do their jobs in a browser? | Seconds for screens, about 20 seconds for journeys | About 100 screen tests, 21 journeys |
+| **4. Screens and journeys** | Does the portal show the right thing, and can staff actually do their jobs in a browser? | Seconds for screens, about 20 seconds for journeys | About 100 screen tests, 22 journeys |
 
 ```mermaid
 flowchart TB
@@ -87,7 +87,7 @@ Every service has the same three files, so you always know where to look:
 | File | What |
 |---|---|
 | `test/access.test.ts` | **Who may use each route.** A table lists every route as open to anyone, to staff, or to the owner alone, and each is tried as a visitor, as the clerk and as the owner. A new route with no entry fails the test. The same file tries the edge of every rule: a price of -1, a sale of 100 copies, a blank name |
-| `test/<service>.test.ts` | **The business rules.** Stock can never go below zero, even when ten tills ring at once. A refused sale records nothing. The takings count only the last seven days. An incident cannot be resolved twice |
+| `test/<service>.test.ts` | **The business rules.** Stock can never go below zero, even when ten tills ring at once. A tome is running low when its stock is at or below its own reorder level. A refused sale records nothing. The takings count only the last seven days. An incident cannot be resolved twice |
 | `test/seed.test.ts` | **The demo data.** The database can be built from empty, and the demo rows only use genres, races and monsters the shop knows |
 
 The gateway also has `test/routing.test.ts`, which stands up three stand-in services and checks every entry in the routing table: the request reaches the right service, on the right path, with the staff token untouched.
@@ -114,7 +114,9 @@ In `tests/e2e/journeys`, one file per kind of person, following [personas.md](pe
 |---|---|
 | `visitor.spec.ts` | Sees the shop window, guest-book count and mood without signing in; is turned back at the staff door; an automated accessibility scan of the shop front and login page |
 | `clerk.spec.ts` | Pip signs in, registers a patron, rings up a sale, is told when another till sold the last copies, takes a delivery, reports a monster, and has no owner controls |
-| `owner.spec.ts` | Mirabel adds a tome to the shop window, reprices and locks one away, promotes a patron, deals with an incident, sees the takings rise by exactly the value of a sale, and signs out |
+| `owner.spec.ts` | Mirabel adds a tome to the shop window, reprices and locks one away, sets a reorder level and sees the counter warn about it, promotes a patron, deals with an incident, sees the takings rise by exactly the value of a sale, and signs out |
+
+The visitor journey also checks that reorder levels stay off the public shop window.
 
 ## What runs automatically
 

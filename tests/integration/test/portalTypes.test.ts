@@ -23,7 +23,12 @@ const tome = z.object({
   condition: z.string(),
   restricted: z.boolean(),
   featured: z.boolean(),
+  reorderLevel: z.number().int(),
+  runningLow: z.boolean(),
 });
+
+// The public shop window leaves out the shop's own buying information.
+const windowTome = tome.omit({ reorderLevel: true, runningLow: true }).strict();
 
 const sale = z.object({
   id: z.number(),
@@ -117,10 +122,19 @@ describe('what the API sends matches what the portal expects', () => {
     await expectShape('/api/auth/me', staff, pip);
   });
 
-  it('Tome, in the list, on its own and in the shop window', async () => {
+  it('Tome, in the list and on its own', async () => {
     await expectShape('/api/tomes', z.array(tome).min(1), pip);
     await expectShape('/api/tomes/7', tome, pip);
-    await expectShape('/api/public/tomes', z.array(tome).min(1));
+  });
+
+  it('the shop window sends a Tome without the reorder level or the running-low flag', async () => {
+    const { body } = await shop.call('GET', '/api/public/tomes');
+    expect(body.length).toBeGreaterThan(0);
+    for (const item of body) {
+      expect(item).not.toHaveProperty('reorderLevel');
+      expect(item).not.toHaveProperty('runningLow');
+    }
+    await expectShape('/api/public/tomes', z.array(windowTome.extend({ createdAt: z.iso.datetime() })).min(1));
   });
 
   it('Patron, in the list (with spending) and on its own (with sales)', async () => {

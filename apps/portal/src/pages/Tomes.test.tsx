@@ -1,6 +1,6 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { breakfast, dragons, shopAnswers } from '../test/fixtures';
+import { breakfast, dragons, forbidden, shopAnswers } from '../test/fixtures';
 import { MIRABEL, openPortal, PIP, pretendApi, refuse } from '../test/harness';
 
 const row = async (title: string) => within(await screen.findByRole('row', { name: new RegExp(title) }));
@@ -148,6 +148,8 @@ describe('the owner managing the catalog', () => {
     await user.selectOptions(dialog.getByLabelText('Condition'), 'well-loved');
     fireEvent.change(dialog.getByLabelText('Price (gold pieces)'), { target: { value: '14.5' } });
     fireEvent.change(dialog.getByLabelText('Copies'), { target: { value: '4' } });
+    expect(dialog.getByLabelText('Reorder at')).toHaveValue(2);
+    fireEvent.change(dialog.getByLabelText('Reorder at'), { target: { value: '5' } });
     await user.type(dialog.getByLabelText('Description'), 'Best read aloud.');
     await user.click(dialog.getByLabelText(/Display in the shop window/));
     await user.click(dialog.getByRole('button', { name: 'Add to the catalog' }));
@@ -161,6 +163,7 @@ describe('the owner managing the catalog', () => {
       description: 'Best read aloud.',
       priceCp: 1450,
       stock: 4,
+      reorderLevel: 5,
       featured: true,
       restricted: false,
     });
@@ -183,9 +186,37 @@ describe('the owner managing the catalog', () => {
 
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
     const sent = gateway.sent('PATCH', '/tomes/7')[0].body;
-    expect(sent).toMatchObject({ title: 'Dragons at Tea', priceCp: 1225, restricted: true, featured: true, description: dragons.description });
+    expect(sent).toMatchObject({ title: 'Dragons at Tea', priceCp: 1225, restricted: true, featured: true, description: dragons.description, reorderLevel: 2 });
     expect(sent).not.toHaveProperty('stock');
     expect(sent).not.toHaveProperty('priceGold');
+  });
+
+  it('starts the reorder level from the tome\'s own, and sends the new one as a number', async () => {
+    const gateway = pretendApi({ ...shopAnswers(), 'PATCH /tomes/9': (body: unknown) => ({ ...forbidden, ...(body as object) }) });
+    const { user } = openPortal('/shop/tomes', MIRABEL, gateway);
+    await user.click((await row('Forbidden Names')).getByRole('button', { name: 'Edit' }));
+    const dialog = within(await screen.findByRole('dialog', { name: 'Edit tome' }));
+    expect(dialog.getByLabelText('Reorder at')).toHaveValue(5);
+
+    fireEvent.change(dialog.getByLabelText('Reorder at'), { target: { value: '1' } });
+    await user.click(dialog.getByRole('button', { name: 'Save changes' }));
+
+    await waitFor(() => expect(gateway.sent('PATCH', '/tomes/9')).toHaveLength(1));
+    expect(gateway.sent('PATCH', '/tomes/9')[0].body).toMatchObject({ reorderLevel: 1 });
+  });
+
+  it('will not save with the reorder level left blank, rather than quietly saving 0', async () => {
+    const gateway = pretendApi({ ...shopAnswers(), 'PATCH /tomes/7': dragons });
+    const { user } = openPortal('/shop/tomes', MIRABEL, gateway);
+    await user.click((await row('Dragons at Tea')).getByRole('button', { name: 'Edit' }));
+    const dialog = within(await screen.findByRole('dialog', { name: 'Edit tome' }));
+
+    fireEvent.change(dialog.getByLabelText('Reorder at'), { target: { value: '' } });
+    expect(dialog.getByLabelText('Reorder at')).toBeInvalid();
+    await user.click(dialog.getByRole('button', { name: 'Save changes' }));
+
+    expect(screen.getByRole('dialog')).toBeVisible();
+    expect(gateway.sent('PATCH', '/tomes/7')).toEqual([]);
   });
 
   it("shows the catalog's refusal in the dialog", async () => {

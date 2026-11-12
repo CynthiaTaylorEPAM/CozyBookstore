@@ -21,20 +21,26 @@ describe('the counter', () => {
 
   it('adds up the copies on the shelves and counts open incidents', async () => {
     openPortal('/shop', PIP, pretendApi(shopAnswers()));
-    await waitFor(async () => expect(await stat('Tomes on the shelves')).toHaveTextContent('5'));
+    await waitFor(async () => expect(await stat('Tomes on the shelves')).toHaveTextContent('7'));
     expect(await stat('Open incidents')).toHaveTextContent('1');
     expect((await panel('Creatures at large')).getByText('Chewing through the bestiaries.')).toBeVisible();
   });
 
-  it('lists tomes with two copies or fewer as running low', async () => {
+  it('lists the tomes the catalog says are running low, each with its own reorder level', async () => {
     openPortal('/shop', PIP, pretendApi(shopAnswers()));
     const low = await panel('Running low');
-    expect(await low.findByText('Second Breakfast')).toBeVisible();
-    expect(low.getByText('None left')).toBeVisible();
-    expect(low.getByText('Forbidden Names')).toBeVisible();
-    expect(low.getByText('2 left')).toBeVisible();
-    // Three copies is comfortable.
+    expect((await low.findByText('Second Breakfast')).closest('li')).toHaveTextContent('None left, reorder at 2');
+    // Four copies is low for a tome the owner reorders at five.
+    expect(low.getByText('Forbidden Names').closest('li')).toHaveTextContent('4 left, reorder at 5');
+    // Three copies is comfortable for a tome reordered at two.
     expect(low.queryByText('Dragons at Tea')).not.toBeInTheDocument();
+  });
+
+  it('trusts the catalog, not its own arithmetic, on what is running low', async () => {
+    const plenty = { ...dragons, stock: 50, runningLow: true };
+    openPortal('/shop', PIP, pretendApi({ ...shopAnswers(), 'GET /tomes': [plenty] }));
+    const low = await panel('Running low');
+    expect(await low.findByText('Dragons at Tea')).toBeVisible();
   });
 
   it('says so when every shelf is full and nothing is at large', async () => {

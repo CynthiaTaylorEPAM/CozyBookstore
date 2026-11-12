@@ -109,7 +109,7 @@ describe('reporting a monster', () => {
 
   it('offers only tomes that are in stock as damaged', async () => {
     const { dialog } = await openReportDialog();
-    expect(dialog.getByRole('option', { name: 'Forbidden Names (2)' })).toBeInTheDocument();
+    expect(dialog.getByRole('option', { name: 'Forbidden Names (4)' })).toBeInTheDocument();
     expect(dialog.queryByRole('option', { name: /Second Breakfast/ })).not.toBeInTheDocument();
   });
 

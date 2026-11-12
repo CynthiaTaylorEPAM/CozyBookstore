@@ -204,14 +204,17 @@ function TomeDialog({ tome, onClose, onDone }: DialogProps & { tome?: Tome }) {
     condition: tome?.condition ?? CONDITIONS[0],
     restricted: tome?.restricted ?? false,
     featured: tome?.featured ?? false,
+    // 2 mirrors the catalog's default reorder level.
+    reorderLevel: String(tome?.reorderLevel ?? 2),
   });
   const [error, setError] = useState<string | null>(null);
   const set = (changes: Partial<typeof form>) => setForm({ ...form, ...changes });
 
   async function submit(event: FormEvent) {
     event.preventDefault();
-    const { priceGold, stock, ...details } = form;
-    const body = { ...details, priceCp: goldToCopper(priceGold) };
+    const { priceGold, stock, reorderLevel, ...details } = form;
+    // Kept as text while typing so a cleared field stays blank (and `required` stops the save) instead of becoming 0.
+    const body = { ...details, reorderLevel: Number(reorderLevel), priceCp: goldToCopper(priceGold) };
     try {
       if (tome) await api(`/tomes/${tome.id}`, { method: 'PATCH', body });
       else await api('/tomes', { method: 'POST', body: { ...body, stock } });
@@ -261,6 +264,17 @@ function TomeDialog({ tome, onClose, onDone }: DialogProps & { tome?: Tome }) {
               <input type="number" min={0} value={form.stock} onChange={(e) => set({ stock: Number(e.target.value) })} />
             </label>
           )}
+          <label>
+            Reorder at
+            <input
+              type="number"
+              min={0}
+              step={1}
+              value={form.reorderLevel}
+              onChange={(e) => set({ reorderLevel: e.target.value })}
+              required
+            />
+          </label>
         </div>
         <label>
           Description

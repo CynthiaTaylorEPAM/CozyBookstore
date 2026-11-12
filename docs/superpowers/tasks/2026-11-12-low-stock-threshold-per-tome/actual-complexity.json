@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "generated": "2026-11-12T00:00:00Z",
+  "dimensions": {
+    "component_scope":      { "score": 3, "label": "M" },
+    "requirements_clarity": { "score": 2, "label": "S" },
+    "technical_risk":       { "score": 2, "label": "S" },
+    "file_change_estimate": { "score": 4, "label": "L" },
+    "dependencies":         { "score": 2, "label": "S" },
+    "affected_layers":      { "score": 4, "label": "L" }
+  },
+  "total": 17,
+  "size": "M",
+  "band_range": "15-20",
+  "files_changed": 10,
+  "routing": "brainstorming",
+  "key_reasoning": [
+    { "dimension": "file_change_estimate", "reason": "Diffstat reports 10 files changed (9 modified, 1 new migration) across the catalog service, portal and docs directories; 7-10 files maps to L." },
+    { "dimension": "affected_layers", "reason": "Touches portal UI (Dashboard Running Low panel, Tomes dialog, shared types), catalog API/service (zod schemas, staff-only TOME_COLUMNS with computed runningLow, POST/PATCH), and persistence via a new migration adding reorder_level with default and CHECK constraint; 3 layers including a schema change maps to L." },
+    { "dimension": "component_scope", "reason": "Catalog tome routes, the catalog schema and two portal pages; single service plus portal with a clear existing pattern, no shared-package changes. Matches the bundled M example (REST endpoint with business logic, 15)." },
+    { "dimension": "technical_risk", "reason": "Closest pattern is the existing tome columns and zod field schemas; the new field copies it exactly, stays out of the public shop-window columns, and is owner-only on write via existing requireStaff guards. Additive column with a default is low-risk." }
+  ],
+  "red_flags_applied": [],
+  "split_recommendation": null
+}
