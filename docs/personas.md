@@ -50,7 +50,7 @@ Mirabel, Pip and the six patrons and authors above already appear in the demo da
 
 **Uses today.** The counter dashboard, takings and best sellers, adding and repricing tomes, membership tiers, resolving incidents.
 
-**Would value most.** Backlog 1 (reorder levels), 5 (tier discounts), 7 (bounty board), 9 (staff management), 12 (orders from the scribes' guild).
+**Would value most.** Backlog 1 (reorder levels), 5 (tier discounts), 7 (bounty board), 9 (staff management), 12 (orders from the scribes' guild), 20 (takings over time), 21 (minding the shop).
 
 **Journey to explore.** *Month-end.* Mirabel sits down to see how the month went, decide what to reorder, and choose who to promote to Fellow.
 
@@ -79,7 +79,7 @@ Mirabel, Pip and the six patrons and authors above already appear in the demo da
 
 **Uses today.** Selling and restocking tomes, registering patrons, reporting incidents, the counter dashboard without the takings.
 
-**Would value most.** Backlog 2 (search the guest book), 4 (stock ledger view), 8 (returns), 14 (all-or-nothing sales).
+**Would value most.** Backlog 2 (search the guest book), 4 (stock ledger view), 8 (returns), 14 (all-or-nothing sales), 19 (several tomes in one sale), 21 (minding the shop).
 
 **Journey to explore.** *Saturday rush.* A patron Pip has not met wants three books, one of which is in the locked cabinet, while something is rustling in Poetry.
 
@@ -110,7 +110,7 @@ None of these people can sign in. Patrons exist only as records that staff keep.
 
 **Uses today.** The public landing page: shop window, wards, opening hours.
 
-**Would value most.** A public catalog search, plain guidance on shop status, a way to ask for a book to be held (part of backlog 13).
+**Would value most.** Backlog 17 (plain-speaking shop status), 18 (search the public catalog), and a way to ask for a book to be held (part of backlog 13).
 
 **Journey to explore.** *First visit.* From hearing about the shop, to the landing page, to walking in and becoming a registered patron.
 
@@ -138,7 +138,7 @@ None of these people can sign in. Patrons exist only as records that staff keep.
 
 **Uses today.** Nothing directly. Staff record her purchases against her name.
 
-**Would value most.** Backlog 5 (tier discounts), 8 (returns), 13 (her own page, with reservations). Bulk orders would be a new request.
+**Would value most.** Backlog 5 (tier discounts), 8 (returns), 13 (her own page, with reservations), 24 (group orders).
 
 **Journey to explore.** *Book club order.* Choosing next month's book, securing enough copies, collecting them, and returning the four nobody finished.
 
@@ -192,7 +192,7 @@ None of these people can sign in. Patrons exist only as records that staff keep.
 
 **Uses today.** Nothing directly. She is a recently registered patron record.
 
-**Would value most.** Backlog 13 (her own page, with reservations), 11 (recommendations, especially "next in the series"). Good mobile behaviour matters more to her than to anyone else.
+**Would value most.** Backlog 13 (her own page, with reservations), 18 (search the public catalog), 11 (recommendations, especially "next in the series"). Good mobile behaviour matters more to her than to anyone else.
 
 **Journey to explore.** *Two days in town.* Reserving from the road, collecting in a hurry, and leaving with the right books.
 
@@ -222,7 +222,7 @@ People who work with the shop rather than buy from it. Apart from Orsolya, the s
 
 **Uses today.** Nothing directly. She is a patron record, and separately an author name on a tome; the system does not connect the two.
 
-**Would value most.** New requests: an author's view of their own sales, consignment and royalty tracking, events. Related to backlog 13.
+**Would value most.** Backlog 25 (the author's corner). Related to backlog 13.
 
 **Journey to explore.** *Launch day.* A new edition arrives, a signing is announced, and Orsolya wants to know by evening how it went.
 
@@ -274,7 +274,7 @@ People who work with the shop rather than buy from it. Apart from Orsolya, the s
 
 **Uses today.** Nothing. She appears only in an incident's resolution note: "Adventurers hired for 3 gp."
 
-**Would value most.** Backlog 7 (bounty board). A way to see open bounties without a staff login would be a new request.
+**Would value most.** Backlog 7 (bounty board), 23 (public bounty notices).
 
 **Journey to explore.** *The bounty.* A dire incident is reported, a bounty is posted, Bran's party claims it, deals with it and is paid.
 
@@ -300,7 +300,7 @@ People who work with the shop rather than buy from it. Apart from Orsolya, the s
 
 **Uses today.** Nothing. The wards she made are listed, read-only.
 
-**Would value most.** Backlog 3 (ward upkeep). An inspection schedule and a link between incidents and wards would be new requests.
+**Would value most.** Backlog 3 (ward upkeep), 22 (ward inspections).
 
 **Journey to explore.** *The new-moon round.* Hesper inspects all four wards, renews one, and flags another for attention.
 
@@ -328,7 +328,7 @@ People who work with the shop rather than buy from it. Apart from Orsolya, the s
 
 **Uses today.** Nothing.
 
-**Would value most.** Backlog 6 (locked cabinet rules), 16 (login hardening and sign-in audit). A read-only auditor role, a full change history and exports would be new requests.
+**Would value most.** Backlog 6 (locked cabinet rules), 16 (login hardening and sign-in audit), 26 (auditor access).
 
 **Journey to explore.** *The annual inspection.* Edda is given access for a day, traces three restricted sales end to end, and writes her findings.
 
@@ -352,8 +352,8 @@ People who work with the shop rather than buy from it. Apart from Orsolya, the s
 |---|---|---|
 | Patron | Grusha, Ilyana, Kessandra, Aldric once registered | Backlog 13 |
 | Supplier | Quillon | Backlog 12 |
-| Contractor | Bran, Hesper | Backlog 7 and 3, if they act for themselves rather than through staff |
-| Author | Orsolya | New request |
-| Auditor (read-only) | Edda | New request |
+| Contractor | Bran, Hesper | Backlog 22 and 23, if they act for themselves rather than through staff |
+| Author | Orsolya | Backlog 25 |
+| Auditor (read-only) | Edda | Backlog 26 |
 
 **Keeping this document honest.** The "uses today" and "what gets in their way" sections describe the system as it stands. When a feature lands that removes a frustration, update the persona.
