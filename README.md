@@ -58,7 +58,7 @@ flowchart LR
   G & C & P & I --> D[(PostgreSQL<br/>one schema per service)]
 ```
 
-More detail: [purpose](docs/purpose.md) · [architecture](docs/architecture.md) · [API](docs/api.md) · [backlog](docs/backlog.md) · [deployment](docs/deployment.md)
+More detail: [purpose](docs/purpose.md) · [architecture](docs/architecture.md) · [API](docs/api.md) · [personas](docs/personas.md) · [backlog](docs/backlog.md) · [deployment](docs/deployment.md)
 
 ## Develop
 
