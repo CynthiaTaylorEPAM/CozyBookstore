@@ -11,6 +11,8 @@ Read `docs/purpose.md` at the start of a session. In short: this is the example 
 - Keep it runnable with one click (Codespaces) or one command (Docker), and keep `main` demonstrable.
 - Write docs, pull request descriptions and user-facing text for a non-technical reader.
 
+When elaborating or reviewing a feature, use the personas in `docs/personas.md`: name who the feature is for and who else it affects. Update a persona when a feature removes one of its frustrations.
+
 ## Layout
 
 - `packages/shared`: auth guard, DB pool and migration runner, error handling, money, domain vocabulary, catalog client. Used by all services.

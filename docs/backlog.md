@@ -2,6 +2,8 @@
 
 Feature requests for the hyperfactory, written the way a shop owner would ask for them. They are ordered roughly from small to large. Each names the parts of the system it is likely to touch, so you can pick one that shows what you want to show.
 
+The people behind these requests, and further requests the list does not yet cover, are in [personas.md](personas.md).
+
 ## Small: one service and one screen
 
 1. **Low-stock threshold per tome.** "Some tomes I want to reorder at five copies, others at one." Add a reorder level to each tome and use it on the counter's Running Low panel instead of the fixed value of 2. *Catalog, portal.*
