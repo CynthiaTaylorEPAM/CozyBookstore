@@ -1,6 +1,6 @@
 {
  "id": "trouble",
- "text": "The ledger cannot tell her. Favourites run out. The queue runs out of the door. A bookwyrm is found asleep in Herbalism, very full, and not at all sorry. And last week, a signed first edition bit a knight. It was a mimic. So Pip, the clerk, ran to the tavern to find adventurers, and a price was agreed in a doorway. Nobody wrote it down.",
+ "text": "The ledger cannot tell her. Favourite tomes run out. A bookwyrm is found asleep in Herbalism after consuming several books for breakfast, very full, and not at all sorry. And last week, a signed first edition bit a knight. Not a book. A mimic. Pip, the clerk, ran to the tavern to find adventurers to vanquish it. A price was agreed in haste. Nobody wrote it down.",
  "words": [
   {
    "w": "The",
@@ -10,327 +10,332 @@
   {
    "w": "ledger",
    "start": 0.221,
-   "end": 0.488
+   "end": 0.511
   },
   {
    "w": "cannot",
-   "start": 0.522,
-   "end": 0.801
+   "start": 0.557,
+   "end": 0.848
   },
   {
    "w": "tell",
-   "start": 0.836,
-   "end": 1.033
+   "start": 0.882,
+   "end": 1.091
   },
   {
    "w": "her.",
-   "start": 1.126,
-   "end": 1.416
+   "start": 1.173,
+   "end": 1.509
   },
   {
-   "w": "Favourites",
-   "start": 1.683,
-   "end": 2.171
+   "w": "Favourite",
+   "start": 1.823,
+   "end": 2.287
+  },
+  {
+   "w": "tomes",
+   "start": 2.322,
+   "end": 2.728
   },
   {
    "w": "run",
-   "start": 2.218,
-   "end": 2.368
+   "start": 2.798,
+   "end": 2.961
   },
   {
    "w": "out.",
-   "start": 2.438,
-   "end": 2.821
-  },
-  {
-   "w": "The",
-   "start": 3.135,
-   "end": 3.251
-  },
-  {
-   "w": "queue",
-   "start": 3.332,
-   "end": 3.599
-  },
-  {
-   "w": "runs",
-   "start": 3.646,
-   "end": 3.878
-  },
-  {
-   "w": "out",
-   "start": 3.924,
-   "end": 4.075
-  },
-  {
-   "w": "of",
-   "start": 4.122,
-   "end": 4.18
-  },
-  {
-   "w": "the",
-   "start": 4.226,
-   "end": 4.296
-  },
-  {
-   "w": "door.",
-   "start": 4.331,
-   "end": 4.865
+   "start": 3.03,
+   "end": 3.437
   },
   {
    "w": "A",
-   "start": 5.132,
-   "end": 5.224
+   "start": 3.669,
+   "end": 3.762
   },
   {
    "w": "bookwyrm",
-   "start": 5.317,
-   "end": 5.793
+   "start": 3.855,
+   "end": 4.354
   },
   {
    "w": "is",
-   "start": 5.84,
-   "end": 5.909
+   "start": 4.4,
+   "end": 4.47
   },
   {
    "w": "found",
-   "start": 5.991,
-   "end": 6.246
+   "start": 4.54,
+   "end": 4.772
   },
   {
    "w": "asleep",
-   "start": 6.293,
-   "end": 6.664
+   "start": 4.841,
+   "end": 5.19
   },
   {
    "w": "in",
-   "start": 6.734,
-   "end": 6.803
+   "start": 5.236,
+   "end": 5.294
   },
   {
-   "w": "Herbalism,",
-   "start": 6.885,
-   "end": 7.721
+   "w": "Herbalism",
+   "start": 5.387,
+   "end": 5.968
+  },
+  {
+   "w": "after",
+   "start": 6.327,
+   "end": 6.629
+  },
+  {
+   "w": "consuming",
+   "start": 6.676,
+   "end": 7.198
+  },
+  {
+   "w": "several",
+   "start": 7.279,
+   "end": 7.593
+  },
+  {
+   "w": "books",
+   "start": 7.639,
+   "end": 7.86
+  },
+  {
+   "w": "for",
+   "start": 7.895,
+   "end": 7.999
+  },
+  {
+   "w": "breakfast,",
+   "start": 8.046,
+   "end": 8.731
   },
   {
    "w": "very",
-   "start": 7.918,
-   "end": 8.197
+   "start": 8.928,
+   "end": 9.218
   },
   {
    "w": "full,",
-   "start": 8.266,
-   "end": 8.58
+   "start": 9.3,
+   "end": 9.648
   },
   {
    "w": "and",
-   "start": 8.603,
-   "end": 8.719
+   "start": 9.671,
+   "end": 9.822
   },
   {
    "w": "not",
-   "start": 8.789,
-   "end": 8.916
+   "start": 9.892,
+   "end": 10.043
   },
   {
    "w": "at",
-   "start": 8.963,
-   "end": 9.021
+   "start": 10.089,
+   "end": 10.147
   },
   {
    "w": "all",
-   "start": 9.067,
-   "end": 9.195
+   "start": 10.194,
+   "end": 10.356
   },
   {
    "w": "sorry.",
-   "start": 9.276,
-   "end": 9.834
-  },
-  {
-   "w": "And",
-   "start": 10.147,
-   "end": 10.31
-  },
-  {
-   "w": "last",
-   "start": 10.391,
-   "end": 10.658
-  },
-  {
-   "w": "week,",
-   "start": 10.728,
-   "end": 10.995
-  },
-  {
-   "w": "a",
-   "start": 11.018,
+   "start": 10.437,
    "end": 11.064
   },
   {
+   "w": "And",
+   "start": 11.552,
+   "end": 11.726
+  },
+  {
+   "w": "last",
+   "start": 11.819,
+   "end": 12.109
+  },
+  {
+   "w": "week,",
+   "start": 12.179,
+   "end": 12.493
+  },
+  {
+   "w": "a",
+   "start": 12.516,
+   "end": 12.585
+  },
+  {
    "w": "signed",
-   "start": 11.169,
-   "end": 11.494
+   "start": 12.678,
+   "end": 12.992
   },
   {
    "w": "first",
-   "start": 11.564,
-   "end": 11.877
+   "start": 13.061,
+   "end": 13.328
   },
   {
    "w": "edition",
-   "start": 11.946,
-   "end": 12.341
+   "start": 13.398,
+   "end": 13.874
   },
   {
    "w": "bit",
-   "start": 12.422,
-   "end": 12.62
+   "start": 14.002,
+   "end": 14.211
   },
   {
    "w": "a",
-   "start": 12.701,
-   "end": 12.748
+   "start": 14.257,
+   "end": 14.292
   },
   {
    "w": "knight.",
-   "start": 12.817,
-   "end": 13.293
+   "start": 14.362,
+   "end": 14.919
   },
   {
-   "w": "It",
-   "start": 13.781,
-   "end": 13.909
-  },
-  {
-   "w": "was",
-   "start": 13.943,
-   "end": 14.036
-  },
-  {
-   "w": "a",
-   "start": 14.083,
-   "end": 14.106
-  },
-  {
-   "w": "mimic.",
-   "start": 14.176,
-   "end": 14.733
-  },
-  {
-   "w": "So",
-   "start": 15.162,
+   "w": "Not",
+   "start": 15.116,
    "end": 15.337
   },
   {
+   "w": "a",
+   "start": 15.383,
+   "end": 15.407
+  },
+  {
+   "w": "book.",
+   "start": 15.453,
+   "end": 15.871
+  },
+  {
+   "w": "A",
+   "start": 15.918,
+   "end": 15.999
+  },
+  {
+   "w": "mimic.",
+   "start": 16.092,
+   "end": 16.684
+  },
+  {
    "w": "Pip,",
-   "start": 15.418,
-   "end": 15.708
+   "start": 17.357,
+   "end": 17.729
   },
   {
    "w": "the",
-   "start": 15.731,
-   "end": 15.801
+   "start": 17.752,
+   "end": 17.845
   },
   {
    "w": "clerk,",
-   "start": 15.871,
-   "end": 16.289
+   "start": 17.914,
+   "end": 18.379
   },
   {
    "w": "ran",
-   "start": 16.335,
-   "end": 16.556
+   "start": 18.448,
+   "end": 18.692
   },
   {
    "w": "to",
-   "start": 16.637,
-   "end": 16.695
+   "start": 18.762,
+   "end": 18.82
   },
   {
    "w": "the",
-   "start": 16.776,
-   "end": 16.846
+   "start": 18.89,
+   "end": 18.959
   },
   {
    "w": "tavern",
-   "start": 16.881,
-   "end": 17.206
+   "start": 19.006,
+   "end": 19.331
   },
   {
    "w": "to",
-   "start": 17.252,
-   "end": 17.31
+   "start": 19.366,
+   "end": 19.412
   },
   {
    "w": "find",
-   "start": 17.38,
-   "end": 17.647
+   "start": 19.493,
+   "end": 19.749
   },
   {
-   "w": "adventurers,",
-   "start": 17.693,
-   "end": 18.518
+   "w": "adventurers",
+   "start": 19.818,
+   "end": 20.503
   },
   {
-   "w": "and",
-   "start": 18.715,
-   "end": 18.843
+   "w": "to",
+   "start": 20.55,
+   "end": 20.608
   },
   {
-   "w": "a",
-   "start": 18.912,
-   "end": 18.936
+   "w": "vanquish",
+   "start": 20.689,
+   "end": 21.13
+  },
+  {
+   "w": "it.",
+   "start": 21.2,
+   "end": 21.514
+  },
+  {
+   "w": "A",
+   "start": 21.943,
+   "end": 22.024
   },
   {
    "w": "price",
-   "start": 18.982,
-   "end": 19.296
+   "start": 22.117,
+   "end": 22.442
   },
   {
    "w": "was",
-   "start": 19.33,
-   "end": 19.435
+   "start": 22.466,
+   "end": 22.57
   },
   {
    "w": "agreed",
-   "start": 19.481,
-   "end": 19.876
+   "start": 22.616,
+   "end": 23.023
   },
   {
    "w": "in",
-   "start": 19.911,
-   "end": 19.969
+   "start": 23.069,
+   "end": 23.127
   },
   {
-   "w": "a",
-   "start": 20.015,
-   "end": 20.039
-  },
-  {
-   "w": "doorway.",
-   "start": 20.085,
-   "end": 20.782
+   "w": "haste.",
+   "start": 23.22,
+   "end": 23.754
   },
   {
    "w": "Nobody",
-   "start": 21.142,
-   "end": 21.49
+   "start": 23.917,
+   "end": 24.242
   },
   {
    "w": "wrote",
-   "start": 21.536,
-   "end": 21.78
+   "start": 24.288,
+   "end": 24.532
   },
   {
    "w": "it",
-   "start": 21.815,
-   "end": 21.885
+   "start": 24.567,
+   "end": 24.637
   },
   {
    "w": "down.",
-   "start": 21.931,
-   "end": 22.709
+   "start": 24.683,
+   "end": 25.496
   }
  ]
 }
