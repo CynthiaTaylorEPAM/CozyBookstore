@@ -13,6 +13,8 @@ Read `docs/purpose.md` at the start of a session. In short: this is the example 
 
 When elaborating or reviewing a feature, use the personas in `docs/personas.md`: name who the feature is for and who else it affects. Update a persona when a feature removes one of its frustrations.
 
+For anything that tells the story (the trailer video, slides, in-character feature requests), start from `docs/story.md`. It marks which parts are established and which are only proposed.
+
 ## Layout
 
 - `packages/shared`: auth guard, DB pool and migration runner, error handling, money, domain vocabulary, catalog client. Used by all services.
