@@ -1,6 +1,6 @@
 # The trailer
 
-A film of just under three minutes that opens the leadership session. It tells Mirabel's story, shows how EPAM and its "scriptorium that never sleeps" delivered chapter one, and ends by handing chapter two to the room: first the bounty board together, then Mirabel's list.
+A film of just under three minutes (2 minutes 57 seconds) that opens the leadership session. It tells Mirabel's story, shows how EPAM and its "scriptorium that never sleeps" delivered chapter one, and ends by handing chapter two to the room: first the bounty board together, then Mirabel's list.
 
 **To watch it, open [`gilded-griffin-trailer.mp4`](gilded-griffin-trailer.mp4).** It is a normal video file (1920 × 1080, with sound and captions) and plays in any video player or slide deck.
 
@@ -11,12 +11,12 @@ The brief it was made to, and the story behind it, are in [`docs/story.md`](../d
 | Time | Beat | What is on screen |
 |---|---|---|
 | 0:00 | The shop | Night over Emberhollow, down to the shop front. An elf, a dwarf and a halfling with scones arrive |
-| 0:28 | Mirabel | The kitchen table, tea, her aunt's portrait, and a ledger that cannot say what the shop took this month |
-| 0:53 | The trouble | An empty shelf, a queue (one of them on fire), a sleeping bookwyrm. Then the mimic bites Sir Aldric, and Pip runs to the tavern to haggle. Nobody writes it down |
-| 1:24 | The old way | The Scribes' Guild quotation: twelve scribes, a year and a day |
-| 1:37 | EPAM and the scriptorium | A small team, and five desks of enchanted quills: elaboration, planning, development, testing, deployment. A person sends a page back |
-| 2:09 | Chapter one delivered | The real system: the landing page, the counter and the incident board |
-| 2:26 | The handover | Mirabel's list, with the bounty board request at the top. "Today, you run the scriptorium" |
+| 0:29 | Mirabel | The kitchen table, tea, her aunt's portrait, and a ledger that cannot say what the shop took this month |
+| 0:52 | The trouble | An empty shelf, a queue (shown, not narrated; one of them is on fire), a sleeping bookwyrm. Then the mimic bites Sir Aldric, and Pip runs to the tavern to haggle. Nobody writes it down |
+| 1:26 | The old way | The Scribes' Guild quotation: twelve scribes, a year and a day |
+| 1:40 | EPAM and the scriptorium | A small team, and five desks of enchanted quills: elaboration, planning, development, testing, deployment. A person sends a page back |
+| 2:12 | Chapter one delivered | The real system: the landing page, the counter and the incident board |
+| 2:30 | The handover | Mirabel's list, with the bounty board request at the top. "Today, you run the scriptorium" |
 
 The words the narrator speaks are in [`narration.json`](narration.json), one entry per beat.
 

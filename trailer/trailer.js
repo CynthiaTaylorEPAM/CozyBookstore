@@ -206,14 +206,14 @@ const tick = (col = C.forest) => `<circle cx="16" cy="22" r="14" fill="${col}"/>
 // ---------- the scenes ----------
 function sceneShop(t) {
   const b = beat('shop'), u = t - b.start;
-  const pan = L(690, 0, E(u, 0.8, 7.2)), zoom = 1 + 0.07 * lin(u, 0, b.end - b.start);
+  const pan = L(690, 0, E(u, 0.8, 6.4)), zoom = 1 + 0.07 * lin(u, 0, b.end - b.start);
   let w = street(t);
   // moon, and a very small dragon
   w += `<circle cx="330" cy="-360" r="230" fill="url(#halo)" opacity="0.6"/><circle cx="330" cy="-360" r="88" fill="#f6ecd9"/><circle cx="302" cy="-384" r="14" fill="#e6d8bd"/><circle cx="358" cy="-332" r="21" fill="#e6d8bd"/>`;
   const dx = L(60, 760, lin(u, 0.2, 8)), dy = -420 + 30 * Math.sin(u * 0.9);
   w += `<g transform="translate(${f1(dx)},${f1(dy)}) scale(${f1(2.4)},${f1(2.4 * (0.8 + 0.2 * Math.sin(u * 7)))})"><path d="M-14,10q10-16 22-4 4-10 14-9-6 6-5 13 9-3 15 4-10 0-15 6-9-7-17-2-6-8-14-8z" fill="#0f0e1d"/></g>`;
-  w += T(1180, -370, 'A TALE FROM', { sans: true, weight: 700, size: 26, ls: 10, fill: C.gold, op: win(u, 1, 5.6, 1) });
-  w += T(1180, -270, 'Emberhollow', { size: 130, italic: true, weight: 500, op: win(u, 1.4, 5.8, 1.2) });
+  w += T(1180, -370, 'A TALE FROM', { sans: true, weight: 700, size: 26, ls: 10, fill: C.gold, op: win(u, 1, 5.0, 1) });
+  w += T(1180, -270, 'Emberhollow', { size: 130, italic: true, weight: 500, op: win(u, 1.4, 5.2, 1.2) });
   // fountain
   w += `<g fill="#2f2948"><rect x="60" y="890" width="250" height="46" rx="10"/><rect x="170" y="800" width="30" height="100"/><ellipse cx="185" cy="800" rx="62" ry="13"/></g>`;
   for (let i = 0; i < 6; i++) { const p = (u * 0.8 + i / 6) % 1; w += `<circle cx="${f1(185 + (i % 2 ? 1 : -1) * p * 58)}" cy="${f1(790 - 60 * Math.sin(p * Math.PI) + p * 100)}" r="4" fill="#9fd0ea" opacity="${f1((1 - p) * 0.7)}"/>`; }
@@ -332,12 +332,12 @@ function mimic(x, y, open, t) {
 
 function sceneTrouble(t) {
   const b = beat('trouble');
-  const cMimic = cue('trouble', 'And') - 0.5, cPip = cue('trouble', 'So') - 0.7;
+  const cMimic = cue('trouble', 'And') - 0.5, cPip = cue('trouble', 'Pip') - 0.9;
   let s = `<rect width="1920" height="1080" fill="url(#room)"/>`;
   if (t < cMimic + 0.5) {
     // three troubles, side by side
     const a = 1 - E(t, cMimic - 0.1, cMimic + 0.5);
-    const l1 = E(t, cue('trouble', 'Favourites') - 0.2, cue('trouble', 'Favourites') + 0.4), l2 = E(t, cue('trouble', 'queue') - 0.3, cue('trouble', 'queue') + 0.3), l3 = E(t, cue('trouble', 'bookwyrm') - 0.4, cue('trouble', 'bookwyrm') + 0.3);
+    const l1 = E(t, cue('trouble', 'Favourite') - 0.2, cue('trouble', 'Favourite') + 0.4), l2 = E(t, cueEnd('trouble', 'out') + 0.1, cueEnd('trouble', 'out') + 0.6), l3 = E(t, cue('trouble', 'bookwyrm') - 0.4, cue('trouble', 'bookwyrm') + 0.3);
     let p1 = shelfRow(50, 490, 190, 2, 96) + shelfRow(50, 490, 380, 5, 96, [200, 350]) + shelfRow(50, 490, 570, 7, 96);
     p1 += `<rect x="204" y="262" width="140" height="116" rx="6" fill="none" stroke="${C.parchment}" stroke-width="3" stroke-dasharray="9 9" opacity="0.5"/>`
       + `<g transform="rotate(${f1(7 * Math.sin(t * 1.8))} 274 270)"><path d="M274,270 v26" stroke="${C.gold}" stroke-width="3"/><rect x="214" y="296" width="120" height="50" rx="6" fill="${C.parchment}"/>${T(274, 331, 'SOLD OUT', { sans: true, weight: 700, size: 21, ls: 2, fill: C.ember })}</g>`;
@@ -357,7 +357,7 @@ function sceneTrouble(t) {
     for (let i = 0; i < 3; i++) { const p = (t * 0.35 + i / 3) % 1; p3 += T(350 + p * 90, 250 - p * 150, 'z', { size: 34 + p * 44, italic: true, weight: 700, fill: C.parchment, op: (1 - p) * 0.9 }); }
     p3 += `<path d="M40,540 h70 l-10,60 h-50z" fill="${C.ember}"/><path d="M75,540 q-34,-50 -10,-90 M75,540 q0,-60 20,-80 M75,540 q30,-36 34,-70" stroke="#6f9a4a" stroke-width="7" fill="none" stroke-linecap="round"/>`;
     s += G(a, T(960, 112, 'WHAT THE LEDGER CANNOT TELL HER', { sans: true, weight: 700, size: 24, ls: 9, fill: C.gold, op: E(t, b.start + 0.5, b.start + 1.5) })
-      + panel(110, l1, p1, 'Favourites run out', 'AND THE DUDS PILE UP')
+      + panel(110, l1, p1, 'Favourite tomes run out', 'AND THE DUDS PILE UP')
       + panel(690, l2, p2, '“…one of them is on fire.”', 'PIP, AT THE COUNTER')
       + panel(1270, l3, p3, '“Very full, and not at all sorry.”', 'INCIDENT REPORT'));
   }
@@ -404,7 +404,7 @@ function sceneTrouble(t) {
     // the haggle, remembered differently by each side
     const fade = 1 - E(t, cNo, cNo + 1.4), rise = -70 * E(t, cNo, cNo + 1.6);
     const bub = (x, y, txt, at, wd) => G(Math.min(E(t, at, at + 0.3), fade), `<rect x="${x - wd / 2}" y="${y - 44}" width="${wd}" height="64" rx="32" fill="${C.parchment}"/>` + T(x, y, txt, { size: 36, italic: true, weight: 700, fill: C.ink }), `translate(0,${f1(rise)})`);
-    m += bub(1120, 700, '“Three gold?”', cPrice, 250) + bub(1650, 600, '“Five.”', cPrice + 0.8, 150) + bub(1140, 610, '“…three.”', cPrice + 1.6, 190);
+    m += bub(1060, 690, '“Three gold?”', cPrice, 250) + bub(1650, 600, '“Five.”', cPrice + 0.8, 150) + bub(1140, 610, '“…three.”', cPrice + 1.6, 190);
     // what the ledger would have held
     const n = E(t, cNo + 0.3, cNo + 1.2);
     let slip = `<rect x="-250" y="-150" width="500" height="300" rx="10" fill="url(#paper)"/>` + T(0, -92, 'Dire incident: one mimic', { size: 34, italic: true, weight: 700, fill: C.ink });
@@ -535,7 +535,7 @@ const CHIPS = [['Shop front', 'shop'], ['Counter', 'counter'], ['Catalog', 'cata
 
 function sceneDelivered(t, shots) {
   const b = beat('delivered');
-  const cShop = cue('delivered', 'shop') - 0.5, cCounter = cue('delivered', 'counter') - 0.4, cInc = cue('delivered', 'incident') - 0.5, cList = cue('delivered', 'And') + 0.9;
+  const cShop = cue('delivered', 'shop') - 0.5, cCounter = cue('delivered', 'counter') - 0.4, cInc = cue('delivered', 'incident') - 0.5, cList = cue('delivered', 'next') - 0.1;
   let s = `<rect width="1920" height="1080" fill="url(#sky)"/>` + stars(t, 40, 0, 1920, 0, 1080, 33);
   const title = 1 - E(t, cShop - 0.3, cShop + 0.3);
   s += T(960, 470, 'Chapter One', { size: 170, italic: true, fill: C.gold, op: Math.min(title, E(t, b.start + 0.6, b.start + 1.6)) });

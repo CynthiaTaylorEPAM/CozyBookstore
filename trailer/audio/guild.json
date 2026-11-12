@@ -1,126 +1,151 @@
 {
  "id": "guild",
- "text": "The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
+ "text": "Mirabel needed a better system. The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
  "words": [
   {
-   "w": "The",
+   "w": "Mirabel",
    "start": 0,
-   "end": 0.128
+   "end": 0.534
+  },
+  {
+   "w": "needed",
+   "start": 0.615,
+   "end": 0.906
+  },
+  {
+   "w": "a",
+   "start": 0.94,
+   "end": 0.975
+  },
+  {
+   "w": "better",
+   "start": 1.022,
+   "end": 1.265
+  },
+  {
+   "w": "system.",
+   "start": 1.312,
+   "end": 1.927
+  },
+  {
+   "w": "The",
+   "start": 2.241,
+   "end": 2.357
   },
   {
    "w": "Scribes'",
-   "start": 0.197,
-   "end": 0.708
+   "start": 2.403,
+   "end": 2.856
   },
   {
    "w": "Guild",
-   "start": 0.731,
-   "end": 1.057
+   "start": 2.891,
+   "end": 3.204
   },
   {
    "w": "offered",
-   "start": 1.138,
-   "end": 1.416
+   "start": 3.286,
+   "end": 3.587
   },
   {
    "w": "to",
-   "start": 1.44,
-   "end": 1.498
+   "start": 3.611,
+   "end": 3.669
   },
   {
    "w": "help.",
-   "start": 1.591,
-   "end": 2.113
+   "start": 3.75,
+   "end": 4.272
   },
   {
    "w": "A",
-   "start": 2.473,
-   "end": 2.566
+   "start": 4.702,
+   "end": 4.795
   },
   {
    "w": "dozen",
-   "start": 2.659,
-   "end": 2.984
-  },
-  {
-   "w": "scribes,",
-   "start": 3.065,
-   "end": 3.738
-  },
-  {
-   "w": "a",
-   "start": 3.773,
-   "end": 3.855
-  },
-  {
-   "w": "year",
-   "start": 3.959,
-   "end": 4.18
-  },
-  {
-   "w": "and",
-   "start": 4.226,
-   "end": 4.307
-  },
-  {
-   "w": "a",
-   "start": 4.354,
-   "end": 4.377
-  },
-  {
-   "w": "day,",
-   "start": 4.447,
-   "end": 4.934
-  },
-  {
-   "w": "and",
-   "start": 5.016,
+   "start": 4.876,
    "end": 5.201
   },
   {
-   "w": "more",
-   "start": 5.294,
-   "end": 5.503
-  },
-  {
-   "w": "gold",
-   "start": 5.573,
-   "end": 5.828
-  },
-  {
-   "w": "than",
-   "start": 5.863,
-   "end": 5.979
-  },
-  {
-   "w": "the",
-   "start": 6.014,
-   "end": 6.084
-  },
-  {
-   "w": "shop",
-   "start": 6.118,
-   "end": 6.444
-  },
-  {
-   "w": "takes",
-   "start": 6.548,
-   "end": 6.873
-  },
-  {
-   "w": "in",
-   "start": 6.908,
-   "end": 6.978
+   "w": "scribes,",
+   "start": 5.271,
+   "end": 5.968
   },
   {
    "w": "a",
-   "start": 7.024,
-   "end": 7.047
+   "start": 6.06,
+   "end": 6.142
+  },
+  {
+   "w": "year",
+   "start": 6.269,
+   "end": 6.513
+  },
+  {
+   "w": "and",
+   "start": 6.56,
+   "end": 6.641
+  },
+  {
+   "w": "a",
+   "start": 6.711,
+   "end": 6.734
+  },
+  {
+   "w": "day,",
+   "start": 6.803,
+   "end": 7.268
+  },
+  {
+   "w": "and",
+   "start": 7.314,
+   "end": 7.477
+  },
+  {
+   "w": "more",
+   "start": 7.558,
+   "end": 7.755
+  },
+  {
+   "w": "gold",
+   "start": 7.825,
+   "end": 8.104
+  },
+  {
+   "w": "than",
+   "start": 8.139,
+   "end": 8.255
+  },
+  {
+   "w": "the",
+   "start": 8.29,
+   "end": 8.359
+  },
+  {
+   "w": "shop",
+   "start": 8.406,
+   "end": 8.673
+  },
+  {
+   "w": "takes",
+   "start": 8.742,
+   "end": 8.998
+  },
+  {
+   "w": "in",
+   "start": 9.044,
+   "end": 9.114
+  },
+  {
+   "w": "a",
+   "start": 9.16,
+   "end": 9.183
   },
   {
    "w": "decade.",
-   "start": 7.129,
-   "end": 8.313
+   "start": 9.265,
+   "end": 10.403
   }
  ]
 }
