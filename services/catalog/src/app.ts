@@ -15,19 +15,30 @@ const TOME_COLUMNS = `id, title, author, genre, description, price_cp AS "priceC
 
 const idParam = z.object({ id: z.coerce.number().int().positive() });
 
-const newTome = z.object({
+const tomeFields = z.object({
   title: z.string().trim().min(1).max(200),
   author: z.string().trim().min(1).max(200),
   genre: z.enum(GENRES),
-  description: z.string().trim().max(2000).default(''),
+  description: z.string().trim().max(2000),
   priceCp: z.number().int().min(0),
-  stock: z.number().int().min(0).default(0),
-  condition: z.enum(CONDITIONS).default('pristine'),
-  restricted: z.boolean().default(false),
-  featured: z.boolean().default(false),
+  stock: z.number().int().min(0),
+  condition: z.enum(CONDITIONS),
+  restricted: z.boolean(),
+  featured: z.boolean(),
 });
 
-const tomeChanges = newTome.omit({ stock: true }).partial();
+// A new tome gets sensible values for anything left out.
+const newTome = tomeFields.extend({
+  description: tomeFields.shape.description.default(''),
+  stock: tomeFields.shape.stock.default(0),
+  condition: tomeFields.shape.condition.default('pristine'),
+  restricted: tomeFields.shape.restricted.default(false),
+  featured: tomeFields.shape.featured.default(false),
+});
+
+// A change touches only the fields that were sent, so it must not fill in
+// defaults. Stock is left out: it moves only through stock adjustments.
+const tomeChanges = tomeFields.omit({ stock: true }).partial();
 
 const stockAdjustment = z.object({
   delta: z.number().int().refine((n) => n !== 0, 'delta must not be zero'),
@@ -64,7 +75,8 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
         WHERE ($1::text IS NULL OR title ILIKE '%' || $1 || '%' OR author ILIKE '%' || $1 || '%')
           AND ($2::text IS NULL OR genre = $2)
         ORDER BY title`,
-      [q || null, genre ?? null],
+      // A patron may search for "100%", so % and _ are matched as typed, not as wildcards.
+      [q ? q.replace(/[\\%_]/g, '\\$&') : null, genre ?? null],
     );
     return rows;
   });

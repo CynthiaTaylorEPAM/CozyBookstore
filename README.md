@@ -58,7 +58,7 @@ flowchart LR
   G & C & P & I --> D[(PostgreSQL<br/>one schema per service)]
 ```
 
-More detail: [purpose](docs/purpose.md) · [story](docs/story.md) · [architecture](docs/architecture.md) · [API](docs/api.md) · [personas](docs/personas.md) · [backlog](docs/backlog.md) · [deployment](docs/deployment.md)
+More detail: [purpose](docs/purpose.md) · [story](docs/story.md) · [architecture](docs/architecture.md) · [API](docs/api.md) · [testing](docs/testing.md) · [personas](docs/personas.md) · [backlog](docs/backlog.md) · [deployment](docs/deployment.md)
 
 ## Develop
 
@@ -80,7 +80,9 @@ npm run dev
 
 | Command | What it does |
 |---|---|
-| `npm test` | Runs every test. Needs the database from `npm run db:up`; tests use a separate `griffin_test` database |
+| `npm test` | Runs every test except the browser journeys. Needs the database from `npm run db:up`; tests use a separate `griffin_test` database |
+| `npm run test:coverage` | The same, with a report of how much of the code the tests exercised |
+| `npm run test:e2e` | Browser journeys against the running shop (start it first with `docker compose up --build`). See [docs/testing.md](docs/testing.md) |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | TypeScript, no output |
 | `npm run build` | Builds everything |

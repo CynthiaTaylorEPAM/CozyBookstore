@@ -32,12 +32,43 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
-      - run: npm test
+      # Runs every unit, API, cross-service and portal test, and fails if coverage drops below the floor.
+      - run: npm run test:coverage
+      - run: npm test -w @griffin/integration-tests
       - run: npm run build
+      - run: npm audit --audit-level=high
 
-  image:
-    name: Build Docker image
+  e2e:
+    name: Build Docker image, browser tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker compose build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # Start the whole shop exactly as `docker compose up --build` does.
+      - run: docker compose up -d --build --wait
+      - name: Wait for the shop to open
+        run: |
+          for attempt in $(seq 1 30); do
+            curl -sf http://localhost:8080/health && curl -sf http://localhost:8080/api/public/shop-status && exit 0
+            sleep 2
+          done
+          docker compose logs
+          exit 1
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Keep the browser test report when a journey fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-test-report
+          path: |
+            tests/e2e/playwright-report
+            tests/e2e/test-results
+      - if: failure()
+        run: docker compose logs
+      - if: always()
+        run: docker compose down -v

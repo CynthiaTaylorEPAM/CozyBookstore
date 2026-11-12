@@ -39,7 +39,7 @@ Everything is TypeScript, in one repository managed with npm workspaces.
 | Data | PostgreSQL | 16 | The database |
 | | node-postgres (`pg`) | 8 | Database access with hand-written SQL. No ORM |
 | | SQL migration files | | Schema changes, applied by a small runner in the shared library |
-| Testing | Vitest | 5 | Unit tests and API tests against a real test database |
+| Testing | Vitest, Testing Library, Playwright | 5 / 16 / 1.65 | Unit, service and screen tests; browser journeys against the running shop. See [testing.md](testing.md) |
 | Code quality | ESLint with typescript-eslint | 10 / 8 | Linting |
 | Packaging | Docker, Docker Compose | | One image for all services; Compose runs the whole shop |
 | Pipeline | GitHub Actions | | Lint, typecheck, test and build on every pull request |
@@ -462,23 +462,25 @@ flowchart LR
 
   subgraph check["Job: check"]
     direction LR
-    install["npm ci"] --> lint["Lint"] --> types["Typecheck"] --> test["Test<br/>(with a Postgres<br/>service container)"] --> build["Build"]
+    install["npm ci"] --> lint["Lint"] --> types["Typecheck"] --> test["Test with coverage<br/>(with a Postgres<br/>service container)"] --> build["Build"] --> audit["Dependency audit"]
   end
 
-  subgraph image["Job: image"]
-    docker["docker compose build"]
+  subgraph image["Job: e2e"]
+    docker["docker compose up --build"] --> journeys["Browser journeys<br/>(Playwright)"]
   end
 ```
 
-How the tests are organised:
+How the tests are organised (the full guide is [testing.md](testing.md)):
 
 | Kind | Where | What it checks |
 |---|---|---|
-| Unit | `packages/shared/src/*.test.ts`, `services/incidents/test/shopMood.test.ts`, `apps/portal/src/money.test.ts` | Pure logic: money, tokens, shop mood |
-| API | `services/*/test/*.test.ts` | Each route, through Fastify's `inject`, against the real `griffin_test` database, as both owner and clerk |
-| Cross-service | inside the patrons and incidents API tests | Behaviour when the catalog accepts or refuses, using a fake catalog client |
+| Unit | `packages/shared/src/*.test.ts`, `services/incidents/test/shopMood.test.ts`, `services/gateway/test/staff.test.ts`, `apps/portal/src/money.test.ts` | Pure logic: money, tokens, the staff guard, passwords, shop mood |
+| Service | `services/*/test/*.test.ts` | Each route, through Fastify's `inject`, against the real `griffin_test` database. `access.test.ts` lists who may use every route and tries each as visitor, clerk and owner |
+| Cross-service | `tests/integration` | The gateway and all three services running together: a sale, a monster report, the roles. Also checks that the fake catalog used in service tests behaves like the real one |
+| Screens | `apps/portal/src/**/*.test.tsx` | Each portal page in a pretend browser with a pretend API: what it shows, what it sends, what each role sees |
+| Journeys | `tests/e2e/journeys` | A real browser against the running shop, following the visitor, the clerk and the owner |
 
-There is no automated browser test yet.
+`npm test` runs everything except the journeys, which need the whole shop running (`npm run test:e2e`).
 
 ## Repository layout
 
@@ -502,11 +504,14 @@ There is no automated browser test yet.
 │       ├── src/app.ts       Routes
 │       ├── src/index.ts     Start-up
 │       ├── migrations/      SQL: tables and demo data
-│       └── test/            API tests
+│       └── test/            Service tests: access rules, business rules, demo data
 ├── packages/
-│   └── shared/              Auth guard, database, errors, money, domain lists
+│   └── shared/              Auth guard, database, errors, money, domain lists, test helpers
+├── tests/
+│   ├── integration/         Gateway and all services running together
+│   └── e2e/                 Browser journeys (Playwright)
 ├── docker/                  Dockerfile, test database set-up
-├── docs/                    This document, API, backlog, deployment
+├── docs/                    This document, API, testing, backlog, deployment
 ├── .devcontainer/           GitHub Codespaces configuration
 ├── .github/workflows/       CI pipeline
 ├── docker-compose.yml       Runs the whole shop
@@ -536,6 +541,5 @@ These are deliberate, to leave room for the [backlog](backlog.md):
 - No loans, late fees, discounts or loyalty points.
 - Wards are read-only.
 - No audit trail of who changed a tome, no password change, no login rate limiting.
-- The portal's API types are maintained by hand rather than generated.
-- No automated browser tests.
+- The portal's API types are maintained by hand rather than generated. A test (`tests/integration/test/portalTypes.test.ts`) catches them drifting.
 - No external integrations (payments, email, suppliers).

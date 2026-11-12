@@ -21,11 +21,13 @@ For anything that tells the story (the trailer video, slides, in-character featu
 - `services/catalog` (4001), `services/patrons` (4002), `services/incidents` (4003): Fastify + Postgres. Each has `src/app.ts` (routes), `src/index.ts` (start-up), `migrations/*.sql`, `test/`.
 - `services/gateway` (8080): login, staff accounts, routing table, serves the built portal.
 - `apps/portal`: React + Vite. `pages/Landing.tsx` is public; everything under `/shop` needs a login.
+- `tests/integration`: the gateway and all services run together. `tests/e2e`: browser journeys (Playwright).
 
 ## Commands
 
 - `npm run db:up` starts Postgres (needed for tests and dev).
 - `npm test`, `npm run lint`, `npm run typecheck`, `npm run build`. All four must pass before a change is done.
+- `npm run test:coverage` adds a coverage report and enforces the floors. `npm run test:e2e` runs the browser journeys against a running shop (`docker compose up --build`).
 - `npm run dev` runs everything with reload. `docker compose up --build` runs the production images.
 
 ## Rules
@@ -37,7 +39,7 @@ For anything that tells the story (the trailer video, slides, in-character featu
 - **Validation.** Parse every request body, query and params with a zod schema. Valid values for races, monsters, genres and so on come from `packages/shared/src/domain.ts`.
 - **New gateway-facing routes** need an entry in `routingTable` in `services/gateway/src/app.ts` if they introduce a new path prefix.
 - **API shape.** JSON, camelCase. Errors are `{ "error": "message" }` with the right status code; throw `HttpError`.
-- **Tests.** Every route change comes with tests in that service's `test/` folder, using `app.inject` against the real test database and a fake `CatalogClient`. Tests cover both roles where behaviour differs.
+- **Tests.** Read `docs/testing.md`. Every route change comes with tests in that service's `test/` folder, using `app.inject` against the real test database and `fakeCatalog()` from `@griffin/shared`: a row in `access.test.ts` (who may use it, tried as visitor, clerk and owner) and the business rule in `<service>.test.ts`. A change across services gets a test in `tests/integration`; a portal page change updates its `*.test.tsx`, including what the clerk must not see; a new start-to-finish task gets a journey in `tests/e2e`. If the catalog's answers to other services change, update `fakeCatalog` and `catalogContract.test.ts` together.
 - **Portal.** Types in `src/types.ts` and display text in `src/lore.ts` are kept in step with the services by hand. Hide owner-only controls from clerks, but rely on the API to enforce it.
 - **Docs.** Update `docs/api.md` when routes change.
 - **Tone.** Light whimsy in user-facing text; plain, clear names in code.

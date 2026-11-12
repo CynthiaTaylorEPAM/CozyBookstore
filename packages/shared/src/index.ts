@@ -5,3 +5,4 @@ export * from './db';
 export * from './domain';
 export * from './errors';
 export * from './money';
+export * from './testing';
