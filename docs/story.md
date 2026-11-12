@@ -18,13 +18,37 @@ Decided by the session owner on 12 November 2026.
 | Feature to tease | The **bounty board** (backlog item 7) |
 | Format and tools | No preference. Whoever makes it may choose |
 | EPAM brand guidelines | Do not apply |
+| How EPAM appears | By name, inside the fiction |
+| How the factory appears | If it is shown at all, as an in-world metaphor, not as real tooling or screens |
+| What the room builds | The bounty board is built together, as a guided walkthrough. After that, attendees choose their own requests |
 
 What follows from these:
 
 - **Under 2 minutes is about 250 words of narration** at a comfortable pace, less if the pictures are to breathe. The [shape below](#a-shape-for-the-trailer-proposed) has eight beats, so each gets roughly 15 seconds. Cut beats before cutting pauses.
 - **It opens the session**, so it cannot assume the audience knows anything: not the shop, not Mirabel, not what a hyperfactory is. It must end by handing over to the room.
 - **A narrator** can speak about Mirabel with affection and can step outside the fiction for the real point. Characters' lines can still appear as quotes on screen or be read by the narrator.
-- **The bounty board is the hook.** The monster trouble should be the problem the trailer dwells on, and the last thing the audience hears should be the request they are about to see built.
+- **The bounty board is the hook.** The monster trouble should be the problem the trailer dwells on, and the last thing the audience hears should be the request they are about to build together.
+- **The ending has two parts**, matching the session: "first, together, the bounty board", then "after that, Mirabel's list is yours".
+
+### Time budget
+
+Introducing the shop takes about 15 to 20 seconds, or roughly 40 words of narration. It fits comfortably, provided it is one image and two or three sentences rather than a tour.
+
+| Beat | Seconds | Words, about |
+|---|---|---|
+| The shop and Mirabel | 20 | 40 |
+| The trouble, ending on the mimic | 25 | 50 |
+| The old way: a year and a day | 10 | 20 |
+| EPAM arrives, and the factory | 25 | 50 |
+| Chapter one delivered: the real system | 15 | 30 |
+| The handover: the bounty board, then your turn | 15 | 30 |
+| **Total** | **110** | **220** |
+
+That leaves about 10 seconds spare under the 2 minute limit.
+
+A sample opening at that length (39 words):
+
+> *In the town of Emberhollow, third lantern past the fountain, there is a bookshop. Elves browse it for decades. Dwarves weep quietly in Poetry. For twenty years Mirabel Thistlewick has known every book on its shelves, and every patron by name.*
 
 ## The story in one paragraph
 
@@ -98,7 +122,21 @@ This part of the story did not exist before this document. A suggested version:
 - **Why EPAM.** They understood the shop before they talked about the system. And they did not bring a dozen scribes. They brought a small team and a factory: tireless agents that elaborate the request, plan the work, build it, test it and put it on the shelf, with people she trusts deciding what gets built and checking that it is right.
 - **What she got first.** The system as it stands today: a shop front for the public, a counter for her and Pip, the catalog, the guest book and the incident board. It works. Now she has a list.
 
-**To confirm.** Whether EPAM appears by name inside the fiction, or as a thin stand-in (for example "the Artificers of EPAM"). Naming it plainly is simpler and ties most directly to the goal.
+**Confirmed:** EPAM appears by name inside the fiction. The rest of this section is still a proposal.
+
+### The factory as a metaphor (proposed)
+
+If the factory is shown, it is shown in the world's own terms, never as software screens. One suggestion, in keeping with a bookshop:
+
+- **A scriptorium that never sleeps.** A workshop of enchanted quills, each with one job. A request arrives as a note in Mirabel's hand, and passes from desk to desk:
+  - one quill asks the questions she had not thought of (elaboration);
+  - one draws up the plan (planning);
+  - several write at once (development);
+  - one reads every page back, looking for mistakes (testing);
+  - one carries the finished work to the shop and puts it on the shelf (deployment).
+- **People from EPAM walk the floor.** They decide what is written, read what the quills produce, and send a page back when it is not right. The quills are tireless; the judgement is human.
+
+This keeps the five stages visible and in order, which is the thing the audience most needs to take away, and it stays honest that people direct and check the work.
 
 ## Where the story stands (proposed)
 
@@ -115,11 +153,11 @@ A starting point, not a script.
 3. **The trouble.** A quick run of things going wrong: an empty shelf, a queue out of the door, a bookwyrm. Then the big one: the mimic, the bitten knight, and Pip sprinting to the tavern to haggle with adventurers.
 4. **The old way.** The Scribes' Guild quote: a year and a day.
 5. **The turn.** EPAM arrives. A small team, and a factory.
-6. **The factory.** A request goes in; elaboration, a plan, code, tests and a deployment come out. Fast, visible, checked by people.
+6. **The factory.** Shown as a metaphor (see [above](#the-factory-as-a-metaphor-proposed)). A request goes in; questions, a plan, the work, the checking and the delivery come out. Fast, visible, checked by people.
 7. **Chapter one delivered.** The real system on screen: the landing page, the counter, the incident board.
-8. **The handover.** Mirabel has a list, and at the top of it: *"For a dire incident I want to post a bounty for adventurers."* The narrator turns to the audience. "Your turn."
+8. **The handover.** Mirabel has a list, and at the top of it: *"For a dire incident I want to post a bounty for adventurers."* The narrator turns to the audience: first we build this one together, then the rest of the list is yours.
 
-At under 2 minutes, beats 1 and 2 can merge, and beat 4 can be a single line.
+At under 2 minutes, beats 1 and 2 merge and beat 4 is a single line, as in the [time budget](#time-budget).
 
 ## Tone
 
@@ -165,9 +203,6 @@ All from the landing page, the demo data or the personas.
 
 ## Still to be decided
 
-Not recorded anywhere yet. Settle these before or while making the trailer.
-
-- **How EPAM appears** in the fiction: by name, as this document proposes, or as an in-world stand-in.
-- **What the factory looks like** on screen: the real hyperfactory tooling, or an in-world metaphor. The tooling has not been chosen yet (see [purpose.md](purpose.md)).
+- **Whether the factory is shown at all.** If it is, it is a metaphor; the scriptorium above is one suggestion.
 - **Who else appears.** Pip, Sir Aldric and Bran Holloway all belong to the bounty board story. The rest of the cast is in [personas.md](personas.md).
-- **Whether the bounty board is also the feature built in the session.** The trailer teases it; whether it is the first or only request the room runs has not been stated.
+- **Format and tools.** Left to whoever makes the trailer.
