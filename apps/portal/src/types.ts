@@ -21,6 +21,9 @@ export interface Tome {
   condition: string;
   restricted: boolean;
   featured: boolean;
+  reorderLevel: number;
+  /** Stock is at or below the reorder level. Worked out by the catalog. */
+  runningLow: boolean;
 }
 
 export interface Patron {

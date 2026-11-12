@@ -204,6 +204,8 @@ function TomeDialog({ tome, onClose, onDone }: DialogProps & { tome?: Tome }) {
     condition: tome?.condition ?? CONDITIONS[0],
     restricted: tome?.restricted ?? false,
     featured: tome?.featured ?? false,
+    // 2 mirrors the catalog's default reorder level.
+    reorderLevel: tome?.reorderLevel ?? 2,
   });
   const [error, setError] = useState<string | null>(null);
   const set = (changes: Partial<typeof form>) => setForm({ ...form, ...changes });
@@ -261,6 +263,17 @@ function TomeDialog({ tome, onClose, onDone }: DialogProps & { tome?: Tome }) {
               <input type="number" min={0} value={form.stock} onChange={(e) => set({ stock: Number(e.target.value) })} />
             </label>
           )}
+          <label>
+            Reorder at
+            <input
+              type="number"
+              min={0}
+              step={1}
+              value={form.reorderLevel}
+              onChange={(e) => set({ reorderLevel: Number(e.target.value) })}
+              required
+            />
+          </label>
         </div>
         <label>
           Description
