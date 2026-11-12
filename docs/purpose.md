@@ -16,7 +16,7 @@ The session is run by the delivery manager who owns this repository.
 
 ### Shape of the session
 
-1. **Kickoff.** A trailer video, under 2 minutes, tells Mirabel's story and introduces the request to come. Its brief is in [story.md](story.md).
+1. **Kickoff.** A trailer video, under 3 minutes, tells Mirabel's story and introduces the request to come. Its brief is in [story.md](story.md).
 2. **Together.** The whole room builds the **bounty board** ([backlog](backlog.md) item 7) with the hyperfactory, as a guided walkthrough.
 3. **On their own.** Attendees then choose their own feature requests and run the hyperfactory themselves.
 
