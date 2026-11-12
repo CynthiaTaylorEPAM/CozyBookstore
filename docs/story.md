@@ -12,7 +12,7 @@ Decided by the session owner on 12 November 2026.
 
 | Question | Decision |
 |---|---|
-| Length | Under 2 minutes |
+| Length | Under 3 minutes |
 | Where it plays | In the kickoff, at the start of the leadership session |
 | Voice | A narrator. Not Mirabel in the first person |
 | Feature to tease | The **bounty board** (backlog item 7) |
@@ -24,7 +24,7 @@ Decided by the session owner on 12 November 2026.
 
 What follows from these:
 
-- **Under 2 minutes is about 250 words of narration** at a comfortable pace, less if the pictures are to breathe. The [shape below](#a-shape-for-the-trailer-proposed) has eight beats, so each gets roughly 15 seconds. Cut beats before cutting pauses.
+- **Under 3 minutes, with room for the pictures to breathe.** The length was raised from 2 minutes so the visuals are not rushed and the audience gets a real sense of the shop's background. Spend the extra minute on the shop and Mirabel, and on pauses, not on more plot. Aim for about 300 words of narration, which leaves roughly a third of the running time without voice. The [shape below](#a-shape-for-the-trailer-proposed) has eight beats.
 - **It opens the session**, so it cannot assume the audience knows anything: not the shop, not Mirabel, not what a hyperfactory is. It must end by handing over to the room.
 - **A narrator** can speak about Mirabel with affection and can step outside the fiction for the real point. Characters' lines can still appear as quotes on screen or be read by the narrator.
 - **The bounty board is the hook.** The monster trouble should be the problem the trailer dwells on, and the last thing the audience hears should be the request they are about to build together.
@@ -32,23 +32,26 @@ What follows from these:
 
 ### Time budget
 
-Introducing the shop takes about 15 to 20 seconds, or roughly 40 words of narration. It fits comfortably, provided it is one image and two or three sentences rather than a tour.
+| Beat | Seconds | Words, about | What the extra time is for |
+|---|---|---|---|
+| The shop: the street, the window, the folk who come | 30 | 45 | Let the shop front and its patrons be seen before anyone speaks of trouble |
+| Mirabel: twenty years, the kitchen table, the ledger | 25 | 45 | Her history with the shop, and why she cares |
+| The trouble, ending on the mimic | 35 | 65 | Small troubles quickly, then time on the mimic and the dash to the tavern |
+| The old way: a year and a day | 10 | 20 | One line |
+| EPAM arrives, and the factory | 30 | 55 | The five stages, each given a moment |
+| Chapter one delivered: the real system | 20 | 35 | Hold on the landing page and the counter |
+| The handover: the bounty board, then your turn | 20 | 35 | A pause before the last line |
+| **Total** | **170** | **300** | |
 
-| Beat | Seconds | Words, about |
-|---|---|---|
-| The shop and Mirabel | 20 | 40 |
-| The trouble, ending on the mimic | 25 | 50 |
-| The old way: a year and a day | 10 | 20 |
-| EPAM arrives, and the factory | 25 | 50 |
-| Chapter one delivered: the real system | 15 | 30 |
-| The handover: the bounty board, then your turn | 15 | 30 |
-| **Total** | **110** | **220** |
+That leaves about 10 seconds spare under the 3 minute limit.
 
-That leaves about 10 seconds spare under the 2 minute limit.
+A sample opening for the first beat (45 words):
 
-A sample opening at that length (39 words):
+> *In the town of Emberhollow, third lantern past the fountain, there is a bookshop. It has stood since the Year of the Quiet Comet. Elves browse it for decades. Dwarves weep quietly in Poetry. Halflings leave crumbs in Cookery, and are forgiven, because they bring scones.*
 
-> *In the town of Emberhollow, third lantern past the fountain, there is a bookshop. Elves browse it for decades. Dwarves weep quietly in Poetry. For twenty years Mirabel Thistlewick has known every book on its shelves, and every patron by name.*
+And for the second (44 words):
+
+> *For twenty years it has been kept by Mirabel Thistlewick, who had it from her aunt. She knows every book on its shelves and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.*
 
 ## The story in one paragraph
 
@@ -157,7 +160,7 @@ A starting point, not a script.
 7. **Chapter one delivered.** The real system on screen: the landing page, the counter, the incident board.
 8. **The handover.** Mirabel has a list, and at the top of it: *"For a dire incident I want to post a bounty for adventurers."* The narrator turns to the audience: first we build this one together, then the rest of the list is yours.
 
-At under 2 minutes, beats 1 and 2 merge and beat 4 is a single line, as in the [time budget](#time-budget).
+Beats 1 and 2 each get their own time and beat 4 is a single line, as in the [time budget](#time-budget).
 
 ## Tone
 
