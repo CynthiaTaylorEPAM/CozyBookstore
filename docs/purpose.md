@@ -14,6 +14,12 @@ A leadership offsite in December 2026. All directors and above from delivery and
 
 The session is run by the delivery manager who owns this repository.
 
+### Shape of the session
+
+1. **Kickoff.** A trailer video, under 2 minutes, tells Mirabel's story and introduces the request to come. Its brief is in [story.md](story.md).
+2. **Together.** The whole room builds the **bounty board** ([backlog](backlog.md) item 7) with the hyperfactory, as a guided walkthrough.
+3. **On their own.** Attendees then choose their own feature requests and run the hyperfactory themselves.
+
 ## Two sets of goals
 
 ### Goals for the offsite (the real ones)
@@ -78,6 +84,6 @@ These are not recorded anywhere yet. Fill them in as they are settled.
 
 - The exact date and length of the offsite session.
 - Which hyperfactory tooling will be used, and how it is configured.
-- Which backlog items will be used on the day, and which will be rehearsed beforehand.
+- Which backlog items attendees may choose from in the second part of the session, and which will be rehearsed beforehand.
 - How attendees will run the system: each in their own Codespace, or one shared deployment.
 - Whether attendees will have access to this repository, or work in copies of it.

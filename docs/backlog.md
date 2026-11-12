@@ -15,7 +15,7 @@ The people behind these requests, and further requests the list does not yet cov
 
 5. **Griffin's Favour discounts.** "Regulars get 5% off, Fellows get 10%." Apply the tier discount at sale time, show it on the sale, round in the shop's favour to the nearest copper. *Patrons, portal.*
 6. **Locked cabinet rules.** "Only Fellows may buy restricted tomes, and only I may sell them." Enforce both rules and explain refusals clearly. *Patrons, catalog, portal.*
-7. **Bounty board.** "For a dire incident I want to post a bounty for adventurers." Add a bounty in gold to an incident, record who claimed it, and include bounties paid in the owner's figures. *Incidents, portal.*
+7. **Bounty board.** *(The request the whole room builds together at the leadership session. Do not build it beforehand except as a rehearsal on a separate branch.)* "For a dire incident I want to post a bounty for adventurers." Add a bounty in gold to an incident, record who claimed it, and include bounties paid in the owner's figures. *Incidents, portal.*
 8. **Returns.** "Grusha wants to return a romance novel. Again." Refund a sale in full or in part and put the copies back on the shelf. *Patrons, catalog, portal.*
 9. **Staff management.** "I have hired a second clerk." The owner can add staff, reset passwords and deactivate accounts. Staff can change their own password. *Gateway, portal.*
 

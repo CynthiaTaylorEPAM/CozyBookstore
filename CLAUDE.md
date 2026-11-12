@@ -6,12 +6,14 @@ A demo codebase: fantasy bookstore management. npm workspaces monorepo, TypeScri
 
 Read `docs/purpose.md` at the start of a session. In short: this is the example codebase for an EPAM Canada leadership offsite, where directors and above from delivery and account management learn to set up and use an SDLC hyperfactory (agents taking a feature request through elaboration, planning, development, testing and deployment). Many of them are not hands-on technical. So:
 
-- Keep it a small, readable, working skeleton. The gaps in `docs/backlog.md` are deliberate; build one only when asked.
+- Keep it a small, readable, working skeleton. The gaps in `docs/backlog.md` are deliberate; build one only when asked. Backlog item 7 (the bounty board) is reserved for the session itself and must not land on `main` beforehand.
 - Keep it representative: database, separate services, gateway, portal, roles.
 - Keep it runnable with one click (Codespaces) or one command (Docker), and keep `main` demonstrable.
 - Write docs, pull request descriptions and user-facing text for a non-technical reader.
 
 When elaborating or reviewing a feature, use the personas in `docs/personas.md`: name who the feature is for and who else it affects. Update a persona when a feature removes one of its frustrations.
+
+For anything that tells the story (the trailer video, slides, in-character feature requests), start from `docs/story.md`. It marks which parts are established and which are only proposed.
 
 ## Layout
 
