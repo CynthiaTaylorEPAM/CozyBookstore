@@ -535,7 +535,7 @@ const CHIPS = [['Shop front', 'shop'], ['Counter', 'counter'], ['Catalog', 'cata
 
 function sceneDelivered(t, shots) {
   const b = beat('delivered');
-  const cShop = cue('delivered', 'shop') - 0.5, cCounter = cue('delivered', 'counter') - 0.4, cInc = cue('delivered', 'incident') - 0.5, cList = cue('delivered', 'And') + 0.9;
+  const cShop = cue('delivered', 'shop') - 0.5, cCounter = cue('delivered', 'counter') - 0.4, cInc = cue('delivered', 'incident') - 0.5, cList = cue('delivered', 'next') - 0.1;
   let s = `<rect width="1920" height="1080" fill="url(#sky)"/>` + stars(t, 40, 0, 1920, 0, 1080, 33);
   const title = 1 - E(t, cShop - 0.3, cShop + 0.3);
   s += T(960, 470, 'Chapter One', { size: 170, italic: true, fill: C.gold, op: Math.min(title, E(t, b.start + 0.6, b.start + 1.6)) });
