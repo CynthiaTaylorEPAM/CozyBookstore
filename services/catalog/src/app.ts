@@ -81,7 +81,8 @@ export function buildApp({ db, jwtSecret, logger = false }: CatalogDeps): Fastif
         WHERE ($1::text IS NULL OR title ILIKE '%' || $1 || '%' OR author ILIKE '%' || $1 || '%')
           AND ($2::text IS NULL OR genre = $2)
         ORDER BY title`,
-      [q || null, genre ?? null],
+      // A patron may search for "100%", so % and _ are matched as typed, not as wildcards.
+      [q ? q.replace(/[\\%_]/g, '\\$&') : null, genre ?? null],
     );
     return rows;
   });

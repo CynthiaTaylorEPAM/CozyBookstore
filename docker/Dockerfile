@@ -10,6 +10,8 @@ COPY services/patrons/package.json services/patrons/
 COPY services/incidents/package.json services/incidents/
 COPY services/gateway/package.json services/gateway/
 COPY apps/portal/package.json apps/portal/
+COPY tests/integration/package.json tests/integration/
+COPY tests/e2e/package.json tests/e2e/
 RUN npm ci
 COPY . .
 RUN npm run build

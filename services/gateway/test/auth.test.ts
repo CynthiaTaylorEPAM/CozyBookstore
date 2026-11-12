@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import type { FastifyInstance } from 'fastify';
 import type { Pool } from 'pg';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createPool, migrate, TEST_DATABASE_URL } from '@griffin/shared';
+import { createPool, migrate, staffHeaders, TEST_DATABASE_URL, verifyToken } from '@griffin/shared';
 import { buildApp, routingTable } from '../src/app';
 import { hashPassword, verifyPassword } from '../src/passwords';
 import { demoStaff, seedStaff } from '../src/staff';
@@ -54,6 +54,44 @@ describe('signing in', () => {
     expect(wrong.statusCode).toBe(401);
     expect(unknown.statusCode).toBe(401);
     expect(wrong.json()).toEqual(unknown.json());
+  });
+
+  it('forgives stray spaces around the name', async () => {
+    const login = await app.inject({ method: 'POST', url: '/api/auth/login', payload: { username: '  pip ', password: 'quill' } });
+    expect(login.statusCode).toBe(200);
+  });
+
+  it('does not forgive capitals in the password', async () => {
+    const login = await app.inject({ method: 'POST', url: '/api/auth/login', payload: { username: 'pip', password: 'Quill' } });
+    expect(login.statusCode).toBe(401);
+  });
+
+  it.each([
+    ['no password', { username: 'pip' }],
+    ['no name', { password: 'quill' }],
+    ['a blank name', { username: '   ', password: 'quill' }],
+    ['an empty password', { username: 'pip', password: '' }],
+    ['nothing at all', {}],
+  ])('asks for both name and password when given %s', async (_label, payload) => {
+    const login = await app.inject({ method: 'POST', url: '/api/auth/login', payload });
+    expect(login.statusCode).toBe(400);
+    expect(login.json().error).toBe('Invalid request');
+  });
+
+  it('never sends the stored password back', async () => {
+    const login = await app.inject({ method: 'POST', url: '/api/auth/login', payload: { username: 'pip', password: 'quill' } });
+    expect(Object.keys(login.json()).sort()).toEqual(['staff', 'token']);
+    expect(Object.keys(login.json().staff).sort()).toEqual(['displayName', 'id', 'role', 'username']);
+  });
+
+  it('issues a token the other services accept', async () => {
+    const login = await app.inject({ method: 'POST', url: '/api/auth/login', payload: { username: 'pip', password: 'quill' } });
+    expect(verifyToken(login.json().token, 'test-secret')).toMatchObject({ username: 'pip', role: 'clerk' });
+  });
+
+  it('refuses /me with a token it did not issue', async () => {
+    const me = await app.inject({ method: 'GET', url: '/api/auth/me', headers: staffHeaders('owner', 'someone-elses-secret') });
+    expect(me.statusCode).toBe(401);
   });
 
   it('refuses /me without a token', async () => {

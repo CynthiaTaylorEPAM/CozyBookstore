@@ -2,35 +2,16 @@ import { join } from 'node:path';
 import type { FastifyInstance } from 'fastify';
 import type { Pool } from 'pg';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { type CatalogClient, createPool, HttpError, migrate, signToken, TEST_DATABASE_URL } from '@griffin/shared';
+import { createPool, fakeCatalog, type FakeCatalog, migrate, staffHeaders, TEST_DATABASE_URL, TEST_JWT_SECRET } from '@griffin/shared';
 import { buildApp } from '../src/app';
 
-const SECRET = 'test-secret';
-const owner = { authorization: `Bearer ${signToken({ id: 1, username: 'mirabel', displayName: 'Mirabel', role: 'owner' }, SECRET)}` };
-const clerk = { authorization: `Bearer ${signToken({ id: 2, username: 'pip', displayName: 'Pip', role: 'clerk' }, SECRET)}` };
-
-/** Stands in for the catalog service: one tome, three copies on the shelf. */
-function fakeCatalog() {
-  const tome = { id: 7, title: 'Dragons at Tea', priceCp: 1000, stock: 3 };
-  const adjustments: { delta: number; reason: string }[] = [];
-  const client: CatalogClient = {
-    async getTome(id) {
-      if (id !== tome.id) throw new HttpError(404, 'Tome not found');
-      return { ...tome };
-    },
-    async adjustStock(id, delta, reason) {
-      if (tome.stock + delta < 0) throw new HttpError(409, `Only ${tome.stock} left on the shelf`);
-      tome.stock += delta;
-      adjustments.push({ delta, reason });
-      return { ...tome };
-    },
-  };
-  return { client, tome, adjustments };
-}
+const SECRET = TEST_JWT_SECRET;
+const owner = staffHeaders('owner');
+const clerk = staffHeaders('clerk');
 
 let db: Pool;
 let app: FastifyInstance;
-let catalog: ReturnType<typeof fakeCatalog>;
+let catalog: FakeCatalog;
 
 const sighting = { monster: 'dust wraith', severity: 'minor', description: 'Sneezing on the top shelf.' };
 
@@ -81,6 +62,41 @@ describe('reporting an incident', () => {
     expect(list.json()).toEqual([]);
   });
 
+  it('notes which tome was involved even when no copies were lost', async () => {
+    const response = await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, tomeId: 7 } });
+    expect(response.json()).toMatchObject({ tomeId: 7, tomeTitle: 'Dragons at Tea', copiesDamaged: 0 });
+    expect(catalog.adjustments).toEqual([]);
+  });
+
+  it('logs nothing for a tome the catalog does not know', async () => {
+    const response = await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, tomeId: 8, copiesDamaged: 1 } });
+    expect(response.statusCode).toBe(404);
+    expect((await db.query('SELECT 1 FROM incidents')).rowCount).toBe(0);
+  });
+
+  it('logs nothing, and says why, when the catalog is not answering', async () => {
+    catalog.goDown();
+    const response = await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, tomeId: 7, copiesDamaged: 1 } });
+    expect(response.statusCode).toBe(503);
+    expect((await db.query('SELECT 1 FROM incidents')).rowCount).toBe(0);
+  });
+
+  it('does not need the catalog at all for a plain sighting', async () => {
+    catalog.goDown();
+    const response = await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: sighting });
+    expect(response.statusCode).toBe(201);
+  });
+
+  it('passes the staff member\'s own token on to the catalog', async () => {
+    await app.inject({ method: 'POST', url: '/incidents', headers: owner, payload: { ...sighting, tomeId: 7, copiesDamaged: 1 } });
+    const token = owner.authorization.replace('Bearer ', '');
+    expect(catalog.tokens).toEqual([token, token]);
+  });
+
+  // Known gap, the same kind as backlog item 14: if logging the incident fails
+  // after the catalog has removed the damaged copies, the stock is not put back.
+  it.todo('puts the stock back if the incident cannot be logged (see backlog 14)');
+
   it('insists on knowing which tome was damaged', async () => {
     const response = await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, copiesDamaged: 1 } });
     expect(response.statusCode).toBe(400);
@@ -89,6 +105,38 @@ describe('reporting an incident', () => {
   it('rejects monsters that are not in the bestiary', async () => {
     const response = await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, monster: 'auditor' } });
     expect(response.statusCode).toBe(400);
+  });
+});
+
+describe('the incident log and the wards', () => {
+  beforeEach(async () => {
+    await db.query(
+      `INSERT INTO incidents (monster, severity, description, status, reported_by, reported_at) VALUES
+         ('mimic', 'minor', 'Oldest, still open', 'open', 'pip', now() - interval '3 days'),
+         ('ink imp', 'minor', 'Resolved yesterday', 'resolved', 'pip', now() - interval '1 day'),
+         ('bookwyrm', 'dire', 'Newest, still open', 'open', 'pip', now())`,
+    );
+  });
+
+  const descriptions = (response: { json(): { description: string }[] }) => response.json().map((i) => i.description);
+
+  it('lists open incidents first, then the rest, newest first within each', async () => {
+    const response = await app.inject({ method: 'GET', url: '/incidents', headers: clerk });
+    expect(descriptions(response)).toEqual(['Newest, still open', 'Oldest, still open', 'Resolved yesterday']);
+  });
+
+  it('filters by open or resolved', async () => {
+    const open = await app.inject({ method: 'GET', url: '/incidents?status=open', headers: clerk });
+    expect(descriptions(open)).toEqual(['Newest, still open', 'Oldest, still open']);
+    const resolved = await app.inject({ method: 'GET', url: '/incidents?status=resolved', headers: clerk });
+    expect(descriptions(resolved)).toEqual(['Resolved yesterday']);
+  });
+
+  it('lists the wards with their descriptions for staff', async () => {
+    const response = await app.inject({ method: 'GET', url: '/wards', headers: clerk });
+    expect(response.json()).toEqual([
+      { id: 1, name: 'Threshold Rune', location: 'Front door', description: 'Wipe your feet.', status: 'holding' },
+    ]);
   });
 });
 
@@ -107,6 +155,25 @@ describe('resolving an incident', () => {
     expect(response.json()).toMatchObject({ status: 'resolved', resolvedBy: 'mirabel', resolution: 'Opened a window.' });
   });
 
+  it('takes the incident off the open count', async () => {
+    await app.inject({ method: 'POST', url: '/incidents/1/resolve', headers: owner, payload: { resolution: 'Opened a window.' } });
+    const status = await app.inject({ method: 'GET', url: '/public/shop-status' });
+    expect(status.json()).toMatchObject({ mood: 'calm', openIncidents: 0 });
+  });
+
+  it('says so when the incident does not exist', async () => {
+    const response = await app.inject({ method: 'POST', url: '/incidents/99/resolve', headers: owner, payload: { resolution: 'Nothing there.' } });
+    expect(response.statusCode).toBe(404);
+    expect(response.json()).toEqual({ error: 'Incident not found' });
+  });
+
+  it('keeps the first resolution when someone tries again', async () => {
+    await app.inject({ method: 'POST', url: '/incidents/1/resolve', headers: owner, payload: { resolution: 'Opened a window.' } });
+    await app.inject({ method: 'POST', url: '/incidents/1/resolve', headers: owner, payload: { resolution: 'Again.' } });
+    const list = await app.inject({ method: 'GET', url: '/incidents', headers: owner });
+    expect(list.json()[0].resolution).toBe('Opened a window.');
+  });
+
   it('cannot be done twice', async () => {
     await app.inject({ method: 'POST', url: '/incidents/1/resolve', headers: owner, payload: { resolution: 'Opened a window.' } });
     const again = await app.inject({ method: 'POST', url: '/incidents/1/resolve', headers: owner, payload: { resolution: 'Again.' } });
@@ -122,6 +189,18 @@ describe('public shop status', () => {
       openIncidents: 0,
       wards: [{ name: 'Threshold Rune', location: 'Front door', status: 'holding' }],
     });
+  });
+
+  it('turns wary when something is afoot but nothing is dire', async () => {
+    await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, severity: 'troublesome' } });
+    const response = await app.inject({ method: 'GET', url: '/public/shop-status' });
+    expect(response.json()).toMatchObject({ mood: 'wary', openIncidents: 1 });
+  });
+
+  it('gives away nothing about who reported what', async () => {
+    await app.inject({ method: 'POST', url: '/incidents', headers: clerk, payload: { ...sighting, description: 'Seen behind the till.' } });
+    const response = await app.inject({ method: 'GET', url: '/public/shop-status' });
+    for (const secret of ['pip', 'Seen behind the till', 'Wipe your feet']) expect(response.body).not.toContain(secret);
   });
 
   it('turns besieged when a dire incident is open', async () => {
