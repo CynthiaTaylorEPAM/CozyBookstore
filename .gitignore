@@ -8,3 +8,14 @@ coverage/
 trailer/out/
 trailer/audio/soundtrack.m4a
 CozyBookstore.code-workspace
+
+# AI-assisted delivery (sdlc-factory) local working files
+.ai-run/sdlc-factory/
+.ai-run/runs/
+.agents/memory/sdlc/daily/
+docs/superpowers/tasks/*/**/*.local.*
+docs/superpowers/tasks/*/**/*.local/
+docs/superpowers/tasks/*/**/task-*-brief.md
+docs/superpowers/tasks/*/**/task-*-report.md
+docs/superpowers/qa-tasks/*/**/*.local.*
+.claude/settings.local.json
