@@ -2,7 +2,8 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist/**', '**/node_modules/**'] },
+  // The trailer is a stand-alone animation, not part of the system, so it is not linted.
+  { ignores: ['**/dist/**', '**/node_modules/**', 'trailer/**'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

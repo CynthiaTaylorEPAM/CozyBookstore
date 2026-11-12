@@ -1,0 +1,241 @@
+{
+ "id": "handover",
+ "text": "At the top of it, in her own hand: For a dire incident, I want to post a bounty for adventurers. Today, you run the scriptorium, and you need not be an engineer to do it. First, together, the bounty board. After that, Mirabel's list is yours.",
+ "words": [
+  {
+   "w": "At",
+   "start": 0,
+   "end": 0.186
+  },
+  {
+   "w": "the",
+   "start": 0.221,
+   "end": 0.29
+  },
+  {
+   "w": "top",
+   "start": 0.337,
+   "end": 0.534
+  },
+  {
+   "w": "of",
+   "start": 0.58,
+   "end": 0.639
+  },
+  {
+   "w": "it,",
+   "start": 0.708,
+   "end": 0.894
+  },
+  {
+   "w": "in",
+   "start": 0.929,
+   "end": 1.08
+  },
+  {
+   "w": "her",
+   "start": 1.149,
+   "end": 1.242
+  },
+  {
+   "w": "own",
+   "start": 1.324,
+   "end": 1.474
+  },
+  {
+   "w": "hand:",
+   "start": 1.556,
+   "end": 2.171
+  },
+  {
+   "w": "For",
+   "start": 2.659,
+   "end": 2.821
+  },
+  {
+   "w": "a",
+   "start": 2.868,
+   "end": 2.891
+  },
+  {
+   "w": "dire",
+   "start": 2.972,
+   "end": 3.309
+  },
+  {
+   "w": "incident,",
+   "start": 3.379,
+   "end": 4.052
+  },
+  {
+   "w": "I",
+   "start": 4.18,
+   "end": 4.226
+  },
+  {
+   "w": "want",
+   "start": 4.307,
+   "end": 4.447
+  },
+  {
+   "w": "to",
+   "start": 4.481,
+   "end": 4.528
+  },
+  {
+   "w": "post",
+   "start": 4.598,
+   "end": 4.841
+  },
+  {
+   "w": "a",
+   "start": 4.888,
+   "end": 4.911
+  },
+  {
+   "w": "bounty",
+   "start": 4.981,
+   "end": 5.364
+  },
+  {
+   "w": "for",
+   "start": 5.433,
+   "end": 5.526
+  },
+  {
+   "w": "adventurers.",
+   "start": 5.573,
+   "end": 6.478
+  },
+  {
+   "w": "Today,",
+   "start": 6.966,
+   "end": 7.546
+  },
+  {
+   "w": "you",
+   "start": 7.639,
+   "end": 7.744
+  },
+  {
+   "w": "run",
+   "start": 7.825,
+   "end": 7.988
+  },
+  {
+   "w": "the",
+   "start": 8.034,
+   "end": 8.104
+  },
+  {
+   "w": "scriptorium,",
+   "start": 8.139,
+   "end": 9.183
+  },
+  {
+   "w": "and",
+   "start": 9.671,
+   "end": 9.822
+  },
+  {
+   "w": "you",
+   "start": 9.903,
+   "end": 9.973
+  },
+  {
+   "w": "need",
+   "start": 10.054,
+   "end": 10.217
+  },
+  {
+   "w": "not",
+   "start": 10.263,
+   "end": 10.379
+  },
+  {
+   "w": "be",
+   "start": 10.426,
+   "end": 10.53
+  },
+  {
+   "w": "an",
+   "start": 10.577,
+   "end": 10.635
+  },
+  {
+   "w": "engineer",
+   "start": 10.704,
+   "end": 11.146
+  },
+  {
+   "w": "to",
+   "start": 11.215,
+   "end": 11.273
+  },
+  {
+   "w": "do",
+   "start": 11.343,
+   "end": 11.459
+  },
+  {
+   "w": "it.",
+   "start": 11.564,
+   "end": 11.865
+  },
+  {
+   "w": "First,",
+   "start": 12.353,
+   "end": 12.934
+  },
+  {
+   "w": "together,",
+   "start": 13.015,
+   "end": 13.584
+  },
+  {
+   "w": "the",
+   "start": 13.653,
+   "end": 13.746
+  },
+  {
+   "w": "bounty",
+   "start": 13.816,
+   "end": 14.141
+  },
+  {
+   "w": "board.",
+   "start": 14.187,
+   "end": 14.663
+  },
+  {
+   "w": "After",
+   "start": 15.232,
+   "end": 15.581
+  },
+  {
+   "w": "that,",
+   "start": 15.627,
+   "end": 16.01
+  },
+  {
+   "w": "Mirabel's",
+   "start": 16.115,
+   "end": 16.684
+  },
+  {
+   "w": "list",
+   "start": 16.753,
+   "end": 16.985
+  },
+  {
+   "w": "is",
+   "start": 17.055,
+   "end": 17.16
+  },
+  {
+   "w": "yours.",
+   "start": 17.229,
+   "end": 18.019
+  }
+ ]
+}

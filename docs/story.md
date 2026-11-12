@@ -4,6 +4,8 @@ The narrative behind The Gilded Griffin: who Mirabel is, what went wrong, why sh
 
 Read [purpose.md](purpose.md) first for the real-world goals, and [personas.md](personas.md) for the full cast.
 
+> **The trailer has been made.** The film, its narration script and the files it is built from are in [`trailer/`](../trailer/README.md). It follows the brief and the proposed shape below.
+
 > **Status of this document.** The shop, the characters and the visual identity below are established in the codebase. The [trailer brief](#the-trailer-brief) records decisions made by the session owner. The parts marked **proposed** were written to fill gaps in the story and have not been confirmed. Change them freely.
 
 ## The trailer brief
@@ -204,8 +206,12 @@ All from the landing page, the demo data or the personas.
 - "Found asleep in the herbalism section, very full and not at all sorry." (incident report, bookwyrm)
 - "Nine hundred pages. It is the short one." (catalog entry)
 
-## Still to be decided
+## Decided for the trailer
 
-- **Whether the factory is shown at all.** If it is, it is a metaphor; the scriptorium above is one suggestion.
-- **Who else appears.** Pip, Sir Aldric and Bran Holloway all belong to the bounty board story. The rest of the cast is in [personas.md](personas.md).
-- **Format and tools.** Left to whoever makes the trailer.
+Settled by the session owner on 12 November 2026, when the trailer was made.
+
+- **The factory is shown**, as the scriptorium of enchanted quills described [above](#the-factory-as-a-metaphor-proposed), with three people from EPAM walking the floor and sending a page back.
+- **Who appears.** Mirabel, Pip and Sir Aldric. An adventurer is seen in the tavern doorway but is not named; Bran Holloway is kept for the session.
+- **Format and tools.** A finished animated film in the shop's own look, with a recorded narrator and captions. See [`trailer/README.md`](../trailer/README.md).
+
+The sections marked **proposed** above (why Mirabel engaged EPAM, the scriptorium, chapter one and chapter two) are now used by the trailer as written.

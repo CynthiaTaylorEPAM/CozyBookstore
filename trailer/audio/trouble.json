@@ -1,0 +1,336 @@
+{
+ "id": "trouble",
+ "text": "The ledger cannot tell her. Favourites run out. The queue runs out of the door. A bookwyrm is found asleep in Herbalism, very full, and not at all sorry. And last week, a signed first edition bit a knight. It was a mimic. So Pip, the clerk, ran to the tavern to find adventurers, and a price was agreed in a doorway. Nobody wrote it down.",
+ "words": [
+  {
+   "w": "The",
+   "start": 0,
+   "end": 0.151
+  },
+  {
+   "w": "ledger",
+   "start": 0.221,
+   "end": 0.488
+  },
+  {
+   "w": "cannot",
+   "start": 0.522,
+   "end": 0.801
+  },
+  {
+   "w": "tell",
+   "start": 0.836,
+   "end": 1.033
+  },
+  {
+   "w": "her.",
+   "start": 1.126,
+   "end": 1.416
+  },
+  {
+   "w": "Favourites",
+   "start": 1.683,
+   "end": 2.171
+  },
+  {
+   "w": "run",
+   "start": 2.218,
+   "end": 2.368
+  },
+  {
+   "w": "out.",
+   "start": 2.438,
+   "end": 2.821
+  },
+  {
+   "w": "The",
+   "start": 3.135,
+   "end": 3.251
+  },
+  {
+   "w": "queue",
+   "start": 3.332,
+   "end": 3.599
+  },
+  {
+   "w": "runs",
+   "start": 3.646,
+   "end": 3.878
+  },
+  {
+   "w": "out",
+   "start": 3.924,
+   "end": 4.075
+  },
+  {
+   "w": "of",
+   "start": 4.122,
+   "end": 4.18
+  },
+  {
+   "w": "the",
+   "start": 4.226,
+   "end": 4.296
+  },
+  {
+   "w": "door.",
+   "start": 4.331,
+   "end": 4.865
+  },
+  {
+   "w": "A",
+   "start": 5.132,
+   "end": 5.224
+  },
+  {
+   "w": "bookwyrm",
+   "start": 5.317,
+   "end": 5.793
+  },
+  {
+   "w": "is",
+   "start": 5.84,
+   "end": 5.909
+  },
+  {
+   "w": "found",
+   "start": 5.991,
+   "end": 6.246
+  },
+  {
+   "w": "asleep",
+   "start": 6.293,
+   "end": 6.664
+  },
+  {
+   "w": "in",
+   "start": 6.734,
+   "end": 6.803
+  },
+  {
+   "w": "Herbalism,",
+   "start": 6.885,
+   "end": 7.721
+  },
+  {
+   "w": "very",
+   "start": 7.918,
+   "end": 8.197
+  },
+  {
+   "w": "full,",
+   "start": 8.266,
+   "end": 8.58
+  },
+  {
+   "w": "and",
+   "start": 8.603,
+   "end": 8.719
+  },
+  {
+   "w": "not",
+   "start": 8.789,
+   "end": 8.916
+  },
+  {
+   "w": "at",
+   "start": 8.963,
+   "end": 9.021
+  },
+  {
+   "w": "all",
+   "start": 9.067,
+   "end": 9.195
+  },
+  {
+   "w": "sorry.",
+   "start": 9.276,
+   "end": 9.834
+  },
+  {
+   "w": "And",
+   "start": 10.147,
+   "end": 10.31
+  },
+  {
+   "w": "last",
+   "start": 10.391,
+   "end": 10.658
+  },
+  {
+   "w": "week,",
+   "start": 10.728,
+   "end": 10.995
+  },
+  {
+   "w": "a",
+   "start": 11.018,
+   "end": 11.064
+  },
+  {
+   "w": "signed",
+   "start": 11.169,
+   "end": 11.494
+  },
+  {
+   "w": "first",
+   "start": 11.564,
+   "end": 11.877
+  },
+  {
+   "w": "edition",
+   "start": 11.946,
+   "end": 12.341
+  },
+  {
+   "w": "bit",
+   "start": 12.422,
+   "end": 12.62
+  },
+  {
+   "w": "a",
+   "start": 12.701,
+   "end": 12.748
+  },
+  {
+   "w": "knight.",
+   "start": 12.817,
+   "end": 13.293
+  },
+  {
+   "w": "It",
+   "start": 13.781,
+   "end": 13.909
+  },
+  {
+   "w": "was",
+   "start": 13.943,
+   "end": 14.036
+  },
+  {
+   "w": "a",
+   "start": 14.083,
+   "end": 14.106
+  },
+  {
+   "w": "mimic.",
+   "start": 14.176,
+   "end": 14.733
+  },
+  {
+   "w": "So",
+   "start": 15.162,
+   "end": 15.337
+  },
+  {
+   "w": "Pip,",
+   "start": 15.418,
+   "end": 15.708
+  },
+  {
+   "w": "the",
+   "start": 15.731,
+   "end": 15.801
+  },
+  {
+   "w": "clerk,",
+   "start": 15.871,
+   "end": 16.289
+  },
+  {
+   "w": "ran",
+   "start": 16.335,
+   "end": 16.556
+  },
+  {
+   "w": "to",
+   "start": 16.637,
+   "end": 16.695
+  },
+  {
+   "w": "the",
+   "start": 16.776,
+   "end": 16.846
+  },
+  {
+   "w": "tavern",
+   "start": 16.881,
+   "end": 17.206
+  },
+  {
+   "w": "to",
+   "start": 17.252,
+   "end": 17.31
+  },
+  {
+   "w": "find",
+   "start": 17.38,
+   "end": 17.647
+  },
+  {
+   "w": "adventurers,",
+   "start": 17.693,
+   "end": 18.518
+  },
+  {
+   "w": "and",
+   "start": 18.715,
+   "end": 18.843
+  },
+  {
+   "w": "a",
+   "start": 18.912,
+   "end": 18.936
+  },
+  {
+   "w": "price",
+   "start": 18.982,
+   "end": 19.296
+  },
+  {
+   "w": "was",
+   "start": 19.33,
+   "end": 19.435
+  },
+  {
+   "w": "agreed",
+   "start": 19.481,
+   "end": 19.876
+  },
+  {
+   "w": "in",
+   "start": 19.911,
+   "end": 19.969
+  },
+  {
+   "w": "a",
+   "start": 20.015,
+   "end": 20.039
+  },
+  {
+   "w": "doorway.",
+   "start": 20.085,
+   "end": 20.782
+  },
+  {
+   "w": "Nobody",
+   "start": 21.142,
+   "end": 21.49
+  },
+  {
+   "w": "wrote",
+   "start": 21.536,
+   "end": 21.78
+  },
+  {
+   "w": "it",
+   "start": 21.815,
+   "end": 21.885
+  },
+  {
+   "w": "down.",
+   "start": 21.931,
+   "end": 22.709
+  }
+ ]
+}
