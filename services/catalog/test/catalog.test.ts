@@ -123,6 +123,13 @@ describe('managing the catalog', () => {
     expect(response.statusCode).toBe(400);
   });
 
+  it.each([-1, 1.5, 3000000000])('rejects an edit to a reorder level of %s and keeps the old one', async (reorderLevel) => {
+    const response = await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { reorderLevel } });
+    expect(response.statusCode).toBe(400);
+    const reread = await app.inject({ method: 'GET', url: '/tomes/1', headers: clerk });
+    expect(reread.json().reorderLevel).toBe(2);
+  });
+
   it('lets the owner set a reorder level of 0 and keeps it', async () => {
     const response = await app.inject({ method: 'PATCH', url: '/tomes/1', headers: owner, payload: { reorderLevel: 0 } });
     expect(response.json().reorderLevel).toBe(0);
