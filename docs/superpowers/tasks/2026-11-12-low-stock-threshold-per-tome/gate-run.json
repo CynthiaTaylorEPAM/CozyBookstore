@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "branch": "feature/low-stock-threshold-per-tome",
+  "head": "54b782fbb7aa829402ee43590f030af03698257a",
+  "runner": "npm",
+  "started_at": "2026-11-12T23:17:16Z",
+  "completed_at": "2026-11-12T23:18:05Z",
+  "status": "PASSED",
+  "drift_detected": false,
+  "gates": [
+    {"id": "lint", "source": "guide", "status": "PASS", "duration_ms": 1894, "command": "npm run lint", "exit_code": 0, "notes": "No .ai-run/guides/quality-gates.md; fallback runner detection (npm, package-lock.json). Also a CI step."},
+    {"id": "build", "source": "guide", "status": "PASS", "duration_ms": 8194, "command": "npm run build", "exit_code": 0},
+    {"id": "unit", "source": "guide", "status": "PASS", "duration_ms": 8919, "command": "npm test", "exit_code": 0, "notes": "67 tests across 8 files passed against local Postgres (cozybookstore-db-1 healthy)."},
+    {"id": "ui", "source": "guide", "status": "SKIPPED", "duration_ms": 0, "command": "npm run test:ui", "exit_code": null, "notes": "UI surface changed but no configured UI test script; browser verification is a separate caller decision."},
+    {"id": "ci-install", "source": "ci", "status": "N/A", "duration_ms": 0, "command": "npm ci", "exit_code": null, "notes": "CI dependency install step, not a check; not run locally because it deletes and reinstalls node_modules. Lockfile not changed on this branch."},
+    {"id": "typecheck", "source": "ci", "status": "PASS", "duration_ms": 14397, "command": "npm run typecheck", "exit_code": 0, "notes": "CI job 'check' step; also required by CLAUDE.md."},
+    {"id": "docker-image", "source": "ci", "status": "PASS", "duration_ms": 4183, "command": "docker compose build", "exit_code": 0, "notes": "CI job 'image'. All four images built (gilded-griffin-catalog/-patrons/-incidents/-gateway); earlier tag race fixed by commit 54b782f. Mostly layer-cache hits locally."}
+  ],
+  "failures": {}
+}

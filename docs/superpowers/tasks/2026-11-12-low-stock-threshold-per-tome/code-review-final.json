@@ -1,0 +1,292 @@
+{
+  "schema": "sdlc-factory/code-review-final@1",
+  "passed": true,
+  "decision": "approve",
+  "gate_decision": {
+    "gate": "code-review.check",
+    "decision": "approve",
+    "source": "hitl",
+    "rationale": "Check round resolved CR-001 and CR-002"
+  },
+  "gates": [
+    {
+      "gate": "code-review.final",
+      "decision": "request-changes",
+      "source": "hitl",
+      "rationale": "User requested fixes for CR-001 and CR-002"
+    },
+    {
+      "gate": "code-review.check",
+      "decision": "approve",
+      "source": "hitl",
+      "rationale": "Check round resolved CR-001 and CR-002"
+    }
+  ],
+  "reviewed_head": "8f9b6bf475d3d5d1ec2300ef9ae6a66f667817e8",
+  "rounds": [
+    "final",
+    "check"
+  ],
+  "rationale": "Both prior blocking findings are resolved in the current source: the portal's Reorder at field now holds the raw text and converts to a number only on submit, so a cleared field stays blank and required blocks the save (CR-001), and a PATCH /tomes/1 rejection test covers -1, 1.5 and 3000000000 with a re-read confirming the level is unchanged (CR-002). Business and standards rows carried forward from the final round; running the suite, lint, typecheck and build remains Stage 7 evidence.",
+  "confidence": "high",
+  "check_confidence": "high",
+  "risk_flags": [],
+  "open": 0,
+  "closed": {
+    "fixed": 2,
+    "moot": 0,
+    "decided": 0,
+    "wont_fix": 0
+  },
+  "findings": [
+    {
+      "id": "CR-001",
+      "kind": "code",
+      "severity": "major",
+      "triage": "patch",
+      "file": "apps/portal/src/pages/Tomes.tsx",
+      "line": 273,
+      "title": "Cleared reorder field silently saves level 0",
+      "problem": "The new 'Reorder at' input uses onChange={(e) => set({ reorderLevel: Number(e.target.value) })}. When the owner clears the field, Number('') coerces to 0, so form state holds 0 while the field shows blank; the required attribute never fires because the controlled value is 0, not empty.",
+      "impact": "An owner who clears the field and saves stores a reorder level of 0 without meaning to, so that tome only appears on the counter's Running low panel once it is completely sold out, defeating the feature's purpose for that tome.",
+      "recommendation": "Do not coerce an empty 'Reorder at' value to 0. Keep the field's raw string in form state (convert with Number only on submit) so the required attribute blocks a blank submit, or ignore empty input, e.g. onChange={(e) => set({ reorderLevel: e.target.value === '' ? form.reorderLevel : Number(e.target.value) })}. Make sure a deliberately typed 0 still saves as 0.",
+      "status": "resolved",
+      "check_notes": "Tomes.tsx:208/274 keeps reorderLevel as a string; Number() applied only on submit (line 217), so a cleared field stays blank and required blocks the save; typed 0 still saves as 0.",
+      "fix": {
+        "change": "TomeDialog keeps reorderLevel as text while typing and converts with Number only on submit, so a cleared field stays blank and required blocks the save; a typed 0 still saves as 0",
+        "test": "n/a (portal has no test harness; verified by typecheck and portal build)"
+      }
+    },
+    {
+      "id": "CR-002",
+      "kind": "code",
+      "severity": "major",
+      "triage": "patch",
+      "file": "services/catalog/test/catalog.test.ts",
+      "line": 121,
+      "title": "PATCH never tested rejecting bad reorder levels",
+      "problem": "The rejection test it.each([-1, 1.5, 3000000000]) only sends invalid reorderLevel values through POST /tomes. PATCH /tomes/:id parses with the separate tomeChanges schema (tomeFields.omit({stock}).partial()) and no test sends an invalid value through it, although AC2 requires edits to reject them with 400 and AC8 requires the tests to cover AC2.",
+      "impact": "A regression in the edit schema (e.g. a later change to tomeChanges) could let an owner store a negative or fractional reorder level through the edit dialog without any test failing; the database CHECK would then surface it as a 500 rather than a clean 400.",
+      "recommendation": "Add a PATCH counterpart to the it.each([-1, 1.5, 3000000000]) rejection test: PATCH /tomes/1 as owner with each invalid reorderLevel must return 400, and a follow-up GET must show the level unchanged.",
+      "status": "resolved",
+      "check_notes": "catalog.test.ts:126 adds it.each([-1, 1.5, 3000000000]) PATCH /tomes/1 as owner expecting 400, then GET confirms reorderLevel still 2 (beforeEach reseeds).",
+      "fix": {
+        "change": "Added PATCH counterpart to the invalid reorder level test: -1, 1.5 and 3000000000 return 400 and a re-read shows the level unchanged at 2",
+        "test": "services/catalog/test/catalog.test.ts: rejects an edit to a reorder level of %s and keeps the old one"
+      }
+    }
+  ],
+  "deferred": [],
+  "coverage_graded_at": "final",
+  "business_review": [
+    {
+      "kind": "spec",
+      "item": "Storage: new numbered migration adds reorder level to tomes, default 2, no negatives",
+      "status": "pass",
+      "notes": "003_add_tome_reorder_level.sql: INTEGER NOT NULL DEFAULT 2 CHECK (reorder_level >= 0)"
+    },
+    {
+      "kind": "spec",
+      "item": "API: staff tome responses (list, one, POST, PATCH, stock adjustment) include reorderLevel",
+      "status": "pass",
+      "notes": "TOME_COLUMNS used by all staff tome routes incl. stock-adjustments"
+    },
+    {
+      "kind": "spec",
+      "item": "API: POST /tomes accepts reorderLevel optional, default 2",
+      "status": "pass",
+      "notes": "newTome reorderLevel .default(2)"
+    },
+    {
+      "kind": "spec",
+      "item": "API: PATCH /tomes/:id can change reorderLevel",
+      "status": "pass",
+      "notes": "COALESCE($10, reorder_level) in PATCH update"
+    },
+    {
+      "kind": "spec",
+      "item": "API: POST and PATCH stay owner-only",
+      "status": "pass",
+      "notes": "owner preHandler unchanged; clerk PATCH 403 test added"
+    },
+    {
+      "kind": "spec",
+      "item": "Validation follows stock: integer, min 0",
+      "status": "pass",
+      "notes": "z.number().int().min(0).max(2147483647)"
+    },
+    {
+      "kind": "spec",
+      "item": "Edit schema applies no defaults; PATCH omitting a field leaves it unchanged",
+      "status": "pass",
+      "notes": "tomeChanges built from default-free tomeFields"
+    },
+    {
+      "kind": "spec",
+      "item": "Catalog computes runningLow (stock <= reorder_level) in staff tome columns",
+      "status": "pass",
+      "notes": "TOME_COLUMNS: stock <= reorder_level AS runningLow"
+    },
+    {
+      "kind": "spec",
+      "item": "GET /public/tomes excludes reorderLevel and runningLow via its own column list",
+      "status": "pass",
+      "notes": "PUBLIC_TOME_COLUMNS; negative test on public window"
+    },
+    {
+      "kind": "spec",
+      "item": "Portal: Tome type gains reorderLevel and runningLow",
+      "status": "pass",
+      "notes": "apps/portal/src/types.ts"
+    },
+    {
+      "kind": "spec",
+      "item": "Portal: TomeDialog gets a 'reorder at' field",
+      "status": "pass",
+      "notes": "number input min 0 step 1; sent via ...details (empty-field coercion tracked as CR-001)"
+    },
+    {
+      "kind": "spec",
+      "item": "Portal: Running Low panel lists runningLow tomes with 'N left, reorder at X' / 'None left, reorder at X' for both roles",
+      "status": "pass",
+      "notes": "Dashboard filters on runningLow; no role gating"
+    },
+    {
+      "kind": "spec",
+      "item": "Portal: LOW_STOCK constant removed",
+      "status": "pass",
+      "notes": "deleted from Dashboard.tsx"
+    },
+    {
+      "kind": "spec",
+      "item": "Wording goes through src/lore.ts if the panel's existing text lives there",
+      "status": "na",
+      "notes": "conditional not met: existing panel text is inline in Dashboard.tsx"
+    },
+    {
+      "kind": "spec",
+      "item": "Docs: api.md, architecture.md tomes ER diagram, personas.md updated",
+      "status": "pass",
+      "notes": "all three updated"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: clerks do not set or change reorder levels",
+      "status": "pass",
+      "notes": "API owner-only; dialog opened only from isOwner controls"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no reorder action (purchase orders, supplier contact, alerts)",
+      "status": "pass",
+      "notes": "none in diff"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: stock still moves only through stock adjustments",
+      "status": "pass",
+      "notes": "tomeChanges omits stock"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: reorder level not shown on tomes list table or public landing page",
+      "status": "pass",
+      "notes": "change limited to TomeDialog; public columns exclude it"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no changes to gateway, shared, patrons, incidents",
+      "status": "pass",
+      "notes": "changed files limited to catalog, portal, docs"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no sorting/limiting/other panel changes",
+      "status": "pass",
+      "notes": "Dashboard diff only swaps filter and appends text"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no React test harness for the portal",
+      "status": "pass",
+      "notes": "no portal test files"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC1: Existing and newly added tomes without a given level have reorder level 2",
+      "status": "pass",
+      "notes": "migration DEFAULT 2; newTome default(2); tests present"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC2: Owner sets level on add/edit; <0 or non-integer rejected 400; PATCH without reorderLevel leaves it unchanged",
+      "status": "pass",
+      "notes": "behaviour present; PATCH rejection untested (CR-002)"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC3: Clerk adding a tome or changing its reorder level is refused (403)",
+      "status": "pass",
+      "notes": "clerk POST and PATCH 403 tests"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC4: Staff responses include reorderLevel and runningLow; /public/tomes includes neither",
+      "status": "pass",
+      "notes": "TOME_COLUMNS vs PUBLIC_TOME_COLUMNS"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC5: Running low exactly when stock <= own level; panel lists exactly those; level 0 low only at 0",
+      "status": "pass",
+      "notes": "SQL comparison; running-low test table"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC6: Each panel line shows copies left and reorder level; owner and clerk see same panel",
+      "status": "pass",
+      "notes": "Dashboard line text; no isOwner gating"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC7: Reorder-level field in owner's add/edit dialog only; clerks never see dialog",
+      "status": "pass",
+      "notes": "dialog opened only from isOwner controls"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC8: Catalog tests cover AC1-5 with both roles; runningLow at 0,1,5; reprice keeps fields; test/lint/typecheck/build pass",
+      "status": "pending-stage-7",
+      "notes": "tests present; 400 rejection on POST only (CR-002); suite/lint/typecheck/build are Stage 7 evidence"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC9: docs/api.md, docs/architecture.md, docs/personas.md reflect the change",
+      "status": "pass",
+      "notes": "all three updated"
+    }
+  ],
+  "standards_review": [
+    {
+      "kind": "commit-format",
+      "status": "na",
+      "notes": "standards audit not expected for this round"
+    },
+    {
+      "kind": "code-quality",
+      "status": "na",
+      "notes": "standards audit not expected for this round"
+    },
+    {
+      "kind": "security",
+      "status": "na",
+      "notes": "standards audit not expected for this round"
+    }
+  ],
+  "final_round": {
+    "decision": "request-changes",
+    "rationale": "Two major patch findings block approval: clearing the portal's new 'Reorder at' field silently saves a reorder level of 0, and PATCH /tomes/:id has no test rejecting invalid reorder levels (AC2/AC8). All four lenses ran and every candidate was verified against source; standards audit not expected this round (rows n/a, no gap). 0 deferred; 12 candidates dismissed as handled, unreachable or below the emission floor.",
+    "confidence": "high",
+    "risk_flags": []
+  }
+}
