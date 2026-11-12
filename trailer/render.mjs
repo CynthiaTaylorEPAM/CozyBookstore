@@ -1,8 +1,9 @@
 // Captures the animation frame by frame and joins it with the soundtrack.
 //   node render.mjs              the whole film  -> gilded-griffin-trailer.mp4
 //   node render.mjs stills 5 40  single pictures at 5s and 40s -> out/still-*.png
-import { readFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
-import { spawn, execFileSync } from 'node:child_process';
+//   node render.mjs sound        keep the pictures of the existing film, rebuild only the sound
+import { readFileSync, mkdirSync, rmSync, renameSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 
 // Playwright may be installed for the whole machine rather than in this folder.
@@ -35,8 +36,11 @@ if (process.argv[2] === 'stills') {
 }
 
 // 1. the pictures
-const total = Math.ceil(TL.duration * FPS);
+const soundOnly = process.argv[2] === 'sound';
+const film = here + 'gilded-griffin-trailer.mp4';
 const frames = out + 'frames/';
+if (!soundOnly) {
+const total = Math.ceil(TL.duration * FPS);
 rmSync(frames, { recursive: true, force: true });
 mkdirSync(frames);
 let done = 0;
@@ -49,6 +53,8 @@ await Promise.all(Array.from({ length: WORKERS }, async (_, w) => {
   }
 }));
 await browser.close();
+}
+else await browser.close();
 
 // 2. the sound: narration slices placed on the timeline, over the music if there is any
 const inputs = [], filters = [], labels = [];
@@ -63,19 +69,19 @@ if (existsSync(music)) {
   inputs.push('-i', music);
   const n = TL.audio.length, end = TL.duration;
   // the music dips whenever the narrator speaks
-  filters.push(`[${n}:a]atrim=0:${end.toFixed(2)},afade=t=in:d=2,afade=t=out:st=${(end - 3).toFixed(2)}:d=3,volume=0.5[m]`);
+  filters.push(`[${n}:a]atrim=0:${end.toFixed(2)},afade=t=in:d=2,afade=t=out:st=${(end - 3).toFixed(2)}:d=3,volume=0.8[m]`);
   filters.push(`[m][key]sidechaincompress=threshold=0.02:ratio=5:attack=120:release=900[duck]`);
-  filters.push(`[voice][duck]amix=inputs=2:normalize=0,alimiter=limit=0.95[mix]`);
+  filters.push(`[voice][duck]amix=inputs=2:normalize=0,volume=1.25,alimiter=limit=0.95[mix]`);
 } else {
   filters.push(`[key]anullsink`, `[voice]alimiter=limit=0.95[mix]`);
 }
 execFileSync('ffmpeg', ['-y', '-v', 'error', ...inputs, '-filter_complex', filters.join(';'), '-map', '[mix]', '-ac', '2', '-c:a', 'aac', '-b:a', '192k', here + 'audio/soundtrack.m4a']);
 
 // 3. together
-await new Promise((resolve, reject) => {
-  const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-framerate', String(FPS), '-i', frames + '%05d.jpg', '-i', here + 'audio/soundtrack.m4a',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '19', '-pix_fmt', 'yuv420p', '-c:a', 'copy', '-movflags', '+faststart', '-shortest', here + 'gilded-griffin-trailer.mp4'], { stdio: 'inherit' });
-  ff.on('exit', (code) => (code ? reject(new Error('ffmpeg failed')) : resolve()));
-});
+const pictures = soundOnly ? ['-i', film] : ['-framerate', String(FPS), '-i', frames + '%05d.jpg'];
+const encode = soundOnly ? ['-c:v', 'copy'] : ['-c:v', 'libx264', '-preset', 'slow', '-crf', '19', '-pix_fmt', 'yuv420p'];
+execFileSync('ffmpeg', ['-y', '-v', 'error', ...pictures, '-i', here + 'audio/soundtrack.m4a', '-map', '0:v', '-map', '1:a', ...encode,
+  '-c:a', 'copy', '-movflags', '+faststart', '-shortest', out + 'film.mp4'], { stdio: 'inherit' });
+renameSync(out + 'film.mp4', film);
 rmSync(frames, { recursive: true, force: true });
 console.log('Wrote gilded-griffin-trailer.mp4');
