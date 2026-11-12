@@ -228,6 +228,7 @@ erDiagram
     text condition
     boolean restricted "locked cabinet"
     boolean featured "shown on landing page"
+    int reorder_level "running low at or below this"
     timestamptz created_at
   }
   stock_adjustments {
