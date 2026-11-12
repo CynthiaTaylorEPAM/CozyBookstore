@@ -8,7 +8,7 @@
   "beats": [
     {
       "id": "shop",
-      "text": "In the town of Emberhollow, third lantern past the fountain, there is a bookshop. It has stood since the Year of the Quiet Comet. Elves browse it for decades. Dwarves weep quietly in Poetry. Halflings leave crumbs in Cookery, and are forgiven, because they bring scones.",
+      "text": "In the town of Emberhollow, third lantern past the fountain, there is a bookshop. It has stood since the Year of the Quiet Comet. Elves spend decades browsing the Arcana section. Dwarves weep quietly in Poetry. Halflings leave crumbs in Cookery, and are forgiven, because they bring scones.",
       "lead": 6.0,
       "tail": 2.5,
       "pauses": [
@@ -20,7 +20,7 @@
     },
     {
       "id": "mirabel",
-      "text": "For twenty years it has been kept by Mirabel Thistlewick, who had it from her aunt. She knows every book on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
+      "text": "For twenty years it has been kept by Mirabel Thistlewick, who inherited it from her aunt. She knows every book on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
       "lead": 3.0,
       "tail": 3.5,
       "pauses": [
@@ -32,7 +32,7 @@
     },
     {
       "id": "trouble",
-      "text": "The ledger cannot tell her. Favourites run out. The queue runs out of the door. A bookwyrm is found asleep in Herbalism, very full, and not at all sorry. And last week, a signed first edition bit a knight. It was a mimic. So Pip, the clerk, ran to the tavern to find adventurers, and a price was agreed in a doorway. Nobody wrote it down.",
+      "text": "The ledger cannot tell her. Favourite tomes run out. A bookwyrm is found asleep in Herbalism after consuming several books for breakfast, very full, and not at all sorry. And last week, a signed first edition bit a knight. Not a book - a mimic. Pip, the clerk, ran to the tavern to find adventurers to vanguish it. A price was agreed in haste. Nobody wrote it down.",
       "lead": 1.5,
       "tail": 3.5,
       "pauses": [
@@ -48,7 +48,7 @@
     },
     {
       "id": "guild",
-      "text": "The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
+      "text": "Mirabel needed a better system. The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
       "lead": 2.0,
       "tail": 2.2,
       "pauses": []
@@ -67,7 +67,7 @@
     },
     {
       "id": "delivered",
-      "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. The catalog, the guest book, the incident board. It works. And now, Mirabel has a list.",
+      "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. The catalog, the guest book, the incident board. It works. And now, Mirabel has a list of what she needs next.",
       "lead": 1.8,
       "tail": 2.2,
       "pauses": []
