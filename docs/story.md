@@ -4,7 +4,27 @@ The narrative behind The Gilded Griffin: who Mirabel is, what went wrong, why sh
 
 Read [purpose.md](purpose.md) first for the real-world goals, and [personas.md](personas.md) for the full cast.
 
-> **Status of this document.** The shop, the characters and the visual identity below are established in the codebase. The parts marked **proposed** were written to fill gaps in the story and have not been confirmed by the session owner. Change them freely.
+> **Status of this document.** The shop, the characters and the visual identity below are established in the codebase. The [trailer brief](#the-trailer-brief) records decisions made by the session owner. The parts marked **proposed** were written to fill gaps in the story and have not been confirmed. Change them freely.
+
+## The trailer brief
+
+Decided by the session owner on 12 November 2026.
+
+| Question | Decision |
+|---|---|
+| Length | Under 2 minutes |
+| Where it plays | In the kickoff, at the start of the leadership session |
+| Voice | A narrator. Not Mirabel in the first person |
+| Feature to tease | The **bounty board** (backlog item 7) |
+| Format and tools | No preference. Whoever makes it may choose |
+| EPAM brand guidelines | Do not apply |
+
+What follows from these:
+
+- **Under 2 minutes is about 250 words of narration** at a comfortable pace, less if the pictures are to breathe. The [shape below](#a-shape-for-the-trailer-proposed) has eight beats, so each gets roughly 15 seconds. Cut beats before cutting pauses.
+- **It opens the session**, so it cannot assume the audience knows anything: not the shop, not Mirabel, not what a hyperfactory is. It must end by handing over to the room.
+- **A narrator** can speak about Mirabel with affection and can step outside the fiction for the real point. Characters' lines can still appear as quotes on screen or be read by the narrator.
+- **The bounty board is the hook.** The monster trouble should be the problem the trailer dwells on, and the last thing the audience hears should be the request they are about to see built.
 
 ## The story in one paragraph
 
@@ -55,9 +75,19 @@ Each of these is a real gap in the current system or a frustration from the pers
 | Favourites run out; duds pile up | "Some tomes I want to reorder at five copies, others at one." | Backlog 1, 12 |
 | Loyal patrons get nothing for it | "Regulars get 5% off, Fellows get 10%." | Backlog 5 |
 | Pip is swamped at the counter | "There are six people waiting, one of them is on fire, and I cannot find the dwarf's name in the book." | Backlog 2, 19 |
-| Monsters are dealt with by rumour and haggling | "For a dire incident I want to post a bounty for adventurers." | Backlog 7, 23 |
+| **Monsters are dealt with by rumour and haggling** | "For a dire incident I want to post a bounty for adventurers." | **Backlog 7**, 23 |
 | Patrons must come in person to learn anything | "Fourteen copies. Same book. By Thursday." (Grusha) | Backlog 13, 24 |
 | She cannot take a day off | "When I am away, Pip may close incidents, and only then." | Backlog 21 |
+
+### The trouble the trailer teases: the bounty board
+
+When something dire gets into the shop, Mirabel sends Pip running to the tavern to find adventurers. The price is agreed in a doorway and remembered differently by each side. Nothing records who did the job or what it cost.
+
+- Last week a mimic posing as a signed first edition bit Sir Aldric. Adventurers were hired for 3 gold pieces. The mimic now works as the shop's cash box.
+- Bran Holloway, who leads the party that took the job, says: *"Three gold for a mimic is robbery. It had teeth on the inside."*
+- Mirabel's request, as written in the backlog: *"For a dire incident I want to post a bounty for adventurers."* Add a bounty in gold to an incident, record who claimed it, and include bounties paid in the owner's figures.
+
+It makes a good tease because everyone understands it at once, the result is visible on screen, and it has rules worth working out: who may post a bounty, for which incidents, who may claim one, and what happens to the takings.
 
 ## Why she engaged EPAM (proposed)
 
@@ -82,12 +112,14 @@ A starting point, not a script.
 
 1. **The shop.** Night, lanterns, the glowing window. Who comes here, and why they love it.
 2. **Mirabel.** At the kitchen table with tea and a ledger that does not add up.
-3. **The trouble.** A quick run of things going wrong: an empty shelf, a queue out of the door, a bookwyrm, Grusha wanting fourteen copies.
+3. **The trouble.** A quick run of things going wrong: an empty shelf, a queue out of the door, a bookwyrm. Then the big one: the mimic, the bitten knight, and Pip sprinting to the tavern to haggle with adventurers.
 4. **The old way.** The Scribes' Guild quote: a year and a day.
 5. **The turn.** EPAM arrives. A small team, and a factory.
 6. **The factory.** A request goes in; elaboration, a plan, code, tests and a deployment come out. Fast, visible, checked by people.
 7. **Chapter one delivered.** The real system on screen: the landing page, the counter, the incident board.
-8. **The handover.** Mirabel has a list. The camera turns to the audience. "Your turn."
+8. **The handover.** Mirabel has a list, and at the top of it: *"For a dire incident I want to post a bounty for adventurers."* The narrator turns to the audience. "Your turn."
+
+At under 2 minutes, beats 1 and 2 can merge, and beat 4 can be a single line.
 
 ## Tone
 
@@ -135,10 +167,7 @@ All from the landing page, the demo data or the personas.
 
 Not recorded anywhere yet. Settle these before or while making the trailer.
 
-- **Length and placement.** How long, and where in the session it plays (opening, before the hands-on part, both).
-- **Format and tools.** Animated, illustrated stills with narration, screen recording, generated video, or a mix; and what will be used to make it.
-- **Voice.** Narrator, Mirabel in the first person, or text on screen only. Whether there is voice-over at all.
-- **How EPAM appears** in the fiction (see above), and whether any EPAM branding or brand guidelines apply. None are in this repository.
+- **How EPAM appears** in the fiction: by name, as this document proposes, or as an in-world stand-in.
 - **What the factory looks like** on screen: the real hyperfactory tooling, or an in-world metaphor. The tooling has not been chosen yet (see [purpose.md](purpose.md)).
-- **The call to action.** Which feature requests the room will actually run, so the trailer can tease them.
-- **Who else appears.** Pip and Grusha are the strongest supporting characters; the rest of the cast is in [personas.md](personas.md).
+- **Who else appears.** Pip, Sir Aldric and Bran Holloway all belong to the bounty board story. The rest of the cast is in [personas.md](personas.md).
+- **Whether the bounty board is also the feature built in the session.** The trailer teases it; whether it is the first or only request the room runs has not been stated.
