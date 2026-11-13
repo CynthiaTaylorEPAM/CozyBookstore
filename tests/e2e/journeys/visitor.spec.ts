@@ -16,6 +16,10 @@ test.describe('A visitor at the shop front', () => {
     await expect(item).toContainText('3 on the shelf');
     await expect(page.getByText(lockedAway.title)).toHaveCount(0);
 
+    // The hero's button takes the visitor down to the shop window.
+    await page.getByRole('link', { name: 'Peek in the shop window' }).click();
+    await expect(page.locator('section#window')).toBeInViewport();
+
     // The shop's own buying information stays behind the counter.
     const shopWindow = await request.get('/api/public/tomes');
     for (const tome of await shopWindow.json()) {
