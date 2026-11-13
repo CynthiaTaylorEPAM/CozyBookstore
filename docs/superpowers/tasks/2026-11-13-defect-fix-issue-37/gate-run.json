@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "branch": "chore/agent-guides",
+  "head": "68efd3377420a8a5543efff17ff7962ab3b0779f",
+  "runner": "npm",
+  "started_at": "2026-11-13T17:13:53Z",
+  "completed_at": "2026-11-13T17:16:37Z",
+  "status": "PASSED",
+  "drift_detected": false,
+  "gates": [
+    {"id": "lint", "source": "guide", "status": "PASS", "duration_ms": 1790, "command": "npm run lint", "exit_code": 0},
+    {"id": "typecheck", "source": "guide", "status": "PASS", "duration_ms": 13430, "command": "npm run typecheck", "exit_code": 0},
+    {"id": "audit", "source": "guide", "status": "PASS", "duration_ms": 2840, "command": "npm audit --audit-level=high", "exit_code": 0, "notes": "10 moderate advisories (@typescript-eslint chain), none high or critical"},
+    {"id": "unit", "source": "guide", "status": "PASS", "duration_ms": 25942, "command": "npm test", "exit_code": 0, "notes": "2 it.todo entries reported, not failures"},
+    {"id": "coverage", "source": "guide", "status": "PASS", "duration_ms": 19802, "command": "npm run test:coverage", "exit_code": 0, "notes": "Run because diff touches apps/portal/src; portal lines 96.96% vs 70% floor"},
+    {"id": "build", "source": "guide", "status": "PASS", "duration_ms": 8293, "command": "npm run build", "exit_code": 0},
+    {"id": "docker-build", "source": "guide", "status": "PASS", "duration_ms": 27684, "command": "docker compose build", "exit_code": 0},
+    {"id": "ui", "source": "guide", "status": "PASS", "duration_ms": 29831, "command": "docker compose up -d --build --wait && curl -sf http://localhost:8080/health && npm run test:e2e", "exit_code": 0, "notes": "Guide marks e2e CI-only but required locally when a journey in tests/e2e changes (visitor.spec.ts changed); 22 journeys passed"},
+    {"id": "integration", "source": "ci", "status": "PASS", "duration_ms": 7020, "command": "npm test -w @griffin/integration-tests", "exit_code": 0, "notes": "CI check-job step; also covered by npm test. No commit hooks present (.git/hooks has only samples)"}
+  ],
+  "failures": {}
+}

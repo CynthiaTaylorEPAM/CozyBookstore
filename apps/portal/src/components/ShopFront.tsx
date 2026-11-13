@@ -25,23 +25,24 @@ function Shelf({ y, seed }: { y: number; seed: number }) {
 export function ShopFront() {
   return (
     <svg className="shop-front" viewBox="0 0 560 520" role="img" aria-label="The Gilded Griffin bookshop at night, its windows glowing">
+      {/* Ids carry a shopfront- prefix: this inline SVG shares the page's id namespace with the landing sections. */}
       <defs>
-        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+        <radialGradient id="shopfront-halo" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#ffd98a" stopOpacity="0.55" />
           <stop offset="100%" stopColor="#ffd98a" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="shopfront-window" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#ffe2a0" />
           <stop offset="100%" stopColor="#f2a444" />
         </linearGradient>
-        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="shopfront-wall" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#59405a" />
           <stop offset="100%" stopColor="#3d2a40" />
         </linearGradient>
       </defs>
 
       {/* Moon, stars and a very small dragon */}
-      <circle cx="92" cy="92" r="90" fill="url(#halo)" opacity="0.6" />
+      <circle cx="92" cy="92" r="90" fill="url(#shopfront-halo)" opacity="0.6" />
       <circle cx="92" cy="92" r="38" fill="#f6ecd9" />
       <circle cx="80" cy="82" r="6" fill="#e6d8bd" />
       <circle cx="104" cy="104" r="9" fill="#e6d8bd" />
@@ -62,7 +63,7 @@ export function ShopFront() {
       </g>
 
       {/* The building */}
-      <polygon points="118,472 118,236 280,122 442,236 442,472" fill="url(#wall)" />
+      <polygon points="118,472 118,236 280,122 442,236 442,472" fill="url(#shopfront-wall)" />
       <g stroke="#2a1b2e" strokeWidth="7" strokeLinecap="round">
         <path d="M118 262h324M118 472V240M442 472V240M280 126v136M190 262l-40-52M370 262l40-52" />
       </g>
@@ -70,13 +71,13 @@ export function ShopFront() {
       <path d="M92 246 280 100l188 146" fill="none" stroke="#d9a441" strokeWidth="2" opacity="0.5" />
 
       {/* Attic window */}
-      <circle cx="280" cy="208" r="52" fill="url(#halo)" />
-      <circle cx="280" cy="208" r="25" fill="url(#window)" stroke="#2a1b2e" strokeWidth="6" />
+      <circle cx="280" cy="208" r="52" fill="url(#shopfront-halo)" />
+      <circle cx="280" cy="208" r="25" fill="url(#shopfront-window)" stroke="#2a1b2e" strokeWidth="6" />
       <path d="M280 183v50M255 208h50" stroke="#2a1b2e" strokeWidth="4" />
 
       {/* Bay window full of books */}
-      <rect x="110" y="270" width="230" height="200" fill="url(#halo)" />
-      <rect x="148" y="288" width="154" height="140" rx="6" fill="url(#window)" stroke="#2a1b2e" strokeWidth="8" />
+      <rect x="110" y="270" width="230" height="200" fill="url(#shopfront-halo)" />
+      <rect x="148" y="288" width="154" height="140" rx="6" fill="url(#shopfront-window)" stroke="#2a1b2e" strokeWidth="8" />
       <Shelf y={336} seed={1} />
       <Shelf y={382} seed={4} />
       {/* The shop cat */}
@@ -91,9 +92,9 @@ export function ShopFront() {
 
       {/* Door and lantern */}
       <path d="M344 472V348a36 36 0 0 1 72 0v124z" fill="#7a4028" stroke="#2a1b2e" strokeWidth="7" />
-      <circle cx="380" cy="356" r="13" fill="url(#window)" stroke="#2a1b2e" strokeWidth="4" />
+      <circle cx="380" cy="356" r="13" fill="url(#shopfront-window)" stroke="#2a1b2e" strokeWidth="4" />
       <circle cx="404" cy="414" r="4" fill="#d9a441" />
-      <circle cx="326" cy="318" r="34" fill="url(#halo)" />
+      <circle cx="326" cy="318" r="34" fill="url(#shopfront-halo)" />
       <path d="M326 296v8" stroke="#d9a441" strokeWidth="3" />
       <rect className="lantern" x="319" y="304" width="14" height="20" rx="3" fill="#ffd98a" stroke="#d9a441" strokeWidth="3" />
 

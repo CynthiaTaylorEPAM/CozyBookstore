@@ -16,6 +16,14 @@ test.describe('A visitor at the shop front', () => {
     await expect(item).toContainText('3 on the shelf');
     await expect(page.getByText(lockedAway.title)).toHaveCount(0);
 
+    // The hero's button takes the visitor down to the shop window. The page
+    // must actually move: the window's top edge can peek into the first screen,
+    // so being on screen alone would not prove the button works (issue #37).
+    const scrolledBefore = await page.evaluate(() => window.scrollY);
+    await page.getByRole('link', { name: 'Peek in the shop window' }).click();
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrolledBefore);
+    await expect(page.locator('section#window')).toBeInViewport();
+
     // The shop's own buying information stays behind the counter.
     const shopWindow = await request.get('/api/public/tomes');
     for (const tome of await shopWindow.json()) {

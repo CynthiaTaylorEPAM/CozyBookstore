@@ -112,7 +112,7 @@ In `tests/e2e/journeys`, one file per kind of person, following [personas.md](pe
 
 | File | Journeys |
 |---|---|
-| `visitor.spec.ts` | Sees the shop window, guest-book count and mood without signing in; is turned back at the staff door; an automated accessibility scan of the shop front and login page |
+| `visitor.spec.ts` | Sees the shop window, reaches it from the hero's "Peek in the shop window" button, guest-book count and mood without signing in; is turned back at the staff door; an automated accessibility scan of the shop front and login page |
 | `clerk.spec.ts` | Pip signs in, registers a patron, rings up a sale, is told when another till sold the last copies, takes a delivery, reports a monster, and has no owner controls |
 | `owner.spec.ts` | Mirabel adds a tome to the shop window, reprices and locks one away, sets a reorder level and sees the counter warn about it, promotes a patron, deals with an incident, sees the takings rise by exactly the value of a sale, and signs out |
 
