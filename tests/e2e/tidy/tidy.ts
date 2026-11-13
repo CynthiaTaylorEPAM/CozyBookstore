@@ -38,8 +38,13 @@ export function decideTidy(env: NodeJS.ProcessEnv): TidyDecision {
   if (host === undefined) {
     return { run: false, message: 'Tidy-up skipped: E2E_DATABASE_URL is not an address the griffin can read, so nothing was touched.' };
   }
-  if (!LOCAL_HOSTS.has(host)) {
-    return { run: false, message: `Tidy-up skipped: the database at ${host} is not on this machine, so its rows are left alone.` };
+  // pg lets a `host` or `hostaddr` query parameter override the address's
+  // host name, so each of those must be on this machine too.
+  const params = new URL(databaseUrl).searchParams;
+  const hosts = [host, ...params.getAll('host'), ...params.getAll('hostaddr')];
+  const remote = hosts.find((candidate) => !LOCAL_HOSTS.has(candidate));
+  if (remote !== undefined) {
+    return { run: false, message: `Tidy-up skipped: the database at ${remote} is not on this machine, so its rows are left alone.` };
   }
   return { run: true, databaseUrl, host };
 }
@@ -58,7 +63,8 @@ export async function runTidyUp(
   try {
     const decision = decideTidy(env);
     if (!decision.run) {
-      log(decision.message);
+      // The start hook already said E2E_KEEP_DATA=1 skipped the run; saying it again at the end is noise.
+      if (!(when === 'end' && env.E2E_KEEP_DATA === '1')) log(decision.message);
       return;
     }
     host = decision.host;

@@ -25,6 +25,20 @@ describe('deciding whether to tidy up', () => {
     }
   });
 
+  it.each(['host', 'hostaddr'])('skips when a %s query sends a local-looking address elsewhere', (param) => {
+    const decision = decideTidy({ E2E_DATABASE_URL: `postgres://u:secret@localhost/griffin?${param}=db.example.com` });
+    expect(decision.run).toBe(false);
+    if (!decision.run) {
+      expect(decision.message).toContain('db.example.com');
+      expect(decision.message).not.toContain('secret');
+    }
+  });
+
+  it('tidies when a host query also points at this machine', () => {
+    const databaseUrl = 'postgres://u:p@localhost/griffin?host=127.0.0.1';
+    expect(decideTidy({ E2E_DATABASE_URL: databaseUrl }).run).toBe(true);
+  });
+
   it('skips for a database address it cannot read', () => {
     expect(decideTidy({ E2E_DATABASE_URL: 'not a url' }).run).toBe(false);
   });
@@ -68,6 +82,14 @@ describe('running the tidy-up', () => {
   it('says why it skipped, in one line', async () => {
     const lines: string[] = [];
     await runTidyUp('start', { E2E_KEEP_DATA: '1' }, (line) => lines.push(line));
+    expect(lines).toEqual([expect.stringContaining('E2E_KEEP_DATA=1')]);
+  });
+
+  it('says E2E_KEEP_DATA=1 skipped it only once across both hooks of a run', async () => {
+    const lines: string[] = [];
+    const env = { E2E_KEEP_DATA: '1' };
+    await runTidyUp('start', env, (line) => lines.push(line));
+    await runTidyUp('end', env, (line) => lines.push(line));
     expect(lines).toEqual([expect.stringContaining('E2E_KEEP_DATA=1')]);
   });
 });
