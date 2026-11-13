@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "last_updated": "2026-11-13T15:07:12Z",
+  "guides": [
+    ".ai-run/guides/project.md",
+    ".ai-run/guides/architecture/architecture.md",
+    ".ai-run/guides/standards/code-quality.md",
+    ".ai-run/guides/standards/git-workflow.md",
+    ".ai-run/guides/testing/testing-patterns.md",
+    ".ai-run/guides/product/product-context.md",
+    ".ai-run/guides/quality-gates.md"
+  ]
+}
