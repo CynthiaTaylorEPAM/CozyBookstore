@@ -63,7 +63,19 @@ The first time, the browser the journeys drive has to be downloaded:
 npx playwright install chromium
 ```
 
-To test a shop running somewhere else, set `E2E_BASE_URL`, for example `E2E_BASE_URL=https://my-shop.example npm run test:e2e`. The journeys add tomes, patrons and incidents with unique names. They leave the demo data alone but do not tidy up after themselves; `docker compose down -v` gives you a fresh shop.
+To test a shop running somewhere else, set `E2E_BASE_URL`, for example `E2E_BASE_URL=https://my-shop.example npm run test:e2e`. The journeys add tomes, patrons and incidents with unique names, such as "Sale Tome lq3x9k2a7".
+
+**The journeys tidy up after themselves.** At the start and at the end of every run, the tidy-up removes the tomes, patrons, sales and incidents the journeys made, and leaves the demo data and anything you added by hand alone. A few things to know:
+
+- **Keep the rows to look at them.** If a journey failed and you want to see what it left behind, run `E2E_KEEP_DATA=1 npm run test:e2e`. Nothing is tidied, and the run says so.
+- **Only a shop on your own machine is tidied.** The shop and its database must both be at exactly `localhost` or `127.0.0.1`. Any other address is left alone, with one line saying why. That includes a Codespace's forwarded address, so a run there gets no tidy-up.
+- **Which database.** The tidy-up uses `E2E_DATABASE_URL`, or else the local shop database (`postgres://griffin:griffin@localhost:5432/griffin`). If you run `npm run dev` with your own `DATABASE_URL`, set `E2E_DATABASE_URL` to the same value. The tidy-up never reads `DATABASE_URL` itself.
+- **A tidy-up problem never fails the run.** If the database cannot be reached, you get one warning and the journeys' results stand.
+- **One run at a time against a shop.** A second run starting would tidy away the first run's rows mid-journey.
+- **A new journey name goes in `JOURNEY_NAMES`** in `tests/e2e/journeys/shop.ts`; only names listed there are tidied.
+- **A new table** that points at a tome, patron, sale or incident needs a removal step in `tests/e2e/tidy/remove.ts`. A test there fails and tells you when a table is missing.
+
+`npm test` also runs the tidy-up's own tests in `tests/e2e/tidy`, against the `griffin_test` database (never the journeys themselves). For a completely fresh shop, `docker compose down -v` is still the full reset.
 
 ## What each layer covers
 
