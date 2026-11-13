@@ -58,6 +58,28 @@ describe('the shop front', () => {
     expect(screen.queryByText(/Tonight:/)).not.toBeInTheDocument();
   });
 
+  it('gives every in-page link exactly one place to land', async () => {
+    openPortal('/', null, pretendApi(shopAnswers()));
+    await screen.findByRole('heading', { name: 'Dragons at Tea' });
+
+    const ids = [...document.querySelectorAll('[id]')].map((el) => el.id);
+    expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);
+
+    const targets = [...document.querySelectorAll('a[href^="#"]')].map((a) => a.getAttribute('href')!.slice(1));
+    for (const id of targets) expect(document.querySelectorAll(`[id="${id}"]`)).toHaveLength(1);
+
+    const fills = [...document.querySelectorAll('svg *')].flatMap((el) =>
+      [...el.attributes].map((attr) => /url\(#([^)]+)\)/.exec(attr.value)?.[1]).filter(Boolean));
+    expect(fills.length).toBeGreaterThan(0);
+    for (const id of fills) expect(document.getElementById(id!)).not.toBeNull();
+
+    expect(screen.getByRole('link', { name: 'Peek in the shop window' })).toHaveAttribute('href', '#window');
+    expect(screen.getByRole('link', { name: 'Shop window' })).toHaveAttribute('href', '#window');
+    const windowSection = document.querySelector('[id="window"]')!;
+    expect(windowSection.tagName).toBe('SECTION');
+    expect(within(windowSection as HTMLElement).getByRole('heading', { name: /favourites/i })).toBeVisible();
+  });
+
   it('points a visitor to the staff door, and staff back to the counter', async () => {
     const visitor = openPortal('/', null, pretendApi(shopAnswers()));
     expect(screen.getByRole('link', { name: 'Staff door' })).toHaveAttribute('href', '/login');
