@@ -1,6 +1,6 @@
 # Quality Gates
 
-Gates for gilded-griffin, ordered fastest to slowest. `npm test`, `npm run lint`, `npm run typecheck` and `npm run build` must all pass before a change is done (`AGENTS.md:29`). CI runs them in the `check` job and the Docker image plus browser journeys in the `e2e` job (`.github/workflows/ci.yml:9-73`), on every pull request and every push to `main` (`.github/workflows/ci.yml:3-6`).
+Gates for gilded-griffin, ordered fastest to slowest. `npm test`, `npm run lint`, `npm run typecheck` and `npm run build` must all pass before a change is done (`AGENTS.md:29`). CI runs them in the `check` job and the Docker image plus browser journeys in the `e2e` job (`.github/workflows/ci.yml:9-76`), on every pull request and every push to `main` (`.github/workflows/ci.yml:3-6`).
 
 There is **no formatter** (no Prettier or similar config, no format script) and no pre-commit hook. Match the style of the surrounding file.
 
@@ -34,7 +34,7 @@ There is **no formatter** (no Prettier or similar config, no format script) and 
 ### Dependency audit
 
 - **Run**: `npm audit --audit-level=high`
-- **Source**: CI only, `.github/workflows/ci.yml:39`
+- **Source**: CI only, `.github/workflows/ci.yml:41`
 - **Pass**: no high or critical advisories
 - **Fail**: a high-severity advisory in any dependency
 - **Auto-fix**: `npm audit fix` (review the lockfile change)
@@ -43,11 +43,11 @@ There is **no formatter** (no Prettier or similar config, no format script) and 
 ### Test
 
 - **Run**: `npm test`
-- **Source**: `package.json:19` (builds shared, then `vitest run` in every workspace with a `test` script: shared, four services, portal and `tests/integration`)
+- **Source**: `package.json:19` (builds shared, then `vitest run` in every workspace with a `test` script: shared, four services, portal, `tests/integration`, and `tests/e2e`, which runs only the tidy-up tests in `tests/e2e/tidy` against `griffin_test`, never the journeys: `tests/e2e/package.json::test`, `tests/e2e/vitest.config.ts`)
 - **Pass**: exit 0. `it.todo` entries are reported but do not fail (`services/patrons/test/patrons.test.ts:201`)
 - **Fail**: any failing test; `ECONNREFUSED` on 5432 means Postgres is not up
 - **Skip if**: never for a code change. Docs-only changes may skip
-- **CI form**: CI does not call `npm test`; it runs the coverage gate below and then `npm test -w @griffin/integration-tests` (`.github/workflows/ci.yml:36-37`). Together they cover the same tests
+- **CI form**: CI does not call `npm test`; it runs the coverage gate below, then `npm test -w @griffin/integration-tests`, then `npm test -w @griffin/e2e-tests` for the journey tidy-up tests (`.github/workflows/ci.yml:36-39`). Together they cover the same tests
 
 ### Test with coverage
 
@@ -60,7 +60,7 @@ There is **no formatter** (no Prettier or similar config, no format script) and 
 ### Build
 
 - **Run**: `npm run build`
-- **Source**: `package.json:17` (shared, then catalog, patrons, incidents, gateway, portal; the portal runs `tsc` then `vite build`, `apps/portal/package.json:8`); CI `.github/workflows/ci.yml:38`
+- **Source**: `package.json:17` (shared, then catalog, patrons, incidents, gateway, portal; the portal runs `tsc` then `vite build`, `apps/portal/package.json:8`); CI `.github/workflows/ci.yml:40`
 - **Pass**: exit 0, `dist/` produced in each workspace
 - **Fail**: compile error or Vite build error
 - **Skip if**: never
@@ -68,7 +68,7 @@ There is **no formatter** (no Prettier or similar config, no format script) and 
 ### Docker image build
 
 - **Run**: `docker compose build`
-- **Source**: `docker-compose.yml:12-13` (one `docker/Dockerfile`, built into a separate image per service: `docker-compose.yml:40`, `docker-compose.yml:49`, `docker-compose.yml:58`, `docker-compose.yml:67`). CI builds and starts it in the `e2e` job with `docker compose up -d --build --wait` (`.github/workflows/ci.yml:51`)
+- **Source**: `docker-compose.yml:12-13` (one `docker/Dockerfile`, built into a separate image per service: `docker-compose.yml:40`, `docker-compose.yml:49`, `docker-compose.yml:58`, `docker-compose.yml:67`). CI builds and starts it in the `e2e` job with `docker compose up -d --build --wait` (`.github/workflows/ci.yml:53`)
 - **Pass**: all four images build (the Dockerfile runs `npm ci` and `npm run build`, `docker/Dockerfile:15-17`)
 - **Fail**: build error, or a new workspace whose `package.json` is not copied in `docker/Dockerfile:7-14`
 - **Skip if**: Docker is not available locally; CI still runs it
@@ -78,7 +78,7 @@ There is **no formatter** (no Prettier or similar config, no format script) and 
 Not a required local gate (user decision, 2026-11-13): agents do not need it to call a change done. CI runs it on every pull request; run it locally only when asked, or when a change adds or alters a journey in `tests/e2e`.
 
 - **Run**: start the shop with `docker compose up --build` (or `docker compose up -d --build --wait`), then `npm run test:e2e`
-- **Source**: `package.json:21` (`playwright test` in `tests/e2e`, `tests/e2e/package.json:8`); CI `.github/workflows/ci.yml:51-62`
-- **Prerequisite**: `npx playwright install chromium` once (`.github/workflows/ci.yml:61`); shop healthy at `http://localhost:8080/health` (`.github/workflows/ci.yml:55`)
-- **Pass**: every journey in `tests/e2e/journeys` passes (CI allows 1 retry, `tests/e2e/playwright.config.ts:14`)
-- **Fail**: a failing journey; CI uploads `browser-test-report` (`.github/workflows/ci.yml:63-70`)
+- **Source**: `package.json:21` (`playwright test` in `tests/e2e`, `tests/e2e/package.json::e2e`); CI `.github/workflows/ci.yml:53-64`
+- **Prerequisite**: `npx playwright install chromium` once (`.github/workflows/ci.yml:63`); shop healthy at `http://localhost:8080/health` (`.github/workflows/ci.yml:57`)
+- **Pass**: every journey in `tests/e2e/journeys` passes (CI allows 1 retry, `tests/e2e/playwright.config.ts::retries`)
+- **Fail**: a failing journey; CI uploads `browser-test-report` (`.github/workflows/ci.yml:65-72`)

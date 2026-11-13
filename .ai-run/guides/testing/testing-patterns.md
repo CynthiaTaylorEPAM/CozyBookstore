@@ -1,7 +1,7 @@
 # Testing Patterns
 
 **Project**: gilded-griffin
-**Framework**: Vitest 5 in every workspace (`package.json:36`); Testing Library + jsdom for the portal (`apps/portal/package.json:13-19`); Playwright 1.65 + axe for browser journeys (`tests/e2e/package.json:10-12`)
+**Framework**: Vitest 5 in every workspace (`package.json:36`); Testing Library + jsdom for the portal (`apps/portal/package.json:13-19`); Playwright 1.65 + axe for browser journeys (`tests/e2e/package.json::devDependencies`)
 **Coverage tool**: `@vitest/coverage-v8` (`package.json:30`) with per-workspace line floors
 **Human source**: `docs/testing.md` (layers, what each covers, what to add with a change). The rule itself: `AGENTS.md:42`.
 
@@ -19,7 +19,7 @@ The suite (added by PR #35) has four layers. A mistake should be caught by the l
 | 4a. Screens | `apps/portal/src/**/*.test.tsx` | Each page in jsdom with a pretend API, per role | nothing |
 | 4b. Journeys | `tests/e2e/journeys/*.spec.ts` | Real Chromium against the running shop, per persona | running shop on :8080 |
 
-Source: `docs/testing.md:9-14`, `docs/testing.md:70-119`.
+Source: `docs/testing.md:9-14`, `docs/testing.md § What each layer covers`.
 
 ### Per-service file convention
 
@@ -39,9 +39,10 @@ Test names are plain-English shop behaviour: `it('records nothing when the catal
 | Action | Command | Source |
 |---|---|---|
 | Start Postgres (once per session) | `npm run db:up` | `package.json:24` |
-| Layers 1 to 4a (all workspaces with a `test` script, including `tests/integration`) | `npm test` | `package.json:19` |
+| Layers 1 to 4a and the journey tidy-up tests (all workspaces with a `test` script, including `tests/integration` and `tests/e2e`) | `npm test` | `package.json:19` |
 | Layers 1, 2, 4a with coverage floors (excludes integration) | `npm run test:coverage` | `package.json:20` |
 | Integration only | `npm test -w @griffin/integration-tests` | `.github/workflows/ci.yml:37` |
+| Journey tidy-up tests only | `npm test -w @griffin/e2e-tests` | `tests/e2e/package.json::test`, `tests/e2e/vitest.config.ts` |
 | One workspace | `npm test -w @griffin/catalog` | workspace `package.json` `test: vitest run` |
 | One file | `npx vitest run test/catalog.test.ts` from the workspace folder | |
 | Browser journeys | `docker compose up --build` in one terminal, then `npm run test:e2e` | `package.json:21`, `docs/testing.md:48-58` |
@@ -77,7 +78,7 @@ Every route change comes with tests in that service's `test/` folder, using `app
 | `openShop()` | Gateway + services wired over real HTTP for integration tests | `tests/integration/test/shop.ts:38` |
 | `pretendApi()` / `openPortal(path, as, api)` | Stubbed `fetch` with canned answers; open the portal as `MIRABEL`, `PIP` or `null` | `apps/portal/src/test/harness.tsx:38`, `apps/portal/src/test/harness.tsx:77` |
 | Portal fixtures | `shopAnswers()`, sample tomes | `apps/portal/src/test/fixtures.ts` |
-| `signIn()` / `backstage()` / `unique()` | Journey sign-in, API-side setup, unique names | `tests/e2e/journeys/shop.ts:11`, `tests/e2e/journeys/shop.ts:23`, `tests/e2e/journeys/shop.ts:31` |
+| `signIn()` / `backstage()` / `unique()` / `JOURNEY_NAMES` | Journey sign-in, API-side setup, unique names (only names listed in `JOURNEY_NAMES` typecheck, and only those are tidied) | `tests/e2e/journeys/shop.ts::signIn`, `tests/e2e/journeys/shop.ts::backstage`, `tests/e2e/journeys/shop.ts::unique` |
 
 | Avoid | Prefer |
 |---|---|
@@ -131,10 +132,10 @@ Each page's `*.test.tsx` sits next to the page. jsdom environment and setup are 
 
 ## Browser Journeys (`tests/e2e`)
 
-- One file per kind of person, following `docs/personas.md`: `visitor.spec.ts`, `clerk.spec.ts`, `owner.spec.ts` (`docs/testing.md:111-117`).
-- Run serially against one shop, 1 retry in CI, trace and screenshot on failure (`tests/e2e/playwright.config.ts:9-19`). `E2E_BASE_URL` targets another shop (`tests/e2e/playwright.config.ts:17`).
+- One file per kind of person, following `docs/personas.md`: `visitor.spec.ts`, `clerk.spec.ts`, `owner.spec.ts` (`docs/testing.md § 4b. Journeys`).
+- Run serially against one shop, 1 retry in CI, trace and screenshot on failure (`tests/e2e/playwright.config.ts::workers`, `tests/e2e/playwright.config.ts::retries`). `E2E_BASE_URL` targets another shop (`tests/e2e/playwright.config.ts::baseURL`).
 - Journeys create rows named `unique(<name from JOURNEY_NAMES>)` (`tests/e2e/journeys/shop.ts`). Playwright `globalSetup`/`globalTeardown` (`tests/e2e/tidy/`) remove those rows at the start and end of each run, only when the shop and database are both exactly `localhost`/`127.0.0.1`; `E2E_KEEP_DATA=1` skips it, to keep a failed journey's rows for inspection; a Codespace's forwarded address is not `localhost`, so it gets no tidy-up. The database is `E2E_DATABASE_URL` or the local dev database, never `DATABASE_URL`: anyone running `npm run dev` with their own database address must set `E2E_DATABASE_URL` to the same value. Run the journeys one at a time against a shop. A new journey name goes in `JOURNEY_NAMES`; a new table needs a step or a no-journey-data entry in `tests/e2e/tidy/remove.ts` (its coverage test fails otherwise). `npm test` runs `tests/e2e/tidy/*.test.ts` under Vitest against `griffin_test`. `docker compose down -v` is the full reset (`docs/testing.md`).
-- The visitor journey includes an axe accessibility scan (`docs/testing.md:115`).
+- The visitor journey includes an axe accessibility scan (`docs/testing.md § 4b. Journeys`).
 
 ---
 
@@ -146,7 +147,7 @@ Each page's `*.test.tsx` sits next to the page. jsdom environment and setup are 
 | each service | 85% | `services/catalog/vitest.config.ts:9` |
 | `apps/portal` | 70% | `apps/portal/vite.config.ts:13` |
 
-`index.ts` start-up files, test helpers and `types.ts` are excluded. The floor stops coverage sliding back; it is not the goal (`docs/testing.md:130`).
+`index.ts` start-up files, test helpers and `types.ts` are excluded. The floor stops coverage sliding back; it is not the goal (`docs/testing.md § What runs automatically`).
 
 ---
 
@@ -160,8 +161,9 @@ Each page's `*.test.tsx` sits next to the page. jsdom environment and setup are 
 | A field the portal reads | `apps/portal/src/types.ts` and its schema in `tests/integration/test/portalTypes.test.ts` |
 | A portal page | The page's `*.test.tsx`, including what the clerk must not see |
 | A start-to-finish task | A journey in `tests/e2e/journeys` |
+| A new table in any service's `migrations/` | A removal step in `removeJourneyRows`, or an entry in `NO_JOURNEY_DATA_TABLES` if journeys never write to it (`tests/e2e/tidy/remove.ts`); `tests/e2e/tidy/remove.test.ts` "knows about every table" fails otherwise |
 
-Source: `docs/testing.md:132-141`.
+Source: `docs/testing.md § Adding tests with a change`.
 
 ---
 
@@ -179,4 +181,4 @@ Source: `docs/testing.md:132-141`.
 
 ## Deliberately Not Tested
 
-Load and performance, penetration testing, pixel-perfect appearance, and `trailer/` (`docs/testing.md:151`).
+Load and performance, penetration testing, pixel-perfect appearance, and `trailer/` (`docs/testing.md § Known gaps`).
