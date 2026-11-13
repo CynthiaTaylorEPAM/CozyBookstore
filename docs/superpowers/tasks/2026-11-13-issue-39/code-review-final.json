@@ -1,0 +1,268 @@
+{
+  "schema": "sdlc-factory/code-review-final@1",
+  "passed": true,
+  "decision": "approve",
+  "gate_decision": {
+    "gate": "code-review.check",
+    "decision": "approve",
+    "source": "hitl",
+    "rationale": "User approved check round; CR-001..CR-003 resolved."
+  },
+  "gates": [
+    {
+      "gate": "code-review.final",
+      "decision": "request-changes",
+      "source": "hitl",
+      "rationale": "User asked to fix CR-001, CR-002, CR-003 in one fix-up round."
+    },
+    {
+      "gate": "code-review.check",
+      "decision": "approve",
+      "source": "hitl",
+      "rationale": "User approved check round; CR-001..CR-003 resolved."
+    }
+  ],
+  "reviewed_head": "e5d9272922277365bfedf0b83795f54fe4268898",
+  "rounds": [
+    "final",
+    "check"
+  ],
+  "rationale": "Targeted re-check at HEAD 2ed94d1: all 3 prior blocking findings resolved from current source (CR-001 guide bullet now covers the four missing AC7 points; CR-002 host/hostaddr query parameters checked against local hosts, with tests; CR-003 end hook silent under E2E_KEEP_DATA=1, with a two-hook test). Business and standards rows carried forward; AC1 remains pending Stage 7; brief written to code-review-brief.local.md.",
+  "confidence": "high",
+  "check_confidence": "high",
+  "risk_flags": [],
+  "open": 0,
+  "closed": {
+    "fixed": 3,
+    "moot": 0,
+    "decided": 0,
+    "wont_fix": 0
+  },
+  "findings": [
+    {
+      "id": "CR-001",
+      "kind": "code",
+      "severity": "critical",
+      "triage": "patch",
+      "file": ".ai-run/guides/testing/testing-patterns.md",
+      "line": 136,
+      "title": "Testing guide misses four tidy-up points",
+      "problem": "Story AC7 requires both docs/testing.md and testing-patterns.md:136 to describe the tidy-up. docs/testing.md covers all seven points, but the guide bullet at line 136 leaves out four: what the E2E_KEEP_DATA=1 opt-out is for (keeping a failed journey's rows to inspect), that a Codespace's forwarded address gets no tidy-up, that someone running npm run dev with their own database address must set E2E_DATABASE_URL to the same value, and that the journeys should run one at a time against a shop.",
+      "impact": "A required story criterion ships partial. Coding agents load this guide before docs/testing.md, so they would miss the Codespace limit and the E2E_DATABASE_URL instruction and could expect a tidy-up that never runs against their own dev database.",
+      "recommendation": "Extend the tidy-up bullet at testing-patterns.md:136 to cover the four missing AC7 points, matching docs/testing.md: the opt-out (E2E_KEEP_DATA=1) exists to keep a failed journey's rows for inspection; a Codespace's forwarded address gets no tidy-up; someone running `npm run dev` with their own database address must set E2E_DATABASE_URL to the same value; run the journeys one at a time against a shop.",
+      "status": "resolved",
+      "check_notes": "testing-patterns.md:136 now states the E2E_KEEP_DATA=1 inspection purpose, Codespace no-tidy, E2E_DATABASE_URL for own dev DB, and one run at a time",
+      "fix": {
+        "change": "testing-patterns.md journeys bullet now covers the opt-out's purpose, no tidy-up for a Codespace, setting E2E_DATABASE_URL to match a custom npm run dev database, and running journeys one at a time",
+        "test": "n/a"
+      }
+    },
+    {
+      "id": "CR-002",
+      "kind": "code",
+      "severity": "major",
+      "triage": "patch",
+      "file": "tests/e2e/tidy/tidy.ts",
+      "line": 37,
+      "title": "Database host check bypassed by host query",
+      "problem": "decideTidy checks only new URL(databaseUrl).hostname against localhost/127.0.0.1. pg-connection-string (node_modules/pg-connection-string/index.js:40-56) copies every query parameter into the config and lets a host query parameter win over the URL hostname, so E2E_DATABASE_URL=postgres://u:p@localhost/griffin?host=db.example.com passes the local-only check while pg connects to db.example.com.",
+      "impact": "The guard that is meant to keep the destructive tidy-up away from any database not on this machine can be bypassed by a connection string the check reads as local; the four DELETEs then run against a remote database. This breaks AC5's intent and the spec decision that only a local database is tidied.",
+      "recommendation": "In decideTidy, also refuse (or check against LOCAL_HOSTS) any `host` or `hostaddr` query parameter in the database URL, e.g. `const params = new URL(databaseUrl).searchParams; if (params.has('host') || params.has('hostaddr')) return { run: false, message: ... }` naming only the host; add a tidy.test.ts case for `postgres://u:p@localhost/griffin?host=db.example.com`.",
+      "status": "resolved",
+      "check_notes": "tidy.ts:41-48 checks URL hostname plus every host/hostaddr query value against LOCAL_HOSTS; tidy.test.ts:28-40 covers both params and a local host query",
+      "fix": {
+        "change": "decideTidy also checks every host and hostaddr query parameter against LOCAL_HOSTS and skips, naming only that host, when any is not local",
+        "test": "tests/e2e/tidy/tidy.test.ts 'skips when a host/hostaddr query sends a local-looking address elsewhere' and 'tidies when a host query also points at this machine'"
+      }
+    },
+    {
+      "id": "CR-003",
+      "kind": "code",
+      "severity": "critical",
+      "triage": "patch",
+      "file": "tests/e2e/tidy/tidy.ts",
+      "line": 61,
+      "title": "Keep-data skip message printed twice per run",
+      "problem": "Story AC4 says that with E2E_KEEP_DATA=1 the run says so in one line. Both global-setup.ts and global-teardown.ts call runTidyUp, and each logs decideTidy's skip message (tidy.ts:60-61), so one run prints the line twice. tidy.test.ts checks a single hook only, so it does not catch this.",
+      "impact": "A required story criterion ships partial: the run output repeats the opt-out notice, which is not what the story asked for and is untested.",
+      "recommendation": "Make a run with E2E_KEEP_DATA=1 print the skip line once, e.g. log the keep-data message only when `when === 'start'` (end hook stays silent for that reason only), and add a tidy.test.ts case running both hooks and asserting one line.",
+      "status": "resolved",
+      "check_notes": "tidy.ts:66-67 end hook skips logging under E2E_KEEP_DATA=1; tidy.test.ts:88-94 runs both hooks and asserts exactly one line",
+      "fix": {
+        "change": "runTidyUp stays silent in the end hook when E2E_KEEP_DATA=1, so a run prints the skip line once",
+        "test": "tests/e2e/tidy/tidy.test.ts 'says E2E_KEEP_DATA=1 skipped it only once across both hooks of a run'"
+      }
+    }
+  ],
+  "deferred": [],
+  "coverage_graded_at": "final",
+  "business_review": [
+    {
+      "kind": "spec",
+      "item": "Tidy-up runs at start and end of every npm run test:e2e run against a local shop",
+      "status": "pass",
+      "notes": "playwright.config.ts globalSetup/globalTeardown call runTidyUp('start'/'end')"
+    },
+    {
+      "kind": "spec",
+      "item": "Connects straight to the local griffin database; no service, route or migration changes",
+      "status": "pass",
+      "notes": "tidy.ts uses pg.Client directly; only tests/e2e, docs and package-lock changed"
+    },
+    {
+      "kind": "spec",
+      "item": "JOURNEY_NAMES list in shop.ts; unique() accepts only listed names",
+      "status": "pass",
+      "notes": "JOURNEY_NAMES as const, unique(name: JourneyName); all current call sites use listed names"
+    },
+    {
+      "kind": "spec",
+      "item": "Matcher built in shop.ts from the same list and suffix format; tidy-up only imports it",
+      "status": "pass",
+      "notes": "JOURNEY_ROW_PATTERN in shop.ts; remove.ts imports it"
+    },
+    {
+      "kind": "spec",
+      "item": "Removal order: sales, incidents, tomes (adjustments cascade), patrons",
+      "status": "pass",
+      "notes": "remove.ts removeJourneyRows deletes in that order; sales/incidents also match tome_title"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC1: after any local run the shop window and staff lists show no journey-made rows",
+      "status": "pending-stage-7",
+      "notes": "global hooks run for any Playwright invocation; live-shop result needs a Stage 7 e2e run"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC2: demo seed data and hand-made rows unchanged",
+      "status": "pass",
+      "notes": "deletes scoped to JOURNEY_ROW_PATTERN; remove.test.ts keeps lookalike rows"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC3: rows left by an earlier crashed or interrupted run are gone once the next run starts",
+      "status": "pass",
+      "notes": "global-setup runs runTidyUp('start'); pattern matches existing unique() format"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC4: with E2E_KEEP_DATA=1 neither tidy-up step runs, and the run says so in one line",
+      "status": "partial",
+      "notes": "both hooks log the skip message, so one run prints it twice (tidy.ts:60-61); see CR-003"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC5: non-local shop or database host skipped with a one-line message naming the host only",
+      "status": "pass",
+      "notes": "exact LOCAL_HOSTS check on parsed hostnames; but see CR-002 for the ?host= query bypass"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC6: unreachable DB, timeout or failure gives a warning, results unchanged, removes nothing",
+      "status": "pass",
+      "notes": "runTidyUp catches all; 3s/5s timeouts; single transaction with ROLLBACK"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC7: docs/testing.md and testing-patterns.md:136 describe the seven tidy-up points",
+      "status": "partial",
+      "notes": "docs/testing.md covers all; testing-patterns.md:136 omits opt-out purpose, Codespace, own dev DB, one run at a time; see CR-001"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC8: test shows matching row removed and suffix-less lookalike kept; every journey name matched",
+      "status": "pass",
+      "notes": "names.test.ts it.each(JOURNEY_NAMES); remove.test.ts removal and lookalike cases"
+    },
+    {
+      "kind": "story-ac",
+      "item": "AC9: test lists every table in catalog, patrons, incidents, auth and fails on an unhandled one",
+      "status": "pass",
+      "notes": "remove.test.ts 'knows about every table' against HANDLED_TABLES + NO_JOURNEY_DATA_TABLES"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no delete routes or changes to services, gateway or portal",
+      "status": "pass",
+      "notes": "no files under services/ or apps/ changed"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no cleanup against a remote shop",
+      "status": "pass",
+      "notes": "decideTidy skips non-local E2E_BASE_URL"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no change to service/integration test data handling or griffin_test",
+      "status": "pass",
+      "notes": "tidy tests clean their own griffin_test rows; no service tests changed"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no full reset or reseed of the shop database",
+      "status": "pass",
+      "notes": "only pattern-scoped DELETEs"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: no change to the CI e2e job",
+      "status": "pass",
+      "notes": "no CI workflow file in the diff"
+    },
+    {
+      "kind": "spec",
+      "item": "Non-goal: backlog item 7 (bounty board) not touched",
+      "status": "pass",
+      "notes": "nothing bounty-related in the diff"
+    },
+    {
+      "kind": "spec",
+      "item": "Decision: exact hostname comparison against localhost or 127.0.0.1",
+      "status": "pass",
+      "notes": "LOCAL_HOSTS Set with new URL().hostname; localhost.example.com tested"
+    },
+    {
+      "kind": "spec",
+      "item": "Decision: hooks catch own errors; short timeouts; four steps in one transaction on one connection",
+      "status": "pass",
+      "notes": "runTidyUp try/catch, 3s/5s timeouts, single pg.Client, BEGIN/COMMIT/ROLLBACK"
+    },
+    {
+      "kind": "spec",
+      "item": "Decision: E2E_DATABASE_URL defaulting to the local dev database; DATABASE_URL never read",
+      "status": "pass",
+      "notes": "env.E2E_DATABASE_URL ?? DEV_DATABASE_URL; tidy.test.ts 'never reads DATABASE_URL'"
+    },
+    {
+      "kind": "spec",
+      "item": "Decision: AC8/AC9 tests run where npm test runs them",
+      "status": "pass",
+      "notes": "tests/e2e package.json test script; vitest.config.ts includes tidy/**/*.test.ts"
+    }
+  ],
+  "standards_review": [
+    {
+      "kind": "commit-format",
+      "status": "pass",
+      "notes": "4 subjects in c75ef8f..HEAD are plain imperative sentence-case sentences with no ticket prefix, no conventional-commit type and no trailing full stop, as git-workflow.md Commit Message Format requires; each agent commit carries the Co-Authored-By trailer"
+    },
+    {
+      "kind": "code-quality",
+      "status": "pass",
+      "notes": "change is e2e test tooling (tests/e2e/tidy/*, journeys/shop.ts, configs) plus docs; it adds no service route, migration, money, auth, validation, gateway or portal code, so those code-quality.md rules do not apply; plain names, brief why-comments and the surrounding file style (2-space, single quotes, semicolons) are followed; direct cross-schema DELETEs in tests/e2e/tidy/remove.ts are test-harness cleanup, not a service, so the Service Boundaries rule (scoped to services) is not engaged"
+    },
+    {
+      "kind": "security",
+      "status": "na",
+      "notes": ".ai-run/guides/security/security-practices.md is absent and no ref was passed, so no documented security standard; no concrete security issue seen: tests/e2e/tidy/remove.ts uses parameterized $1 queries with a constant pattern built from escaped fixed names, tests/e2e/tidy/tidy.ts refuses non-local shop and database hosts and logs host names only, never the connection string"
+    }
+  ],
+  "final_round": {
+    "decision": "request-changes",
+    "rationale": "Balanced profile: edge-case, acceptance and standards ran (blind and verification-gap not in this profile); every candidate was checked against source. Three blockers: story AC4 and AC7 are partial, and a ?host= query in E2E_DATABASE_URL bypasses the local-only database check. 0 deferred; 4 edge-case candidates dismissed (KEEP_DATA values other than 1 match the spec, ROLLBACK error masking is diagnostic only, idle-connection error has no real window, schema list matches AC9).",
+    "confidence": "high",
+    "risk_flags": []
+  }
+}

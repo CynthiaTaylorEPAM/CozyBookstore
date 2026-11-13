@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "branch": "feature/shop-window-button",
+  "head": "e5d9272922277365bfedf0b83795f54fe4268898",
+  "runner": "npm",
+  "started_at": "2026-11-13T19:55:41Z",
+  "completed_at": "2026-11-13T19:59:54Z",
+  "status": "PASSED",
+  "drift_detected": false,
+  "gates": [
+    {"id": "lint", "source": "guide", "status": "PASS", "duration_ms": 2775, "command": "npm run lint", "exit_code": 0},
+    {"id": "typecheck", "source": "guide", "status": "PASS", "duration_ms": 17632, "command": "npm run typecheck", "exit_code": 0},
+    {"id": "audit", "source": "guide", "status": "PASS", "duration_ms": 5502, "command": "npm audit --audit-level=high", "exit_code": 0, "notes": "10 moderate advisories (minimatch via eslint/typescript-eslint), none high or critical"},
+    {"id": "unit", "source": "guide", "status": "PASS", "duration_ms": 38571, "command": "npm test", "exit_code": 0, "notes": "All workspaces passed incl. tests/e2e tidy vitest suite; 2 it.todo entries reported (non-failing)"},
+    {"id": "coverage", "source": "guide", "status": "PASS", "duration_ms": 29302, "command": "npm run test:coverage", "exit_code": 0},
+    {"id": "build", "source": "guide", "status": "PASS", "duration_ms": 10391, "command": "npm run build", "exit_code": 0},
+    {"id": "docker-build", "source": "guide", "status": "PASS", "duration_ms": 72797, "command": "docker compose build", "exit_code": 0, "notes": "All four images built (catalog, patrons, incidents, gateway)"},
+    {"id": "ui", "source": "guide", "status": "PASS", "duration_ms": 38962, "command": "docker compose up -d --build --wait && npm run test:e2e", "exit_code": 0, "notes": "Guide marks e2e CI-only but requires it when a change alters tests/e2e journeys (diff does); mirrors CI e2e job. 22/22 journeys passed; local shop left running"},
+    {"id": "integration", "source": "ci", "status": "PASS", "duration_ms": 10752, "command": "npm test -w @griffin/integration-tests", "exit_code": 0, "notes": "CI check-job step; also covered by npm test"}
+  ],
+  "failures": {}
+}
