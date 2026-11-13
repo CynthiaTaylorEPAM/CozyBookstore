@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "generated": "2026-11-13T00:00:00Z",
+  "dimensions": {
+    "component_scope":      { "score": 2, "label": "S" },
+    "requirements_clarity": { "score": 1, "label": "XS" },
+    "technical_risk":       { "score": 1, "label": "XS" },
+    "file_change_estimate": { "score": 3, "label": "M" },
+    "dependencies":         { "score": 1, "label": "XS" },
+    "affected_layers":      { "score": 1, "label": "XS" }
+  },
+  "total": 9,
+  "size": "XS",
+  "band_range": "6-9",
+  "files_changed": 4,
+  "routing": "writing-plans",
+  "key_reasoning": [
+    { "dimension": "file_change_estimate", "reason": "Diffstat reports 4 files changed (the ShopFront illustration, the Landing screen test, the visitor e2e journey and docs/testing.md), which the actual-mode mapping (4-6 files) scores M. Only one production file changed. The other three are tests and docs, and no new files were added." },
+    { "dimension": "component_scope", "reason": "The production change is in a single portal component, ShopFront: three SVG gradient ids renamed with a shopfront- prefix, plus their url(#...) references. Tests were added at the screen level (a duplicate-id and anchor-target check in Landing.test.tsx) and the browser level (the visitor journey asserts the page scrolls to section#window). Only the UI layer is touched: no service, API, schema or dependency changes, and rollback is trivial." }
+  ],
+  "red_flags_applied": [],
+  "split_recommendation": null
+}

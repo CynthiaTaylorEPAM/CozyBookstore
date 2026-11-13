@@ -1,0 +1,136 @@
+{
+  "schema": "sdlc-factory/code-review-final@1",
+  "passed": true,
+  "decision": "approve",
+  "gate_decision": {
+    "gate": "code-review.check",
+    "decision": "approve",
+    "source": "hitl",
+    "rationale": "User approved re-check: CR-001 resolved, no open findings"
+  },
+  "gates": [
+    {
+      "gate": "code-review.final",
+      "decision": "request-changes",
+      "source": "hitl",
+      "rationale": "User sent CR-001 (e2e in-view check may pass without scroll) to fix-up"
+    },
+    {
+      "gate": "code-review.check",
+      "decision": "approve",
+      "source": "hitl",
+      "rationale": "User approved re-check: CR-001 resolved, no open findings"
+    }
+  ],
+  "reviewed_head": "68efd3377420a8a5543efff17ff7962ab3b0779f",
+  "rounds": [
+    "final",
+    "check"
+  ],
+  "rationale": "Targeted re-check of 1 prior blocking finding: CR-001 resolved, since visitor.spec.ts:22-24 now captures scrollY before the click and polls for it to increase, so a regression of issue #37 fails the journey. Business and standards rows carried forward unchanged; 3 criteria remain pending Stage 7. Brief written to code-review-brief.local.md.",
+  "confidence": "medium",
+  "check_confidence": "high",
+  "risk_flags": [],
+  "open": 0,
+  "closed": {
+    "fixed": 1,
+    "moot": 0,
+    "decided": 0,
+    "wont_fix": 0
+  },
+  "findings": [
+    {
+      "id": "CR-001",
+      "kind": "code",
+      "severity": "major",
+      "triage": "patch",
+      "file": "tests/e2e/journeys/visitor.spec.ts",
+      "line": 21,
+      "title": "Shop-window journey check passes without scrolling",
+      "problem": "The new regression step clicks 'Peek in the shop window' then asserts `section#window` is `toBeInViewport()` with Playwright's default ratio, which passes when any sliver of the section is visible. The section sits directly below the hero and ribbon (Landing.tsx:107) and the hero has no min-height, so at the Desktop Chrome viewport its top edge may already be on screen before the click.",
+      "impact": "If the section already peeks into the first screen, the journey passes even when the anchor does not scroll, so a regression of issue #37 would go undetected by the browser check that is meant to prove the fix. Reachability unconfirmed: whether a sliver shows depends on rendered hero height, which could not be established from source.",
+      "recommendation": "Make the step prove the page actually moved: e.g. record `window.scrollY` before the click and `await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(before)`, and/or assert the favourites heading with `toBeInViewport({ ratio: 0.5 })` (or check the section's top is near the viewport top), so a regression of issue #37 fails the journey.",
+      "status": "resolved",
+      "check_notes": "visitor.spec.ts:22-24 records scrollY before the click and expect.poll asserts it increases before the toBeInViewport check",
+      "fix": {
+        "change": "Visitor journey records window.scrollY before clicking 'Peek in the shop window' and polls until it grows, then checks section#window is in the viewport",
+        "test": "npm run test:e2e -- visitor --repeat-each=3"
+      }
+    }
+  ],
+  "deferred": [],
+  "coverage_graded_at": "final",
+  "business_review": [
+    {
+      "kind": "story-ac",
+      "item": "1. Clicking 'Peek in the shop window' on / brings the favourites section into view",
+      "status": "pending-stage-7",
+      "notes": "Clashing gradient id renamed to shopfront-window; scroll proof needs the browser journey run"
+    },
+    {
+      "kind": "story-ac",
+      "item": "2. Clicking 'Shop window' in the top bar does the same",
+      "status": "pending-stage-7",
+      "notes": "Same href=#window target (Landing.tsx:53); screen test asserts the href; scroll needs browser evidence"
+    },
+    {
+      "kind": "story-ac",
+      "item": "3. Exactly one element with id=window, and it is the shop-window section",
+      "status": "pass",
+      "notes": "ShopFront ids now shopfront-*; Landing.test.tsx asserts no duplicate ids and [id=window] is the SECTION"
+    },
+    {
+      "kind": "story-ac",
+      "item": "4. Illustration looks the same; no url(#...) points to a missing id",
+      "status": "pass",
+      "notes": "All 3 defs and 8 url(#...) references renamed; colours untouched; screen test resolves every svg url(#id)"
+    },
+    {
+      "kind": "story-ac",
+      "item": "5. Other landing links (#top, #folk, #wards, #visit) still reach their sections",
+      "status": "pass",
+      "notes": "Landing ids unchanged; screen test checks every in-page href resolves to exactly one element"
+    },
+    {
+      "kind": "story-ac",
+      "item": "6. Landing.test.tsx screen test for both links, single window element, and it is the section",
+      "status": "pass",
+      "notes": "New test 'gives every in-page link exactly one place to land' covers all three"
+    },
+    {
+      "kind": "story-ac",
+      "item": "7. visitor.spec.ts step clicks 'Peek in the shop window' and checks the section is on screen",
+      "status": "pass",
+      "notes": "Step at visitor.spec.ts:19-21 uses toBeInViewport; see CR-001 on default-ratio weakness"
+    },
+    {
+      "kind": "story-ac",
+      "item": "8. npm test, lint, typecheck and build pass",
+      "status": "pending-stage-7",
+      "notes": "Requires running the gates"
+    }
+  ],
+  "standards_review": [
+    {
+      "kind": "commit-format",
+      "status": "na",
+      "notes": "Not run: compact profile omits the standards audit"
+    },
+    {
+      "kind": "code-quality",
+      "status": "na",
+      "notes": "Not run: compact profile omits the standards audit"
+    },
+    {
+      "kind": "security",
+      "status": "na",
+      "notes": "Not run: compact profile omits the standards audit"
+    }
+  ],
+  "final_round": {
+    "decision": "request-changes",
+    "rationale": "Compact profile: edge-case and acceptance lenses ran; blind and verification-gap not in profile, standards intentionally not run. One blocking test gap: the new browser-journey check for issue #37 may pass without any scroll (reachability unconfirmed, since it depends on whether the shop window peeks below the hero at 1280x720); 0 deferred, 0 dismissed; 3 criteria pending Stage 7.",
+    "confidence": "medium",
+    "risk_flags": []
+  }
+}
