@@ -17,11 +17,37 @@ export async function signIn(page: Page, who: StaffName): Promise<void> {
 }
 
 /**
+ * Every name a journey gives to the tomes, patrons and incidents it makes.
+ * The tidy-up removes only rows named one of these plus a `unique()` suffix,
+ * so a new journey name must be added here.
+ */
+export const JOURNEY_NAMES = [
+  'Window Tome', 'Cabinet Tome', 'Stonesong', 'Risky Tome', 'Popular Tome',
+  'Loyal', 'Rattling in the stacks', 'Takings Tome', 'Spender', 'Fizzwick', 'Sale Tome', 'Buyer',
+  'Scarce Tome', 'Latecomer', 'Gone Tome', 'Restock Tome', 'Chewed Tome', 'Crumbs everywhere',
+  'Fixed Price Tome', 'Hopeful',
+] as const;
+export type JourneyName = (typeof JOURNEY_NAMES)[number];
+
+/** What `unique()` adds after the space: 8 base-36 time characters and 1-2 random ones. */
+const SUFFIX_PATTERN = '[0-9a-z]{9,}';
+
+/**
  * A name nobody has used before, so each journey works on its own tome or
  * patron and does not depend on the demo data or on other journeys.
  */
-export function unique(name: string): string {
+export function unique(name: JourneyName): string {
   return `${name} ${Date.now().toString(36)}${Math.floor(Math.random() * 1296).toString(36)}`;
+}
+
+const escapeRegex = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/** Matches a whole journey-made name. Works both in a JavaScript RegExp and with Postgres `~`. */
+export const JOURNEY_ROW_PATTERN = `^(${JOURNEY_NAMES.map(escapeRegex).join('|')}) ${SUFFIX_PATTERN}$`;
+
+/** True when `text` is exactly a journey name plus a `unique()` suffix. */
+export function isJourneyRow(text: string): boolean {
+  return new RegExp(JOURNEY_ROW_PATTERN).test(text);
 }
 
 /**
