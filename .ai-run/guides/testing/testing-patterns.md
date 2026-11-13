@@ -133,7 +133,7 @@ Each page's `*.test.tsx` sits next to the page. jsdom environment and setup are 
 
 - One file per kind of person, following `docs/personas.md`: `visitor.spec.ts`, `clerk.spec.ts`, `owner.spec.ts` (`docs/testing.md:111-117`).
 - Run serially against one shop, 1 retry in CI, trace and screenshot on failure (`tests/e2e/playwright.config.ts:9-19`). `E2E_BASE_URL` targets another shop (`tests/e2e/playwright.config.ts:17`).
-- Journeys create rows with unique names and do not clean up; `docker compose down -v` resets (`docs/testing.md:66`).
+- Journeys create rows named `unique(<name from JOURNEY_NAMES>)` (`tests/e2e/journeys/shop.ts`). Playwright `globalSetup`/`globalTeardown` (`tests/e2e/tidy/`) remove those rows at the start and end of each run, only when the shop and database are both exactly `localhost`/`127.0.0.1`; `E2E_KEEP_DATA=1` skips it, to keep a failed journey's rows for inspection; a Codespace's forwarded address is not `localhost`, so it gets no tidy-up. The database is `E2E_DATABASE_URL` or the local dev database, never `DATABASE_URL`: anyone running `npm run dev` with their own database address must set `E2E_DATABASE_URL` to the same value. Run the journeys one at a time against a shop. A new journey name goes in `JOURNEY_NAMES`; a new table needs a step or a no-journey-data entry in `tests/e2e/tidy/remove.ts` (its coverage test fails otherwise). `npm test` runs `tests/e2e/tidy/*.test.ts` under Vitest against `griffin_test`. `docker compose down -v` is the full reset (`docs/testing.md`).
 - The visitor journey includes an axe accessibility scan (`docs/testing.md:115`).
 
 ---

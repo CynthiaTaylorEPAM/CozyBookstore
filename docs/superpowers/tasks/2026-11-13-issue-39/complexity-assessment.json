@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "task": "Make the Playwright browser journeys clean up the tomes, patrons, sales, stock changes and incidents they leave in the live shop database after each run (Issue #39), including the featured 'Window Tome' rows in the public shop window.",
+  "generated": "2026-11-13T00:00:00Z",
+  "dimensions": {
+    "component_scope":      { "score": 3, "label": "M" },
+    "requirements_clarity": { "score": 4, "label": "L" },
+    "technical_risk":       { "score": 4, "label": "L" },
+    "file_change_estimate": { "score": 3, "label": "M" },
+    "dependencies":         { "score": 2, "label": "S" },
+    "affected_layers":      { "score": 3, "label": "M" }
+  },
+  "total": 19,
+  "size": "M",
+  "size_legend": {
+    "XS": "6-9 — < half day — plan directly",
+    "S": "10-14 — 1 day — plan directly",
+    "M": "15-20 — 2-3 days — brainstorm first",
+    "L": "21-26 — 4-5 days — brainstorm first",
+    "XL": "27-31 — > 1 sprint — recommend splitting",
+    "XXL": "32-36 — > 1 sprint — must split"
+  },
+  "routing": "brainstorming",
+  "key_reasoning": [
+    { "dimension": "requirements_clarity", "reason": "The issue is one sentence with an unavailable screenshot. It reverses a recorded decision (docs/testing.md says journeys do not tidy up). Open choices: what 'cleaned up' covers (created rows only, or also stock, takings and open incidents that change the public mood), whether remote E2E_BASE_URL shops must be supported, and which mechanism to use (API delete routes, direct DB teardown, or a full reset)." },
+    { "dimension": "technical_risk", "reason": "No precedent for e2e teardown: there are no Playwright globalSetup/teardown hooks and no delete route in any service. The nearest pattern is the integration-test TRUNCATE-and-reseed in tests/integration/test/shop.ts, but it targets griffin_test, not the live demo database, and wiping griffin would remove a presenter's hand-made demo edits. Removal is complicated by the non-cascading sales-to-patrons FK and the cross-service tome references that have no FK. Direct schema access would bend the service-boundary rule. If delete routes were added instead, each needs owner-only auth and access-test rows, and that path is covered by the existing requireStaff pattern." },
+    { "dimension": "file_change_estimate", "reason": "Likely surface: tests/e2e/journeys/shop.ts, playwright.config.ts, a new teardown or fixture file, possibly the three spec files, docs/testing.md and the testing guide. About 5-7 files across 2-3 directories. More if API delete routes are chosen." },
+    { "dimension": "affected_layers", "reason": "Test infrastructure plus DB-persistence (teardown against griffin). API and Service are touched too if removal goes through the gateway. No schema migration." }
+  ],
+  "red_flags_applied": [
+    "Requirements Clarity bumped from M to L: vague acceptance criteria ('cleaned up after runs' with no definition of scope; screenshot unavailable) that conflict with a recorded design decision"
+  ],
+  "split_recommendation": null
+}

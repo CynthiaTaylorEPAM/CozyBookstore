@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "generated": "2026-11-13T00:00:00Z",
+  "dimensions": {
+    "component_scope":      { "score": 4, "label": "L" },
+    "requirements_clarity": { "score": 2, "label": "S" },
+    "technical_risk":       { "score": 4, "label": "L" },
+    "file_change_estimate": { "score": 5, "label": "XL" },
+    "dependencies":         { "score": 3, "label": "M" },
+    "affected_layers":      { "score": 3, "label": "M" }
+  },
+  "total": 21,
+  "size": "L",
+  "band_range": "21-26",
+  "files_changed": 15,
+  "routing": "brainstorming",
+  "key_reasoning": [
+    { "dimension": "component_scope", "reason": "Four cooperating pieces inside the browser-test harness: the journey name registry and row pattern (journeys/shop.ts), the safety decision and runner (tidy/tidy.ts), the cross-schema row removal (tidy/remove.ts), and the Playwright global setup/teardown hooks, plus a new vitest config for their unit tests. Reuses the shared DEV_DATABASE_URL utility." },
+    { "dimension": "technical_risk", "reason": "No existing precedent for destructive clean-up against a live local database. Risk handled by a local-only host guard (including pg host/hostaddr query overrides), an E2E_KEEP_DATA opt-out, a single transaction with rollback, parameterised regex matching, connection/statement timeouts, and never-reject warning handling so the tidy-up cannot change test outcomes. Edge-case tests exist (names, decision, removal) and the repo's table-style access tests serve as a template, so no further edge-case bump applied." },
+    { "dimension": "file_change_estimate", "reason": "Diffstat reports 15 files (528 insertions, 38 deletions): roughly 7 new under tests/e2e/tidy plus vitest.config.ts, and 7 modified across tests/e2e, docs and .ai-run guides; 15 maps to XL on the actual-mode scale." },
+    { "dimension": "requirements_clarity", "reason": "Issue #39 states a clear goal; the only design choices (local-only guard, opt-out flag, before-and-after timing) were settled in the implementation without visible rework." }
+  ],
+  "red_flags_applied": [],
+  "split_recommendation": null,
+  "calibration_note": "Total 21 sits one above the M/L boundary. Bundled M example epmcdme-10203 (REST endpoint, 15) is smaller in file count and risk; this change's 15 files and destructive-data safety logic justify L. Borderline rule is neutral here (Technical Risk is L, not XL; not at or below M)."
+}
