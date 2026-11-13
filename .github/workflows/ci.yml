@@ -35,6 +35,8 @@ jobs:
       # Runs every unit, API, cross-service and portal test, and fails if coverage drops below the floor.
       - run: npm run test:coverage
       - run: npm test -w @griffin/integration-tests
+      # The browser journeys' tidy-up tests, including the check that every table is covered.
+      - run: npm test -w @griffin/e2e-tests
       - run: npm run build
       - run: npm audit --audit-level=high
 
