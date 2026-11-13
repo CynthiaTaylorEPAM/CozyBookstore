@@ -34,7 +34,7 @@ browser ──> gateway :8080  (login, routing table, serves built portal)
 | Incidents | `services/incidents` | 4003 | Monster incidents, wards, shop mood | `incidents` |
 | Shared library | `packages/shared` | | Auth guard, DB pool and migrations, errors, money, domain lists, catalog client, test helpers | none |
 | Cross-service tests | `tests/integration` | | Gateway + all services in one process | uses `griffin_test` |
-| Browser journeys | `tests/e2e` | | Playwright against the running shop | |
+| Browser journeys | `tests/e2e` | | Playwright against the running shop; a tidy-up (`tests/e2e/tidy`, Playwright `globalSetup`/`globalTeardown`) deletes the journeys' rows | tidy-up deletes from `catalog`, `patrons`, `incidents` in the local `griffin` DB only (`E2E_DATABASE_URL`); its tests use `griffin_test` |
 
 Source: `docs/architecture.md:9-16`, `AGENTS.md:20-24`.
 

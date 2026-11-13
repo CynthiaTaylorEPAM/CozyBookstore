@@ -136,7 +136,7 @@ Every pull request and every push to `main` (`.github/workflows/ci.yml`):
 
 | Job | Steps |
 |---|---|
-| **check** | Lint, typecheck, layers 1 to 4a with coverage, build, a scan of dependencies for known high-severity vulnerabilities |
+| **check** | Lint, typecheck, layers 1 to 4a with coverage, the tests for the journeys' tidy-up (including the check that it knows about every table), build, a scan of dependencies for known high-severity vulnerabilities |
 | **e2e** | Builds the Docker image, starts the whole shop with `docker compose up`, runs the journeys. If a journey fails, the report with screenshots is kept for download |
 
 Coverage has a floor: 90% of lines in `packages/shared`, 85% in each service, 70% in the portal. The floor stops coverage sliding backwards. It is not the goal; a test is worth having when it would catch a real mistake.

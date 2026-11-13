@@ -30,6 +30,7 @@ A service reads and writes only its own Postgres schema. To use another service'
 | Calling the catalog with a service-level or no token | Forward the caller's token so the catalog knows who acted (`services/patrons/src/app.ts:117`, `packages/shared/src/auth.ts:57`) |
 | A cross-schema foreign key | Store the id and copy title/price at the time (`services/patrons/src/app.ts:124`) |
 | Building a client inside a route | Inject it through `buildApp` deps (`services/patrons/src/app.ts:6-11`, `services/patrons/src/index.ts:9-10`) |
+| Copying the cross-schema SQL in `tests/e2e/tidy/remove.ts` into a service | Keep service SQL on its own schema. The tidy-up is test tooling, not a service: it only deletes journey-named rows, in one transaction, after `decideTidy` confirms the shop and database are `localhost`/`127.0.0.1` (`tests/e2e/tidy/tidy.ts::decideTidy`, `tests/e2e/tidy/remove.ts::removeJourneyRows`) |
 
 ---
 
@@ -42,6 +43,7 @@ Schema changes are new numbered files in that service's `migrations/`. Never edi
 | Adding a column to `001_create_tomes.sql` | A new `003_add_tome_reorder_level.sql` (`services/catalog/migrations/003_add_tome_reorder_level.sql:1-2`) |
 | A new column with no default on a table with demo rows | `NOT NULL DEFAULT ...` plus a `CHECK` so existing rows stay valid (`services/catalog/migrations/003_add_tome_reorder_level.sql:2`) |
 | Seed data in application code | Demo data as a migration (`services/catalog/migrations/002_seed_demo_tomes.sql`) |
+| A new table that leaves `tests/e2e/tidy/remove.test.ts` failing | A delete step in `removeJourneyRows` if a journey can create rows in it or it points at a tome, patron, sale or incident; otherwise list it in `NO_JOURNEY_DATA_TABLES` (`tests/e2e/tidy/remove.ts`) |
 
 ---
 

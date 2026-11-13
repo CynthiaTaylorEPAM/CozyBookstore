@@ -106,9 +106,9 @@ gh pr create --title "<plain sentence>" --body-file <description.md>
 
 | Problem | Fix |
 |---|---|
-| CI `check` job fails on tests locally passing | Run `npm run test:coverage` (coverage floors) and `npm test -w @griffin/integration-tests` as CI does (`.github/workflows/ci.yml:36-37`) |
-| CI `e2e` job fails | Download the `browser-test-report` artifact (`.github/workflows/ci.yml:63-70`); reproduce with `docker compose up --build` and `npm run test:e2e` |
-| `npm audit` fails in CI | A high-severity advisory in a dependency (`.github/workflows/ci.yml:39`); update the dependency on the branch |
+| CI `check` job fails on tests locally passing | Run `npm run test:coverage` (coverage floors), `npm test -w @griffin/integration-tests` and `npm test -w @griffin/e2e-tests` as CI does (`.github/workflows/ci.yml:36-39`) |
+| CI `e2e` job fails | Download the `browser-test-report` artifact (`.github/workflows/ci.yml:65-72`); reproduce with `docker compose up --build` and `npm run test:e2e` |
+| `npm audit` fails in CI | A high-severity advisory in a dependency (`.github/workflows/ci.yml:41`); update the dependency on the branch |
 | Branch behind `main` with conflicts | Merge `origin/main` into the branch (merge commits are the norm); do not force-push shared branches |
 | Two open PRs depend on each other | Merge one branch into the other and say why in the merge message (`91afa6e`) |
 | Pipeline working files appearing in `git status` | `.ai-run/sdlc-factory/` and `.ai-run/runs/` are gitignored (`.gitignore:15-16`); do not commit them |
