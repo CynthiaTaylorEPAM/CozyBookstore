@@ -4,56 +4,65 @@ The narrative behind The Gilded Griffin: who Mirabel is, what went wrong, why sh
 
 Read [purpose.md](purpose.md) first for the real-world goals, and [personas.md](personas.md) for the full cast.
 
-> **The trailer has been made.** The film, its narration script and the files it is built from are in [`trailer/`](../trailer/README.md). It follows the brief and the proposed shape below.
+> **The trailer has been made, and recut.** The film, its script and the files it is built from are in [`trailer/`](../trailer/README.md). The first cut (12 November 2026) followed the brief below. The second cut (14 November) is longer and plays as a teaser at the offsite; what changed is recorded under [The second cut](#the-second-cut).
 
 > **Status of this document.** The shop, the characters and the visual identity below are established in the codebase. The [trailer brief](#the-trailer-brief) records decisions made by the session owner. The parts marked **proposed** were written to fill gaps in the story and have not been confirmed. Change them freely.
 
 ## The trailer brief
 
-Decided by the session owner on 12 November 2026.
+Decided by the session owner on 12 November 2026, and revised on 14 November when the trailer became a teaser.
 
 | Question | Decision |
 |---|---|
-| Length | Under 3 minutes |
-| Where it plays | In the kickoff, at the start of the leadership session |
-| Voice | A narrator. Not Mirabel in the first person |
+| Length | About 4 minutes 30 seconds, and no more than 4 minutes 45 (first cut: under 3 minutes) |
+| Where it plays | At the leadership offsite, as a teaser for the dedicated session (first cut: in the kickoff of the session itself) |
+| Voice | A narrator tells the story. Mirabel speaks once, in her own voice, to read her request (first cut: narrator only) |
 | Feature to tease | The **bounty board** (backlog item 7) |
 | Format and tools | No preference. Whoever makes it may choose |
 | EPAM brand guidelines | Do not apply |
 | How EPAM appears | By name, inside the fiction |
-| How the factory appears | If it is shown at all, as an in-world metaphor, not as real tooling or screens |
+| How the factory appears | As an in-world metaphor, not as real tooling or screens |
 | What the room builds | The bounty board is built together, as a guided walkthrough. After that, attendees choose their own requests |
 
 What follows from these:
 
-- **Under 3 minutes, with room for the pictures to breathe.** The length was raised from 2 minutes so the visuals are not rushed and the audience gets a real sense of the shop's background. Spend the extra minute on the shop and Mirabel, and on pauses, not on more plot. Aim for about 300 words of narration, which leaves roughly a third of the running time without voice. The [shape below](#a-shape-for-the-trailer-proposed) has eight beats.
-- **It opens the session**, so it cannot assume the audience knows anything: not the shop, not Mirabel, not what a hyperfactory is. It must end by handing over to the room.
-- **A narrator** can speak about Mirabel with affection and can step outside the fiction for the real point. Characters' lines can still appear as quotes on screen or be read by the narrator.
-- **The bounty board is the hook.** The monster trouble should be the problem the trailer dwells on, and the last thing the audience hears should be the request they are about to build together.
-- **The ending has two parts**, matching the session: "first, together, the bounty board", then "after that, Mirabel's list is yours".
+- **It is a teaser, so it must stand on its own.** The audience may see it hours or days before the session. It cannot assume they know the shop, Mirabel or what a hyperfactory is, and it must leave them knowing what they will do when they arrive. It says "soon", not "today".
+- **A narrator** can speak about Mirabel with affection and can step outside the fiction for the real point. Mirabel's own voice is saved for the one moment that matters most: her request.
+- **The bounty board is the hook.** The monster trouble is the problem the trailer dwells on, and the request is asked for, never shown built. The film names the questions the room will settle without answering them.
+- **The ending has two parts**, matching the session: "first, together, the bounty board", then "after that, her list is yours".
+
+### The second cut
+
+Decided by the session owner on 14 November 2026.
+
+| Topic | Decision |
+|---|---|
+| The folk | Show more of the nine races: an orc book club, a gnome, a goblin, a fae and a dragonborn author join the elf, dwarf and halfling |
+| The monsters | Introduced early and fondly, through Mirabel's own book, *The Bookwyrm and Other Shelf Pests* |
+| The mimic | A happy story, told up front: it bit Sir Aldric, he gave five stars, and it now minds the cash box |
+| The dire incident | A **dust wraith** that comes up from the cellar when the flickering Cellar Seal goes out. This is what sends Pip running to the tavern |
+| Three things the ledger cannot tell her | Her **stock**, her **patrons**, her **monsters**. These are the three things chapter one delivers: a catalog, a guest book, an incident board |
+| Mirabel's ledger | Seen over her shoulder, so the writing is the right way up |
+| The Scribes' Guild | Given more weight. It stands for a competitor's traditional bid (see [The two layers](#the-two-layers)) |
+| Mirabel's voice | She reads her request and says what she wants from it: a price written down, the name of whoever takes the job, and the cost in her month-end figures |
+| Chapter two | Spelled out: the room takes the bounty board through all five stages, then chooses from the list |
 
 ### Time budget
 
-| Beat | Seconds | Words, about | What the extra time is for |
-|---|---|---|---|
-| The shop: the street, the window, the folk who come | 30 | 45 | Let the shop front and its patrons be seen before anyone speaks of trouble |
-| Mirabel: twenty years, the kitchen table, the ledger | 25 | 45 | Her history with the shop, and why she cares |
-| The trouble, ending on the mimic | 35 | 65 | Small troubles quickly, then time on the mimic and the dash to the tavern |
-| The old way: a year and a day | 10 | 20 | One line |
-| EPAM arrives, and the factory | 30 | 55 | The five stages, each given a moment |
-| Chapter one delivered: the real system | 20 | 35 | Hold on the landing page and the counter |
-| The handover: the bounty board, then your turn | 20 | 35 | A pause before the last line |
-| **Total** | **170** | **300** | |
+As built. About 570 words are spoken in 4 minutes 43 seconds, which leaves roughly a quarter of the film without voice.
 
-That leaves about 10 seconds spare under the 3 minute limit.
-
-A sample opening for the first beat (45 words):
-
-> *In the town of Emberhollow, third lantern past the fountain, there is a bookshop. It has stood since the Year of the Quiet Comet. Elves browse it for decades. Dwarves weep quietly in Poetry. Halflings leave crumbs in Cookery, and are forgiven, because they bring scones.*
-
-And for the second (44 words):
-
-> *For twenty years it has been kept by Mirabel Thistlewick, who had it from her aunt. She knows every book on its shelves and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.*
+| Beat | Starts | Seconds |
+|---|---|---|
+| The shop: the street, then inside, and the folk who come | 0:00 | 45 |
+| The pests, ending on the reformed mimic | 0:45 | 29 |
+| Mirabel: twenty years, the kitchen table, the ledger | 1:14 | 24 |
+| The trouble: stock, patrons, monsters, then the dust wraith and the dash to the tavern | 1:38 | 39 |
+| The traditional answer: the Scribes' Guild | 2:17 | 22 |
+| EPAM arrives, and the scriptorium | 2:39 | 36 |
+| Chapter one delivered: the real system | 3:15 | 19 |
+| The request, in Mirabel's voice, and the open questions | 3:34 | 31 |
+| Chapter two: the bounty board together, then your turn | 4:05 | 38 |
+| **Total** | | **283** |
 
 ## The story in one paragraph
 
@@ -69,6 +78,8 @@ The trailer has to hold both of these at once.
 | Her bookshop and its patrons, staff and monsters | A typical system we build: customers, products, orders, incidents, roles |
 | Her growing list of wants | A product backlog |
 | EPAM, engaged to build her system | EPAM Canada, engaged by clients to do the same |
+| The Scribes' Guild and its quotation: a dozen scribes, a year and a day, and a price that changes with every request | A competitor bringing a traditional approach to a bid |
+| Why Mirabel sent for EPAM instead: a small team and a scriptorium | What we bring to a bid that a traditional approach cannot |
 | The factory of agents | An SDLC hyperfactory: agents that take a feature request through elaboration, planning, development, testing and deployment |
 | The people directing the factory | The directors and above in the room, from delivery and account management |
 
@@ -112,7 +123,8 @@ Each of these is a real gap in the current system or a frustration from the pers
 
 When something dire gets into the shop, Mirabel sends Pip running to the tavern to find adventurers. The price is agreed in a doorway and remembered differently by each side. Nothing records who did the job or what it cost.
 
-- Last week a mimic posing as a signed first edition bit Sir Aldric. Adventurers were hired for 3 gold pieces. The mimic now works as the shop's cash box.
+- Last week a mimic posing as a signed first edition bit Sir Aldric. Adventurers were hired for 3 gold pieces. The mimic now works as the shop's cash box. Because that story ended happily, the trailer tells it early as a charming one and uses a different incident for the bounty:
+- In the trailer, the seal on the cellar door (the ward that has long been flickering) goes out, and a dust wraith comes up the stairs. It harms nobody, but it frightens the queue and makes everyone sneeze, and it is plainly a job for adventurers. Pip runs to the tavern. The demo data has a small dust wraith on the top shelves already; the trailer's is its dire cousin.
 - Bran Holloway, who leads the party that took the job, says: *"Three gold for a mimic is robbery. It had teeth on the inside."*
 - Mirabel's request, as written in the backlog: *"For a dire incident I want to post a bounty for adventurers."* Add a bounty in gold to an incident, record who claimed it, and include bounties paid in the owner's figures.
 
@@ -127,7 +139,7 @@ This part of the story did not exist before this document. A suggested version:
 - **Why EPAM.** They understood the shop before they talked about the system. And they did not bring a dozen scribes. They brought a small team and a factory: tireless agents that elaborate the request, plan the work, build it, test it and put it on the shelf, with people she trusts deciding what gets built and checking that it is right.
 - **What she got first.** The system as it stands today: a shop front for the public, a counter for her and Pip, the catalog, the guest book and the incident board. It works. Now she has a list.
 
-**Confirmed:** EPAM appears by name inside the fiction. The rest of this section is still a proposal.
+**Confirmed:** EPAM appears by name inside the fiction. The Scribes' Guild quotation is confirmed too, and matters: it is the competitor's traditional bid, and Mirabel chose EPAM because of what EPAM brought instead. The trailer adds one line to make the point: "Ask on Moonday; see it working by Fireday."
 
 ### The factory as a metaphor (proposed)
 
@@ -149,20 +161,19 @@ The current codebase is **the end of chapter one**: EPAM has delivered the first
 
 This framing matters because it makes the existing system part of the story rather than a contradiction of it, and makes the audience the heroes of the next act.
 
-## A shape for the trailer (proposed)
+## The shape of the trailer
 
-A starting point, not a script.
+As built in the second cut.
 
-1. **The shop.** Night, lanterns, the glowing window. Who comes here, and why they love it.
-2. **Mirabel.** At the kitchen table with tea and a ledger that does not add up.
-3. **The trouble.** A quick run of things going wrong: an empty shelf, a queue out of the door, a bookwyrm. Then the big one: the mimic, the bitten knight, and Pip sprinting to the tavern to haggle with adventurers.
-4. **The old way.** The Scribes' Guild quote: a year and a day.
-5. **The turn.** EPAM arrives. A small team, and a factory.
-6. **The factory.** Shown as a metaphor (see [above](#the-factory-as-a-metaphor-proposed)). A request goes in; questions, a plan, the work, the checking and the delivery come out. Fast, visible, checked by people.
+1. **The shop.** Night, lanterns, the glowing window. Then inside: every folk, ladders for the tall shelves, cushions for the low ones.
+2. **The pests.** Mirabel's own field guide: bookwyrm, poltergeist, ink imp. The mimic, the bitten knight, five stars, and the cash box.
+3. **Mirabel.** At the kitchen table with tea and a ledger that does not add up.
+4. **The trouble.** What the ledger cannot tell her about her stock, her patrons and her monsters. Then the dire one: the cellar seal goes out, a dust wraith rises, and Pip sprints to the tavern to haggle with adventurers. Nobody writes it down.
+5. **The traditional answer.** The Scribes' Guild quotation: a dozen scribes, a year and a day, and every change alters the price.
+6. **The turn, and the factory.** The Guild's answer and EPAM's, side by side. Then the scriptorium (see [above](#the-factory-as-a-metaphor-proposed)): a request goes in; questions, a plan, the work, the checking and the delivery come out. Fast, visible, checked by people.
 7. **Chapter one delivered.** The real system on screen: the landing page, the counter, the incident board.
-8. **The handover.** Mirabel has a list, and at the top of it: *"For a dire incident I want to post a bounty for adventurers."* The narrator turns to the audience: first we build this one together, then the rest of the list is yours.
-
-Beats 1 and 2 each get their own time and beat 4 is a single line, as in the [time budget](#time-budget).
+8. **The request.** Mirabel's list, and at the top of it, in her own voice: *"For a dire incident I want to post a bounty for adventurers."* The narrator asks who may post one, who may claim one, and what happens if two parties do.
+9. **Chapter two.** The narrator turns to the audience: soon, you run the scriptorium. First the bounty board together, through all five stages; then the rest of the list is yours.
 
 ## Tone
 
@@ -208,10 +219,11 @@ All from the landing page, the demo data or the personas.
 
 ## Decided for the trailer
 
-Settled by the session owner on 12 November 2026, when the trailer was made.
+Settled by the session owner on 12 November 2026, when the trailer was made, and on 14 November, when it was recut.
 
 - **The factory is shown**, as the scriptorium of enchanted quills described [above](#the-factory-as-a-metaphor-proposed), with three people from EPAM walking the floor and sending a page back.
-- **Who appears.** Mirabel, Pip and Sir Aldric. An adventurer is seen in the tavern doorway but is not named; Bran Holloway is kept for the session.
-- **Format and tools.** A finished animated film in the shop's own look, with a recorded narrator and captions. See [`trailer/README.md`](../trailer/README.md).
+- **Who appears.** Mirabel, Pip and Sir Aldric by name. Grusha Ironjaw is quoted. An adventurer is seen in the tavern doorway but is not named; Bran Holloway is kept for the session.
+- **Format and tools.** A finished animated film in the shop's own look, with a recorded narrator, Mirabel's voice for her request, and captions. See [`trailer/README.md`](../trailer/README.md).
+- **Not yet fixed:** when the session happens relative to the teaser. The film says "soon" so that it works either way.
 
-The sections marked **proposed** above (why Mirabel engaged EPAM, the scriptorium, chapter one and chapter two) are now used by the trailer as written.
+The sections marked **proposed** above (why Mirabel engaged EPAM, the scriptorium, chapter one and chapter two) are used by the trailer as written.

@@ -1,0 +1,252 @@
+{
+ "id": "pests",
+ "voice": "narrator",
+ "text": "It is also, now and then, beset. Bookwyrms eat the stock. Poltergeists reshelve by colour. Ink imps add rude footnotes. And last week, a signed first edition bit a knight. Not a book. A mimic. The knight gave the shop five stars. The mimic now minds the cash box.",
+ "words": [
+  {
+   "w": "It",
+   "start": 0,
+   "end": 0.163
+  },
+  {
+   "w": "is",
+   "start": 0.209,
+   "end": 0.279
+  },
+  {
+   "w": "also,",
+   "start": 0.325,
+   "end": 0.72
+  },
+  {
+   "w": "now",
+   "start": 0.755,
+   "end": 0.929
+  },
+  {
+   "w": "and",
+   "start": 0.975,
+   "end": 1.045
+  },
+  {
+   "w": "then,",
+   "start": 1.091,
+   "end": 1.347
+  },
+  {
+   "w": "beset.",
+   "start": 1.393,
+   "end": 2.159
+  },
+  {
+   "w": "Bookwyrms",
+   "start": 2.647,
+   "end": 3.332
+  },
+  {
+   "w": "eat",
+   "start": 3.425,
+   "end": 3.622
+  },
+  {
+   "w": "the",
+   "start": 3.669,
+   "end": 3.738
+  },
+  {
+   "w": "stock.",
+   "start": 3.808,
+   "end": 4.365
+  },
+  {
+   "w": "Poltergeists",
+   "start": 4.528,
+   "end": 5.433
+  },
+  {
+   "w": "reshelve",
+   "start": 5.561,
+   "end": 6.2
+  },
+  {
+   "w": "by",
+   "start": 6.246,
+   "end": 6.397
+  },
+  {
+   "w": "colour.",
+   "start": 6.49,
+   "end": 7.082
+  },
+  {
+   "w": "Ink",
+   "start": 7.442,
+   "end": 7.732
+  },
+  {
+   "w": "imps",
+   "start": 7.814,
+   "end": 8.173
+  },
+  {
+   "w": "add",
+   "start": 8.301,
+   "end": 8.522
+  },
+  {
+   "w": "rude",
+   "start": 8.615,
+   "end": 8.928
+  },
+  {
+   "w": "footnotes.",
+   "start": 8.975,
+   "end": 9.799
+  },
+  {
+   "w": "And",
+   "start": 10.159,
+   "end": 10.321
+  },
+  {
+   "w": "last",
+   "start": 10.414,
+   "end": 10.681
+  },
+  {
+   "w": "week,",
+   "start": 10.751,
+   "end": 11.053
+  },
+  {
+   "w": "a",
+   "start": 11.076,
+   "end": 11.146
+  },
+  {
+   "w": "signed",
+   "start": 11.273,
+   "end": 11.656
+  },
+  {
+   "w": "first",
+   "start": 11.738,
+   "end": 12.028
+  },
+  {
+   "w": "edition",
+   "start": 12.098,
+   "end": 12.516
+  },
+  {
+   "w": "bit",
+   "start": 12.597,
+   "end": 12.771
+  },
+  {
+   "w": "a",
+   "start": 12.817,
+   "end": 12.841
+  },
+  {
+   "w": "knight.",
+   "start": 12.922,
+   "end": 13.433
+  },
+  {
+   "w": "Not",
+   "start": 14.002,
+   "end": 14.234
+  },
+  {
+   "w": "a",
+   "start": 14.28,
+   "end": 14.303
+  },
+  {
+   "w": "book.",
+   "start": 14.373,
+   "end": 14.814
+  },
+  {
+   "w": "A",
+   "start": 14.895,
+   "end": 14.988
+  },
+  {
+   "w": "mimic.",
+   "start": 15.081,
+   "end": 15.673
+  },
+  {
+   "w": "The",
+   "start": 16.103,
+   "end": 16.219
+  },
+  {
+   "w": "knight",
+   "start": 16.288,
+   "end": 16.497
+  },
+  {
+   "w": "gave",
+   "start": 16.544,
+   "end": 16.753
+  },
+  {
+   "w": "the",
+   "start": 16.788,
+   "end": 16.857
+  },
+  {
+   "w": "shop",
+   "start": 16.904,
+   "end": 17.194
+  },
+  {
+   "w": "five",
+   "start": 17.322,
+   "end": 17.67
+  },
+  {
+   "w": "stars.",
+   "start": 17.716,
+   "end": 18.378
+  },
+  {
+   "w": "The",
+   "start": 18.692,
+   "end": 18.796
+  },
+  {
+   "w": "mimic",
+   "start": 18.843,
+   "end": 19.156
+  },
+  {
+   "w": "now",
+   "start": 19.261,
+   "end": 19.47
+  },
+  {
+   "w": "minds",
+   "start": 19.551,
+   "end": 19.888
+  },
+  {
+   "w": "the",
+   "start": 19.934,
+   "end": 20.004
+  },
+  {
+   "w": "cash",
+   "start": 20.05,
+   "end": 20.306
+  },
+  {
+   "w": "box.",
+   "start": 20.34,
+   "end": 21.083
+  }
+ ]
+}

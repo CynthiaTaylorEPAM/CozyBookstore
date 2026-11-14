@@ -1,0 +1,107 @@
+{
+ "id": "request-3",
+ "voice": "narrator",
+ "text": "Who may post a bounty? Who may claim one? What if two parties do? Those pages are not written yet.",
+ "words": [
+  {
+   "w": "Who",
+   "start": 0,
+   "end": 0.197
+  },
+  {
+   "w": "may",
+   "start": 0.267,
+   "end": 0.383
+  },
+  {
+   "w": "post",
+   "start": 0.453,
+   "end": 0.72
+  },
+  {
+   "w": "a",
+   "start": 0.766,
+   "end": 0.801
+  },
+  {
+   "w": "bounty?",
+   "start": 0.848,
+   "end": 1.451
+  },
+  {
+   "w": "Who",
+   "start": 1.649,
+   "end": 1.834
+  },
+  {
+   "w": "may",
+   "start": 1.881,
+   "end": 1.997
+  },
+  {
+   "w": "claim",
+   "start": 2.067,
+   "end": 2.322
+  },
+  {
+   "w": "one?",
+   "start": 2.426,
+   "end": 2.752
+  },
+  {
+   "w": "What",
+   "start": 3.065,
+   "end": 3.297
+  },
+  {
+   "w": "if",
+   "start": 3.367,
+   "end": 3.448
+  },
+  {
+   "w": "two",
+   "start": 3.518,
+   "end": 3.68
+  },
+  {
+   "w": "parties",
+   "start": 3.762,
+   "end": 4.203
+  },
+  {
+   "w": "do?",
+   "start": 4.272,
+   "end": 4.748
+  },
+  {
+   "w": "Those",
+   "start": 5.317,
+   "end": 5.608
+  },
+  {
+   "w": "pages",
+   "start": 5.654,
+   "end": 6.072
+  },
+  {
+   "w": "are",
+   "start": 6.142,
+   "end": 6.281
+  },
+  {
+   "w": "not",
+   "start": 6.316,
+   "end": 6.42
+  },
+  {
+   "w": "written",
+   "start": 6.455,
+   "end": 6.734
+  },
+  {
+   "w": "yet.",
+   "start": 6.78,
+   "end": 7.43
+  }
+ ]
+}

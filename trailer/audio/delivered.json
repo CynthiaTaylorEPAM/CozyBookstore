@@ -1,196 +1,217 @@
 {
  "id": "delivered",
- "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. The catalog, the guest book, the incident board. It works. And now, Mirabel has a list of what she needs next.",
+ "voice": "narrator",
+ "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. A catalog for the tomes, a guest book for the patrons, an incident board for the monsters. It works. And now, Mirabel has a list.",
  "words": [
   {
    "w": "Chapter",
    "start": 0,
-   "end": 0.441
+   "end": 0.418
   },
   {
    "w": "one",
-   "start": 0.534,
-   "end": 0.789
+   "start": 0.499,
+   "end": 0.755
   },
   {
    "w": "is",
-   "start": 0.824,
-   "end": 0.894
+   "start": 0.789,
+   "end": 0.871
   },
   {
    "w": "already",
-   "start": 0.964,
-   "end": 1.265
+   "start": 0.917,
+   "end": 1.231
   },
   {
    "w": "written.",
-   "start": 1.3,
-   "end": 1.846
+   "start": 1.277,
+   "end": 1.858
   },
   {
    "w": "A",
-   "start": 2.113,
-   "end": 2.206
+   "start": 2.287,
+   "end": 2.38
   },
   {
    "w": "shop",
-   "start": 2.299,
-   "end": 2.554
+   "start": 2.473,
+   "end": 2.705
   },
   {
    "w": "front",
-   "start": 2.635,
-   "end": 2.902
+   "start": 2.786,
+   "end": 3.03
   },
   {
    "w": "for",
-   "start": 2.972,
-   "end": 3.077
+   "start": 3.1,
+   "end": 3.193
   },
   {
    "w": "the",
-   "start": 3.111,
-   "end": 3.181
+   "start": 3.239,
+   "end": 3.309
   },
   {
    "w": "town.",
-   "start": 3.228,
-   "end": 3.785
+   "start": 3.355,
+   "end": 3.959
   },
   {
    "w": "A",
-   "start": 3.947,
-   "end": 4.029
+   "start": 4.319,
+   "end": 4.412
   },
   {
    "w": "counter",
-   "start": 4.122,
-   "end": 4.505
+   "start": 4.505,
+   "end": 4.876
   },
   {
    "w": "for",
-   "start": 4.551,
-   "end": 4.644
+   "start": 4.911,
+   "end": 5.004
   },
   {
    "w": "Mirabel",
-   "start": 4.725,
-   "end": 5.224
+   "start": 5.074,
+   "end": 5.561
   },
   {
    "w": "and",
-   "start": 5.294,
-   "end": 5.364
+   "start": 5.631,
+   "end": 5.712
   },
   {
    "w": "Pip.",
-   "start": 5.457,
-   "end": 5.933
+   "start": 5.793,
+   "end": 6.339
   },
   {
-   "w": "The",
-   "start": 6.13,
-   "end": 6.235
+   "w": "A",
+   "start": 6.606,
+   "end": 6.699
   },
   {
-   "w": "catalog,",
-   "start": 6.304,
-   "end": 7.024
+   "w": "catalog",
+   "start": 6.78,
+   "end": 7.291
   },
   {
-   "w": "the",
-   "start": 7.152,
-   "end": 7.245
-  },
-  {
-   "w": "guest",
-   "start": 7.314,
-   "end": 7.558
-  },
-  {
-   "w": "book,",
-   "start": 7.628,
-   "end": 8.046
+   "w": "for",
+   "start": 7.361,
+   "end": 7.454
   },
   {
    "w": "the",
-   "start": 8.243,
-   "end": 8.348
+   "start": 7.5,
+   "end": 7.57
   },
   {
-   "w": "incident",
-   "start": 8.429,
-   "end": 8.882
-  },
-  {
-   "w": "board.",
-   "start": 8.951,
-   "end": 9.462
-  },
-  {
-   "w": "It",
-   "start": 9.95,
-   "end": 10.101
-  },
-  {
-   "w": "works.",
-   "start": 10.147,
-   "end": 10.751
-  },
-  {
-   "w": "And",
-   "start": 11.18,
-   "end": 11.343
-  },
-  {
-   "w": "now,",
-   "start": 11.436,
-   "end": 11.831
-  },
-  {
-   "w": "Mirabel",
-   "start": 11.958,
-   "end": 12.434
-  },
-  {
-   "w": "has",
-   "start": 12.504,
-   "end": 12.62
+   "w": "tomes,",
+   "start": 7.605,
+   "end": 8.278
   },
   {
    "w": "a",
-   "start": 12.666,
-   "end": 12.69
+   "start": 8.371,
+   "end": 8.452
   },
   {
-   "w": "list",
-   "start": 12.771,
-   "end": 13.026
+   "w": "guest",
+   "start": 8.533,
+   "end": 8.766
   },
   {
-   "w": "of",
-   "start": 13.073,
-   "end": 13.131
+   "w": "book",
+   "start": 8.835,
+   "end": 9.021
   },
   {
-   "w": "what",
-   "start": 13.201,
-   "end": 13.34
+   "w": "for",
+   "start": 9.091,
+   "end": 9.172
   },
   {
-   "w": "she",
-   "start": 13.375,
-   "end": 13.479
+   "w": "the",
+   "start": 9.218,
+   "end": 9.288
   },
   {
-   "w": "needs",
-   "start": 13.56,
-   "end": 13.816
+   "w": "patrons,",
+   "start": 9.323,
+   "end": 10.101
   },
   {
-   "w": "next.",
-   "start": 13.886,
-   "end": 14.907
+   "w": "an",
+   "start": 10.461,
+   "end": 10.623
+  },
+  {
+   "w": "incident",
+   "start": 10.693,
+   "end": 11.111
+  },
+  {
+   "w": "board",
+   "start": 11.18,
+   "end": 11.471
+  },
+  {
+   "w": "for",
+   "start": 11.517,
+   "end": 11.61
+  },
+  {
+   "w": "the",
+   "start": 11.645,
+   "end": 11.714
+  },
+  {
+   "w": "monsters.",
+   "start": 11.749,
+   "end": 12.539
+  },
+  {
+   "w": "It",
+   "start": 13.212,
+   "end": 13.375
+  },
+  {
+   "w": "works.",
+   "start": 13.421,
+   "end": 14.014
+  },
+  {
+   "w": "And",
+   "start": 14.095,
+   "end": 14.257
+  },
+  {
+   "w": "now,",
+   "start": 14.339,
+   "end": 14.699
+  },
+  {
+   "w": "Mirabel",
+   "start": 14.768,
+   "end": 15.244
+  },
+  {
+   "w": "has",
+   "start": 15.314,
+   "end": 15.43
+  },
+  {
+   "w": "a",
+   "start": 15.476,
+   "end": 15.5
+  },
+  {
+   "w": "list.",
+   "start": 15.569,
+   "end": 16.44
   }
  ]
 }

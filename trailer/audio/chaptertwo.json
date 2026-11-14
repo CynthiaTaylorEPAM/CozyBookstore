@@ -1,0 +1,357 @@
+{
+ "id": "chaptertwo",
+ "voice": "narrator",
+ "text": "That is chapter two, and you will write it. Soon, you run the scriptorium, and you need not be an engineer to do it. First, together, the bounty board: you answer the questions, approve the plan, watch it written, read it back, and see it on Mirabel's shelf. After that, her list is yours. Discounts for her regulars. A lending library. A second clerk. Choose one, and send it through.",
+ "words": [
+  {
+   "w": "That",
+   "start": 0,
+   "end": 0.232
+  },
+  {
+   "w": "is",
+   "start": 0.302,
+   "end": 0.372
+  },
+  {
+   "w": "chapter",
+   "start": 0.418,
+   "end": 0.766
+  },
+  {
+   "w": "two,",
+   "start": 0.813,
+   "end": 1.289
+  },
+  {
+   "w": "and",
+   "start": 1.416,
+   "end": 1.567
+  },
+  {
+   "w": "you",
+   "start": 1.637,
+   "end": 1.707
+  },
+  {
+   "w": "will",
+   "start": 1.741,
+   "end": 1.869
+  },
+  {
+   "w": "write",
+   "start": 1.904,
+   "end": 2.194
+  },
+  {
+   "w": "it.",
+   "start": 2.229,
+   "end": 2.566
+  },
+  {
+   "w": "Soon,",
+   "start": 3.053,
+   "end": 3.413
+  },
+  {
+   "w": "you",
+   "start": 3.448,
+   "end": 3.518
+  },
+  {
+   "w": "run",
+   "start": 3.599,
+   "end": 3.773
+  },
+  {
+   "w": "the",
+   "start": 3.808,
+   "end": 3.878
+  },
+  {
+   "w": "scriptorium,",
+   "start": 3.913,
+   "end": 4.795
+  },
+  {
+   "w": "and",
+   "start": 4.876,
+   "end": 5.027
+  },
+  {
+   "w": "you",
+   "start": 5.097,
+   "end": 5.166
+  },
+  {
+   "w": "need",
+   "start": 5.236,
+   "end": 5.422
+  },
+  {
+   "w": "not",
+   "start": 5.468,
+   "end": 5.584
+  },
+  {
+   "w": "be",
+   "start": 5.631,
+   "end": 5.712
+  },
+  {
+   "w": "an",
+   "start": 5.759,
+   "end": 5.817
+  },
+  {
+   "w": "engineer",
+   "start": 5.886,
+   "end": 6.351
+  },
+  {
+   "w": "to",
+   "start": 6.42,
+   "end": 6.478
+  },
+  {
+   "w": "do",
+   "start": 6.56,
+   "end": 6.687
+  },
+  {
+   "w": "it.",
+   "start": 6.78,
+   "end": 7.082
+  },
+  {
+   "w": "First,",
+   "start": 7.57,
+   "end": 8.139
+  },
+  {
+   "w": "together,",
+   "start": 8.208,
+   "end": 8.777
+  },
+  {
+   "w": "the",
+   "start": 8.812,
+   "end": 8.905
+  },
+  {
+   "w": "bounty",
+   "start": 8.975,
+   "end": 9.3
+  },
+  {
+   "w": "board:",
+   "start": 9.346,
+   "end": 9.845
+  },
+  {
+   "w": "you",
+   "start": 10.275,
+   "end": 10.368
+  },
+  {
+   "w": "answer",
+   "start": 10.472,
+   "end": 10.739
+  },
+  {
+   "w": "the",
+   "start": 10.786,
+   "end": 10.855
+  },
+  {
+   "w": "questions,",
+   "start": 10.902,
+   "end": 11.633
+  },
+  {
+   "w": "approve",
+   "start": 11.68,
+   "end": 12.109
+  },
+  {
+   "w": "the",
+   "start": 12.144,
+   "end": 12.214
+  },
+  {
+   "w": "plan,",
+   "start": 12.26,
+   "end": 12.794
+  },
+  {
+   "w": "watch",
+   "start": 12.922,
+   "end": 13.201
+  },
+  {
+   "w": "it",
+   "start": 13.27,
+   "end": 13.34
+  },
+  {
+   "w": "written,",
+   "start": 13.387,
+   "end": 14.037
+  },
+  {
+   "w": "read",
+   "start": 14.304,
+   "end": 14.548
+  },
+  {
+   "w": "it",
+   "start": 14.594,
+   "end": 14.664
+  },
+  {
+   "w": "back,",
+   "start": 14.733,
+   "end": 15.209
+  },
+  {
+   "w": "and",
+   "start": 15.256,
+   "end": 15.418
+  },
+  {
+   "w": "see",
+   "start": 15.488,
+   "end": 15.662
+  },
+  {
+   "w": "it",
+   "start": 15.697,
+   "end": 15.767
+  },
+  {
+   "w": "on",
+   "start": 15.813,
+   "end": 15.883
+  },
+  {
+   "w": "Mirabel's",
+   "start": 15.952,
+   "end": 16.498
+  },
+  {
+   "w": "shelf.",
+   "start": 16.521,
+   "end": 17.148
+  },
+  {
+   "w": "After",
+   "start": 17.822,
+   "end": 18.135
+  },
+  {
+   "w": "that,",
+   "start": 18.182,
+   "end": 18.611
+  },
+  {
+   "w": "her",
+   "start": 18.692,
+   "end": 18.82
+  },
+  {
+   "w": "list",
+   "start": 18.89,
+   "end": 19.11
+  },
+  {
+   "w": "is",
+   "start": 19.18,
+   "end": 19.284
+  },
+  {
+   "w": "yours.",
+   "start": 19.354,
+   "end": 19.993
+  },
+  {
+   "w": "Discounts",
+   "start": 20.26,
+   "end": 20.84
+  },
+  {
+   "w": "for",
+   "start": 20.875,
+   "end": 20.98
+  },
+  {
+   "w": "her",
+   "start": 21.026,
+   "end": 21.107
+  },
+  {
+   "w": "regulars.",
+   "start": 21.189,
+   "end": 21.897
+  },
+  {
+   "w": "A",
+   "start": 22.094,
+   "end": 22.175
+  },
+  {
+   "w": "lending",
+   "start": 22.268,
+   "end": 22.628
+  },
+  {
+   "w": "library.",
+   "start": 22.698,
+   "end": 23.394
+  },
+  {
+   "w": "A",
+   "start": 23.661,
+   "end": 23.743
+  },
+  {
+   "w": "second",
+   "start": 23.847,
+   "end": 24.207
+  },
+  {
+   "w": "clerk.",
+   "start": 24.3,
+   "end": 24.857
+  },
+  {
+   "w": "Choose",
+   "start": 25.089,
+   "end": 25.449
+  },
+  {
+   "w": "one,",
+   "start": 25.496,
+   "end": 25.774
+  },
+  {
+   "w": "and",
+   "start": 25.798,
+   "end": 25.949
+  },
+  {
+   "w": "send",
+   "start": 26.018,
+   "end": 26.216
+  },
+  {
+   "w": "it",
+   "start": 26.285,
+   "end": 26.355
+  },
+  {
+   "w": "through.",
+   "start": 26.39,
+   "end": 27.168
+  }
+ ]
+}

@@ -1,326 +1,367 @@
 {
  "id": "factory",
- "text": "So Mirabel sent for EPAM. They did not bring a dozen scribes. They brought a small team, and a scriptorium that never sleeps. One quill asks the questions she had not thought of. One draws up the plan. Several write at once. One reads every page back. And one carries the finished work to the shelf. The quills are tireless. The judgement is human.",
+ "voice": "narrator",
+ "text": "So Mirabel sent for EPAM. They did not bring a dozen scribes. They brought a small team, and a scriptorium that never sleeps. Ask on Moonday; see it working by Fireday. One quill asks the questions she had not thought of. One draws up the plan. Several write at once. One reads every page back. And one carries the finished work to the shelf. The quills are tireless. The judgement is human.",
  "words": [
   {
    "w": "So",
    "start": 0,
-   "end": 0.197
+   "end": 0.209
   },
   {
    "w": "Mirabel",
-   "start": 0.279,
-   "end": 0.755
+   "start": 0.29,
+   "end": 0.778
   },
   {
    "w": "sent",
-   "start": 0.848,
-   "end": 1.115
+   "start": 0.871,
+   "end": 1.08
   },
   {
    "w": "for",
-   "start": 1.161,
-   "end": 1.265
+   "start": 1.126,
+   "end": 1.219
   },
   {
    "w": "EPAM.",
-   "start": 1.335,
-   "end": 2.067
+   "start": 1.289,
+   "end": 2.032
   },
   {
    "w": "They",
-   "start": 2.554,
-   "end": 2.717
+   "start": 2.461,
+   "end": 2.612
   },
   {
    "w": "did",
-   "start": 2.763,
-   "end": 2.868
+   "start": 2.659,
+   "end": 2.775
   },
   {
    "w": "not",
-   "start": 2.914,
-   "end": 3.019
+   "start": 2.821,
+   "end": 2.949
   },
   {
    "w": "bring",
-   "start": 3.053,
-   "end": 3.239
+   "start": 2.984,
+   "end": 3.193
   },
   {
    "w": "a",
-   "start": 3.286,
-   "end": 3.309
+   "start": 3.239,
+   "end": 3.274
   },
   {
    "w": "dozen",
-   "start": 3.379,
-   "end": 3.715
+   "start": 3.344,
+   "end": 3.68
   },
   {
    "w": "scribes.",
-   "start": 3.808,
-   "end": 4.586
+   "start": 3.762,
+   "end": 4.54
   },
   {
    "w": "They",
-   "start": 4.748,
-   "end": 4.911
+   "start": 4.772,
+   "end": 4.923
   },
   {
    "w": "brought",
-   "start": 4.946,
-   "end": 5.178
+   "start": 4.957,
+   "end": 5.19
   },
   {
    "w": "a",
-   "start": 5.213,
-   "end": 5.236
+   "start": 5.224,
+   "end": 5.248
   },
   {
    "w": "small",
-   "start": 5.283,
-   "end": 5.608
+   "start": 5.294,
+   "end": 5.619
   },
   {
    "w": "team,",
    "start": 5.689,
-   "end": 6.258
+   "end": 6.153
   },
   {
    "w": "and",
-   "start": 6.385,
-   "end": 6.536
+   "start": 6.246,
+   "end": 6.397
   },
   {
    "w": "a",
-   "start": 6.583,
-   "end": 6.606
+   "start": 6.467,
+   "end": 6.49
   },
   {
    "w": "scriptorium",
-   "start": 6.653,
-   "end": 7.477
+   "start": 6.536,
+   "end": 7.326
   },
   {
    "w": "that",
-   "start": 7.558,
-   "end": 7.697
+   "start": 7.372,
+   "end": 7.5
   },
   {
    "w": "never",
-   "start": 7.744,
-   "end": 7.941
+   "start": 7.546,
+   "end": 7.767
   },
   {
    "w": "sleeps.",
-   "start": 8.011,
-   "end": 8.696
+   "start": 7.837,
+   "end": 8.51
+  },
+  {
+   "w": "Ask",
+   "start": 9.079,
+   "end": 9.462
+  },
+  {
+   "w": "on",
+   "start": 9.532,
+   "end": 9.625
+  },
+  {
+   "w": "Moonday;",
+   "start": 9.706,
+   "end": 10.426
+  },
+  {
+   "w": "see",
+   "start": 10.565,
+   "end": 10.774
+  },
+  {
+   "w": "it",
+   "start": 10.809,
+   "end": 10.879
+  },
+  {
+   "w": "working",
+   "start": 10.925,
+   "end": 11.297
+  },
+  {
+   "w": "by",
+   "start": 11.366,
+   "end": 11.494
+  },
+  {
+   "w": "Fireday.",
+   "start": 11.587,
+   "end": 12.469
   },
   {
    "w": "One",
-   "start": 9.369,
-   "end": 9.648
+   "start": 13.038,
+   "end": 13.293
   },
   {
    "w": "quill",
-   "start": 9.718,
-   "end": 10.054
+   "start": 13.363,
+   "end": 13.677
   },
   {
    "w": "asks",
-   "start": 10.159,
-   "end": 10.553
+   "start": 13.769,
+   "end": 14.164
   },
   {
    "w": "the",
-   "start": 10.623,
-   "end": 10.693
+   "start": 14.234,
+   "end": 14.303
   },
   {
    "w": "questions",
-   "start": 10.762,
-   "end": 11.262
+   "start": 14.35,
+   "end": 14.837
   },
   {
    "w": "she",
-   "start": 11.308,
-   "end": 11.413
+   "start": 14.884,
+   "end": 14.988
   },
   {
    "w": "had",
-   "start": 11.482,
-   "end": 11.575
+   "start": 15.035,
+   "end": 15.116
   },
   {
    "w": "not",
-   "start": 11.622,
-   "end": 11.738
+   "start": 15.162,
+   "end": 15.29
   },
   {
    "w": "thought",
-   "start": 11.784,
-   "end": 12.051
+   "start": 15.337,
+   "end": 15.615
   },
   {
    "w": "of.",
-   "start": 12.121,
-   "end": 12.492
+   "start": 15.662,
+   "end": 15.987
   },
   {
    "w": "One",
-   "start": 12.98,
-   "end": 13.235
+   "start": 16.556,
+   "end": 16.811
   },
   {
    "w": "draws",
-   "start": 13.27,
-   "end": 13.548
+   "start": 16.846,
+   "end": 17.159
   },
   {
    "w": "up",
-   "start": 13.595,
-   "end": 13.711
+   "start": 17.206,
+   "end": 17.322
   },
   {
    "w": "the",
-   "start": 13.757,
-   "end": 13.827
+   "start": 17.368,
+   "end": 17.438
   },
   {
    "w": "plan.",
-   "start": 13.874,
-   "end": 14.442
+   "start": 17.484,
+   "end": 18.065
   },
   {
    "w": "Several",
-   "start": 14.675,
-   "end": 15.069
-  },
-  {
-   "w": "write",
-   "start": 15.116,
-   "end": 15.418
-  },
-  {
-   "w": "at",
-   "start": 15.441,
-   "end": 15.511
-  },
-  {
-   "w": "once.",
-   "start": 15.592,
-   "end": 16.161
-  },
-  {
-   "w": "One",
-   "start": 16.358,
-   "end": 16.614
-  },
-  {
-   "w": "reads",
-   "start": 16.66,
-   "end": 16.915
-  },
-  {
-   "w": "every",
-   "start": 16.997,
-   "end": 17.287
-  },
-  {
-   "w": "page",
-   "start": 17.357,
-   "end": 17.693
-  },
-  {
-   "w": "back.",
-   "start": 17.763,
-   "end": 18.262
-  },
-  {
-   "w": "And",
-   "start": 18.459,
+   "start": 18.262,
    "end": 18.622
   },
   {
+   "w": "write",
+   "start": 18.657,
+   "end": 18.912
+  },
+  {
+   "w": "at",
+   "start": 18.936,
+   "end": 19.005
+  },
+  {
+   "w": "once.",
+   "start": 19.087,
+   "end": 19.609
+  },
+  {
+   "w": "One",
+   "start": 19.841,
+   "end": 20.085
+  },
+  {
+   "w": "reads",
+   "start": 20.132,
+   "end": 20.433
+  },
+  {
+   "w": "every",
+   "start": 20.503,
+   "end": 20.747
+  },
+  {
+   "w": "page",
+   "start": 20.817,
+   "end": 21.153
+  },
+  {
+   "w": "back.",
+   "start": 21.2,
+   "end": 21.699
+  },
+  {
+   "w": "And",
+   "start": 21.861,
+   "end": 21.989
+  },
+  {
    "w": "one",
-   "start": 18.715,
-   "end": 18.924
+   "start": 22.082,
+   "end": 22.256
   },
   {
    "w": "carries",
-   "start": 18.97,
-   "end": 19.377
+   "start": 22.303,
+   "end": 22.674
   },
   {
    "w": "the",
-   "start": 19.423,
-   "end": 19.493
+   "start": 22.721,
+   "end": 22.79
   },
   {
    "w": "finished",
-   "start": 19.539,
-   "end": 19.864
+   "start": 22.837,
+   "end": 23.185
   },
   {
    "w": "work",
-   "start": 19.911,
-   "end": 20.213
+   "start": 23.231,
+   "end": 23.51
   },
   {
    "w": "to",
-   "start": 20.282,
-   "end": 20.34
+   "start": 23.556,
+   "end": 23.615
   },
   {
    "w": "the",
-   "start": 20.422,
-   "end": 20.491
+   "start": 23.696,
+   "end": 23.765
   },
   {
    "w": "shelf.",
-   "start": 20.538,
-   "end": 21.165
+   "start": 23.8,
+   "end": 24.416
   },
   {
    "w": "The",
-   "start": 21.594,
-   "end": 21.722
+   "start": 25.089,
+   "end": 25.205
   },
   {
    "w": "quills",
-   "start": 21.792,
-   "end": 22.268
+   "start": 25.252,
+   "end": 25.623
   },
   {
    "w": "are",
-   "start": 22.337,
-   "end": 22.488
+   "start": 25.658,
+   "end": 25.739
   },
   {
    "w": "tireless.",
-   "start": 22.523,
-   "end": 23.382
+   "start": 25.762,
+   "end": 26.494
   },
   {
    "w": "The",
-   "start": 23.742,
-   "end": 23.858
+   "start": 26.622,
+   "end": 26.749
   },
   {
    "w": "judgement",
-   "start": 23.939,
-   "end": 24.439
+   "start": 26.819,
+   "end": 27.225
   },
   {
    "w": "is",
-   "start": 24.508,
-   "end": 24.59
+   "start": 27.272,
+   "end": 27.353
   },
   {
    "w": "human.",
-   "start": 24.671,
-   "end": 25.867
+   "start": 27.423,
+   "end": 28.328
   }
  ]
 }

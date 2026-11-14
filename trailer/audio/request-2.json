@@ -1,0 +1,202 @@
+{
+ "id": "request-2",
+ "voice": "mirabel",
+ "text": "For a dire incident, I want to post a bounty for adventurers. A price, written down before anyone draws a sword. The name of whoever takes the job. And what it cost me, in my figures at month's end.",
+ "words": [
+  {
+   "w": "For",
+   "start": 0,
+   "end": 0.186
+  },
+  {
+   "w": "a",
+   "start": 0.232,
+   "end": 0.255
+  },
+  {
+   "w": "dire",
+   "start": 0.302,
+   "end": 0.639
+  },
+  {
+   "w": "incident,",
+   "start": 0.685,
+   "end": 1.161
+  },
+  {
+   "w": "I",
+   "start": 1.196,
+   "end": 1.242
+  },
+  {
+   "w": "want",
+   "start": 1.347,
+   "end": 1.509
+  },
+  {
+   "w": "to",
+   "start": 1.533,
+   "end": 1.579
+  },
+  {
+   "w": "post",
+   "start": 1.625,
+   "end": 1.858
+  },
+  {
+   "w": "a",
+   "start": 1.892,
+   "end": 1.916
+  },
+  {
+   "w": "bounty",
+   "start": 1.997,
+   "end": 2.426
+  },
+  {
+   "w": "for",
+   "start": 2.485,
+   "end": 2.589
+  },
+  {
+   "w": "adventurers.",
+   "start": 2.635,
+   "end": 3.576
+  },
+  {
+   "w": "A",
+   "start": 3.808,
+   "end": 3.889
+  },
+  {
+   "w": "price,",
+   "start": 3.994,
+   "end": 4.679
+  },
+  {
+   "w": "written",
+   "start": 4.807,
+   "end": 5.108
+  },
+  {
+   "w": "down",
+   "start": 5.155,
+   "end": 5.399
+  },
+  {
+   "w": "before",
+   "start": 5.445,
+   "end": 5.724
+  },
+  {
+   "w": "anyone",
+   "start": 5.782,
+   "end": 6.281
+  },
+  {
+   "w": "draws",
+   "start": 6.327,
+   "end": 6.653
+  },
+  {
+   "w": "a",
+   "start": 6.699,
+   "end": 6.734
+  },
+  {
+   "w": "sword.",
+   "start": 6.815,
+   "end": 7.465
+  },
+  {
+   "w": "The",
+   "start": 7.814,
+   "end": 7.941
+  },
+  {
+   "w": "name",
+   "start": 8.022,
+   "end": 8.313
+  },
+  {
+   "w": "of",
+   "start": 8.348,
+   "end": 8.394
+  },
+  {
+   "w": "whoever",
+   "start": 8.44,
+   "end": 8.777
+  },
+  {
+   "w": "takes",
+   "start": 8.824,
+   "end": 9.102
+  },
+  {
+   "w": "the",
+   "start": 9.16,
+   "end": 9.23
+  },
+  {
+   "w": "job.",
+   "start": 9.311,
+   "end": 9.81
+  },
+  {
+   "w": "And",
+   "start": 10.159,
+   "end": 10.286
+  },
+  {
+   "w": "what",
+   "start": 10.368,
+   "end": 10.53
+  },
+  {
+   "w": "it",
+   "start": 10.577,
+   "end": 10.646
+  },
+  {
+   "w": "cost",
+   "start": 10.704,
+   "end": 11.029
+  },
+  {
+   "w": "me,",
+   "start": 11.111,
+   "end": 11.482
+  },
+  {
+   "w": "in",
+   "start": 11.9,
+   "end": 12.04
+  },
+  {
+   "w": "my",
+   "start": 12.121,
+   "end": 12.237
+  },
+  {
+   "w": "figures",
+   "start": 12.365,
+   "end": 12.713
+  },
+  {
+   "w": "at",
+   "start": 12.759,
+   "end": 12.841
+  },
+  {
+   "w": "month's",
+   "start": 12.922,
+   "end": 13.293
+  },
+  {
+   "w": "end.",
+   "start": 13.375,
+   "end": 14.164
+  }
+ ]
+}

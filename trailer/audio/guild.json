@@ -1,151 +1,252 @@
 {
  "id": "guild",
- "text": "Mirabel needed a better system. The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
+ "voice": "narrator",
+ "text": "Mirabel needed a better system, so she asked who could build one. The Scribes' Guild answered first, the way it always has. A dozen scribes. A year and a day. More gold than the shop takes in a decade. And every change she asked for would alter the price.",
  "words": [
   {
    "w": "Mirabel",
    "start": 0,
-   "end": 0.534
+   "end": 0.522
   },
   {
    "w": "needed",
-   "start": 0.615,
-   "end": 0.906
+   "start": 0.604,
+   "end": 0.882
   },
   {
    "w": "a",
-   "start": 0.94,
-   "end": 0.975
+   "start": 0.917,
+   "end": 0.952
   },
   {
    "w": "better",
-   "start": 1.022,
-   "end": 1.265
+   "start": 0.998,
+   "end": 1.242
   },
   {
-   "w": "system.",
-   "start": 1.312,
-   "end": 1.927
+   "w": "system,",
+   "start": 1.289,
+   "end": 1.892
+  },
+  {
+   "w": "so",
+   "start": 2.02,
+   "end": 2.171
+  },
+  {
+   "w": "she",
+   "start": 2.252,
+   "end": 2.345
+  },
+  {
+   "w": "asked",
+   "start": 2.426,
+   "end": 2.694
+  },
+  {
+   "w": "who",
+   "start": 2.717,
+   "end": 2.798
+  },
+  {
+   "w": "could",
+   "start": 2.844,
+   "end": 2.972
+  },
+  {
+   "w": "build",
+   "start": 3.007,
+   "end": 3.239
+  },
+  {
+   "w": "one.",
+   "start": 3.32,
+   "end": 3.738
   },
   {
    "w": "The",
-   "start": 2.241,
-   "end": 2.357
+   "start": 4.516,
+   "end": 4.632
   },
   {
    "w": "Scribes'",
-   "start": 2.403,
-   "end": 2.856
+   "start": 4.679,
+   "end": 5.132
   },
   {
    "w": "Guild",
-   "start": 2.891,
-   "end": 3.204
+   "start": 5.155,
+   "end": 5.457
   },
   {
-   "w": "offered",
-   "start": 3.286,
-   "end": 3.587
+   "w": "answered",
+   "start": 5.538,
+   "end": 5.921
   },
   {
-   "w": "to",
-   "start": 3.611,
-   "end": 3.669
-  },
-  {
-   "w": "help.",
-   "start": 3.75,
-   "end": 4.272
-  },
-  {
-   "w": "A",
-   "start": 4.702,
-   "end": 4.795
-  },
-  {
-   "w": "dozen",
-   "start": 4.876,
-   "end": 5.201
-  },
-  {
-   "w": "scribes,",
-   "start": 5.271,
-   "end": 5.968
-  },
-  {
-   "w": "a",
-   "start": 6.06,
-   "end": 6.142
-  },
-  {
-   "w": "year",
-   "start": 6.269,
-   "end": 6.513
-  },
-  {
-   "w": "and",
-   "start": 6.56,
-   "end": 6.641
-  },
-  {
-   "w": "a",
-   "start": 6.711,
-   "end": 6.734
-  },
-  {
-   "w": "day,",
-   "start": 6.803,
-   "end": 7.268
-  },
-  {
-   "w": "and",
-   "start": 7.314,
-   "end": 7.477
-  },
-  {
-   "w": "more",
-   "start": 7.558,
-   "end": 7.755
-  },
-  {
-   "w": "gold",
-   "start": 7.825,
-   "end": 8.104
-  },
-  {
-   "w": "than",
-   "start": 8.139,
-   "end": 8.255
+   "w": "first,",
+   "start": 5.968,
+   "end": 6.594
   },
   {
    "w": "the",
-   "start": 8.29,
-   "end": 8.359
+   "start": 6.722,
+   "end": 6.815
   },
   {
-   "w": "shop",
-   "start": 8.406,
-   "end": 8.673
+   "w": "way",
+   "start": 6.861,
+   "end": 6.978
   },
   {
-   "w": "takes",
-   "start": 8.742,
-   "end": 8.998
+   "w": "it",
+   "start": 7.024,
+   "end": 7.094
   },
   {
-   "w": "in",
-   "start": 9.044,
-   "end": 9.114
+   "w": "always",
+   "start": 7.14,
+   "end": 7.396
+  },
+  {
+   "w": "has.",
+   "start": 7.43,
+   "end": 7.999
+  },
+  {
+   "w": "A",
+   "start": 8.429,
+   "end": 8.522
+  },
+  {
+   "w": "dozen",
+   "start": 8.603,
+   "end": 8.928
+  },
+  {
+   "w": "scribes.",
+   "start": 9.009,
+   "end": 9.752
+  },
+  {
+   "w": "A",
+   "start": 9.799,
+   "end": 9.892
+  },
+  {
+   "w": "year",
+   "start": 9.985,
+   "end": 10.205
+  },
+  {
+   "w": "and",
+   "start": 10.252,
+   "end": 10.344
   },
   {
    "w": "a",
-   "start": 9.16,
-   "end": 9.183
+   "start": 10.414,
+   "end": 10.437
+  },
+  {
+   "w": "day.",
+   "start": 10.507,
+   "end": 11.099
+  },
+  {
+   "w": "More",
+   "start": 11.773,
+   "end": 12.016
+  },
+  {
+   "w": "gold",
+   "start": 12.086,
+   "end": 12.411
+  },
+  {
+   "w": "than",
+   "start": 12.458,
+   "end": 12.574
+  },
+  {
+   "w": "the",
+   "start": 12.608,
+   "end": 12.678
+  },
+  {
+   "w": "shop",
+   "start": 12.725,
+   "end": 12.991
+  },
+  {
+   "w": "takes",
+   "start": 13.061,
+   "end": 13.34
+  },
+  {
+   "w": "in",
+   "start": 13.374,
+   "end": 13.432
+  },
+  {
+   "w": "a",
+   "start": 13.502,
+   "end": 13.525
   },
   {
    "w": "decade.",
-   "start": 9.265,
-   "end": 10.403
+   "start": 13.595,
+   "end": 14.28
+  },
+  {
+   "w": "And",
+   "start": 14.593,
+   "end": 14.756
+  },
+  {
+   "w": "every",
+   "start": 14.849,
+   "end": 15.069
+  },
+  {
+   "w": "change",
+   "start": 15.116,
+   "end": 15.476
+  },
+  {
+   "w": "she",
+   "start": 15.499,
+   "end": 15.604
+  },
+  {
+   "w": "asked",
+   "start": 15.685,
+   "end": 15.998
+  },
+  {
+   "w": "for",
+   "start": 16.033,
+   "end": 16.3
+  },
+  {
+   "w": "would",
+   "start": 16.393,
+   "end": 16.602
+  },
+  {
+   "w": "alter",
+   "start": 16.637,
+   "end": 16.927
+  },
+  {
+   "w": "the",
+   "start": 16.973,
+   "end": 17.043
+  },
+  {
+   "w": "price.",
+   "start": 17.09,
+   "end": 17.879
   }
  ]
 }

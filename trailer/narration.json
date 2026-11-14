@@ -1,92 +1,75 @@
 {
-  "voice": {
-    "id": "JBFqnCBsd6RMkjVDRZzb",
-    "name": "George",
-    "model": "eleven_multilingual_v2",
-    "speed": 0.9
+  "voices": {
+    "narrator": { "id": "JBFqnCBsd6RMkjVDRZzb", "name": "George", "model": "eleven_multilingual_v2", "speed": 0.9 },
+    "mirabel": { "id": "pFZP5JQG7iQjIQuC4Bku", "name": "Lily", "model": "eleven_multilingual_v2", "speed": 0.92 }
   },
   "beats": [
     {
       "id": "shop",
-      "text": "In the town of Emberhollow, third lantern past the fountain, there is a bookshop. It has stood since the Year of the Quiet Comet. Elves spend decades browsing the Arcana section. Dwarves weep quietly in Poetry. Halflings leave crumbs in Cookery, and are forgiven, because they bring scones.",
+      "text": "In the town of Emberhollow, third lantern past the fountain, there is a bookshop. It has stood since the Year of the Quiet Comet. Every folk in the realm comes through its door. Elves spend decades browsing the Arcana section. Dwarves weep quietly in Poetry. Halflings leave crumbs in Cookery, and are forgiven, because they bring scones. An orc warband's book club wants fourteen copies of the same romance, by Thursday. The tall shelves have ladders. The low shelves have cushions.",
       "lead": 5.0,
-      "tail": 2.5,
-      "pauses": [
-        [
-          "Comet.",
-          0.5
-        ]
-      ]
+      "tail": 2.8,
+      "pauses": [["Comet.", 0.5], ["scones.", 1.3]]
+    },
+    {
+      "id": "pests",
+      "text": "It is also, now and then, beset. Bookwyrms eat the stock. Poltergeists reshelve by colour. Ink imps add rude footnotes. And last week, a signed first edition bit a knight. Not a book. A mimic. The knight gave the shop five stars. The mimic now minds the cash box.",
+      "lead": 1.6,
+      "tail": 2.2,
+      "pauses": [["beset.", 0.6], ["footnotes.", 1.0], ["mimic.", 1.6], ["stars.", 0.8]]
     },
     {
       "id": "mirabel",
-      "text": "For twenty years it has been kept by Mirabel Thistlewick, who inherited it from her aunt. She knows every book on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
-      "lead": 3.0,
-      "tail": 3.0,
-      "pauses": [
-        [
-          "name.",
-          0.6
-        ]
-      ]
+      "text": "For twenty years it has been kept by Mirabel Thistlewick, who inherited it from her aunt, and who wrote the book on its pests. She knows every tome on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
+      "lead": 2.2,
+      "tail": 2.8,
+      "pauses": [["name.", 1.2]]
     },
     {
       "id": "trouble",
-      "text": "The ledger cannot tell her. Favourite tomes run out. A bookwyrm is found asleep in Herbalism after consuming several books for breakfast, very full, and not at all sorry. And last week, a signed first edition bit a knight. Not a book. A mimic. Pip, the clerk, ran to the tavern to find adventurers to vanquish it. A price was agreed in haste. Nobody wrote it down.",
+      "text": "The ledger cannot tell her. Nor can it say which favourite is about to run out. Or which patron has bought a book every week for nine years. Or what the monsters cost. Then, one evening, the seal on the cellar door went out. Something grey and very old came up the stairs. A dust wraith. Not a pest. A dire incident. Pip, the clerk, ran to the tavern to find adventurers. A price was agreed in a doorway. Nobody wrote it down.",
       "lead": 1.5,
-      "tail": 3.0,
-      "pauses": [
-        [
-          "out.",
-          1.0
-        ],
-        [
-          "sorry.",
-          0.8
-        ],
-        [
-          "mimic.",
-          2.6
-        ]
-      ]
+      "tail": 2.6,
+      "pauses": [["cost.", 1.4], ["stairs.", 0.8], ["incident.", 1.6]]
     },
     {
       "id": "guild",
-      "text": "Mirabel needed a better system. The Scribes' Guild offered to help. A dozen scribes, a year and a day, and more gold than the shop takes in a decade.",
+      "text": "Mirabel needed a better system, so she asked who could build one. The Scribes' Guild answered first, the way it always has. A dozen scribes. A year and a day. More gold than the shop takes in a decade. And every change she asked for would alter the price.",
       "lead": 1.5,
-      "tail": 1.8,
-      "pauses": []
+      "tail": 2.4,
+      "pauses": [["decade.", 0.7]]
     },
     {
       "id": "factory",
-      "text": "So Mirabel sent for EPAM. They did not bring a dozen scribes. They brought a small team, and a scriptorium that never sleeps. One quill asks the questions she had not thought of. One draws up the plan. Several write at once. One reads every page back. And one carries the finished work to the shelf. The quills are tireless. The judgement is human.",
+      "text": "So Mirabel sent for EPAM. They did not bring a dozen scribes. They brought a small team, and a scriptorium that never sleeps. Ask on Moonday; see it working by Fireday. One quill asks the questions she had not thought of. One draws up the plan. Several write at once. One reads every page back. And one carries the finished work to the shelf. The quills are tireless. The judgement is human.",
       "lead": 2.0,
       "tail": 3.0,
-      "pauses": [
-        [
-          "sleeps.",
-          1.2
-        ]
-      ]
+      "pauses": [["Fireday.", 2.0]]
     },
     {
       "id": "delivered",
-      "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. The catalog, the guest book, the incident board. It works. And now, Mirabel has a list of what she needs next.",
+      "text": "Chapter one is already written. A shop front for the town. A counter for Mirabel and Pip. A catalog for the tomes, a guest book for the patrons, an incident board for the monsters. It works. And now, Mirabel has a list.",
       "lead": 1.4,
-      "tail": 1.8,
+      "tail": 1.6,
       "pauses": []
     },
     {
-      "id": "handover",
-      "text": "At the top of it, in her own hand: For a dire incident, I want to post a bounty for adventurers. Today, you run the scriptorium, and you need not be an engineer to do it. First, together, the bounty board. After that, Mirabel's list is yours.",
+      "id": "request",
+      "parts": [
+        { "text": "At the top of it, in her own hand." },
+        { "voice": "mirabel", "gap": 0.9, "text": "For a dire incident, I want to post a bounty for adventurers. A price, written down before anyone draws a sword. The name of whoever takes the job. And what it cost me, in my figures at month's end." },
+        { "gap": 1.5, "text": "Who may post a bounty? Who may claim one? What if two parties do? Those pages are not written yet." }
+      ],
+      "lead": 1.4,
+      "tail": 2.2,
+      "pauses": [["adventurers.", 0.7], ["do?", 0.6]]
+    },
+    {
+      "id": "chaptertwo",
+      "text": "That is chapter two, and you will write it. Soon, you run the scriptorium, and you need not be an engineer to do it. First, together, the bounty board: you answer the questions, approve the plan, watch it written, read it back, and see it on Mirabel's shelf. After that, her list is yours. Discounts for her regulars. A lending library. A second clerk. Choose one, and send it through.",
       "lead": 1.5,
       "tail": 6.0,
-      "pauses": [
-        [
-          "adventurers.",
-          1.6
-        ]
-      ]
+      "pauses": [["it.", 0.5], ["shelf.", 1.0], ["clerk.", 0.6]]
     }
   ]
 }

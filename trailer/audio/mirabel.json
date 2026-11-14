@@ -1,6 +1,7 @@
 {
  "id": "mirabel",
- "text": "For twenty years it has been kept by Mirabel Thistlewick, who inherited it from her aunt. She knows every book on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
+ "voice": "narrator",
+ "text": "For twenty years it has been kept by Mirabel Thistlewick, who inherited it from her aunt, and who wrote the book on its pests. She knows every tome on its shelves, and every patron by name. What she does not know, most evenings, is whether the shop made any money this month.",
  "words": [
   {
    "w": "For",
@@ -10,217 +11,257 @@
   {
    "w": "twenty",
    "start": 0.209,
-   "end": 0.546
+   "end": 0.522
   },
   {
    "w": "years",
-   "start": 0.615,
-   "end": 0.929
+   "start": 0.604,
+   "end": 0.917
   },
   {
    "w": "it",
-   "start": 0.998,
-   "end": 1.068
+   "start": 0.964,
+   "end": 1.022
   },
   {
    "w": "has",
-   "start": 1.103,
-   "end": 1.184
+   "start": 1.057,
+   "end": 1.149
   },
   {
    "w": "been",
-   "start": 1.231,
-   "end": 1.37
+   "start": 1.196,
+   "end": 1.335
   },
   {
    "w": "kept",
-   "start": 1.44,
-   "end": 1.707
+   "start": 1.405,
+   "end": 1.66
   },
   {
    "w": "by",
-   "start": 1.776,
-   "end": 1.916
+   "start": 1.73,
+   "end": 1.869
   },
   {
    "w": "Mirabel",
-   "start": 2.009,
-   "end": 2.473
+   "start": 1.95,
+   "end": 2.403
   },
   {
    "w": "Thistlewick,",
-   "start": 2.566,
-   "end": 3.413
+   "start": 2.508,
+   "end": 3.332
   },
   {
    "w": "who",
-   "start": 3.68,
-   "end": 3.831
+   "start": 3.564,
+   "end": 3.704
   },
   {
    "w": "inherited",
-   "start": 3.901,
-   "end": 4.458
+   "start": 3.773,
+   "end": 4.284
   },
   {
    "w": "it",
-   "start": 4.505,
-   "end": 4.574
+   "start": 4.331,
+   "end": 4.4
   },
   {
    "w": "from",
-   "start": 4.621,
-   "end": 4.772
+   "start": 4.435,
+   "end": 4.574
   },
   {
    "w": "her",
-   "start": 4.865,
-   "end": 4.969
+   "start": 4.656,
+   "end": 4.748
   },
   {
-   "w": "aunt.",
-   "start": 5.05,
-   "end": 5.642
-  },
-  {
-   "w": "She",
-   "start": 6.42,
-   "end": 6.583
-  },
-  {
-   "w": "knows",
-   "start": 6.664,
-   "end": 6.931
-  },
-  {
-   "w": "every",
-   "start": 7.024,
-   "end": 7.326
-  },
-  {
-   "w": "book",
-   "start": 7.396,
-   "end": 7.616
-  },
-  {
-   "w": "on",
-   "start": 7.697,
-   "end": 7.767
-  },
-  {
-   "w": "its",
-   "start": 7.814,
-   "end": 7.93
-  },
-  {
-   "w": "shelves,",
-   "start": 7.964,
-   "end": 8.58
+   "w": "aunt,",
+   "start": 4.83,
+   "end": 5.364
   },
   {
    "w": "and",
-   "start": 8.673,
-   "end": 8.824
+   "start": 5.492,
+   "end": 5.642
   },
   {
-   "w": "every",
-   "start": 8.893,
-   "end": 9.102
+   "w": "who",
+   "start": 5.677,
+   "end": 5.759
   },
   {
-   "w": "patron",
-   "start": 9.172,
-   "end": 9.601
-  },
-  {
-   "w": "by",
-   "start": 9.671,
-   "end": 9.834
-  },
-  {
-   "w": "name.",
-   "start": 9.927,
-   "end": 10.519
-  },
-  {
-   "w": "What",
-   "start": 11.088,
-   "end": 11.297
-  },
-  {
-   "w": "she",
-   "start": 11.331,
-   "end": 11.424
-  },
-  {
-   "w": "does",
-   "start": 11.494,
-   "end": 11.645
-  },
-  {
-   "w": "not",
-   "start": 11.714,
-   "end": 11.877
-  },
-  {
-   "w": "know,",
-   "start": 11.947,
-   "end": 12.399
-  },
-  {
-   "w": "most",
-   "start": 12.597,
-   "end": 12.887
-  },
-  {
-   "w": "evenings,",
-   "start": 12.957,
-   "end": 13.561
-  },
-  {
-   "w": "is",
-   "start": 13.7,
-   "end": 13.863
-  },
-  {
-   "w": "whether",
-   "start": 13.909,
-   "end": 14.153
+   "w": "wrote",
+   "start": 5.793,
+   "end": 6.002
   },
   {
    "w": "the",
-   "start": 14.199,
-   "end": 14.269
+   "start": 6.026,
+   "end": 6.095
+  },
+  {
+   "w": "book",
+   "start": 6.142,
+   "end": 6.339
+  },
+  {
+   "w": "on",
+   "start": 6.42,
+   "end": 6.536
+  },
+  {
+   "w": "its",
+   "start": 6.571,
+   "end": 6.699
+  },
+  {
+   "w": "pests.",
+   "start": 6.769,
+   "end": 7.512
+  },
+  {
+   "w": "She",
+   "start": 7.999,
+   "end": 8.162
+  },
+  {
+   "w": "knows",
+   "start": 8.231,
+   "end": 8.429
+  },
+  {
+   "w": "every",
+   "start": 8.522,
+   "end": 8.8
+  },
+  {
+   "w": "tome",
+   "start": 8.87,
+   "end": 9.16
+  },
+  {
+   "w": "on",
+   "start": 9.195,
+   "end": 9.276
+  },
+  {
+   "w": "its",
+   "start": 9.323,
+   "end": 9.439
+  },
+  {
+   "w": "shelves,",
+   "start": 9.474,
+   "end": 10.136
+  },
+  {
+   "w": "and",
+   "start": 10.263,
+   "end": 10.414
+  },
+  {
+   "w": "every",
+   "start": 10.495,
+   "end": 10.693
+  },
+  {
+   "w": "patron",
+   "start": 10.762,
+   "end": 11.192
+  },
+  {
+   "w": "by",
+   "start": 11.262,
+   "end": 11.401
+  },
+  {
+   "w": "name.",
+   "start": 11.505,
+   "end": 12.086
+  },
+  {
+   "w": "What",
+   "start": 12.573,
+   "end": 12.794
+  },
+  {
+   "w": "she",
+   "start": 12.841,
+   "end": 12.933
+  },
+  {
+   "w": "does",
+   "start": 13.003,
+   "end": 13.142
+  },
+  {
+   "w": "not",
+   "start": 13.189,
+   "end": 13.34
+  },
+  {
+   "w": "know,",
+   "start": 13.409,
+   "end": 13.827
+  },
+  {
+   "w": "most",
+   "start": 13.92,
+   "end": 14.187
+  },
+  {
+   "w": "evenings,",
+   "start": 14.269,
+   "end": 14.849
+  },
+  {
+   "w": "is",
+   "start": 14.895,
+   "end": 15.058
+  },
+  {
+   "w": "whether",
+   "start": 15.093,
+   "end": 15.337
+  },
+  {
+   "w": "the",
+   "start": 15.383,
+   "end": 15.464
   },
   {
    "w": "shop",
-   "start": 14.339,
-   "end": 14.629
+   "start": 15.511,
+   "end": 15.778
   },
   {
    "w": "made",
-   "start": 14.71,
-   "end": 14.908
+   "start": 15.859,
+   "end": 16.08
   },
   {
    "w": "any",
-   "start": 14.942,
-   "end": 15.093
+   "start": 16.126,
+   "end": 16.277
   },
   {
    "w": "money",
-   "start": 15.163,
-   "end": 15.395
+   "start": 16.358,
+   "end": 16.602
   },
   {
    "w": "this",
-   "start": 15.465,
-   "end": 15.604
+   "start": 16.683,
+   "end": 16.834
   },
   {
    "w": "month.",
-   "start": 15.685,
-   "end": 16.626
+   "start": 16.916,
+   "end": 17.972
   }
  ]
 }

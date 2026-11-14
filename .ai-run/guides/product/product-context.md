@@ -10,7 +10,7 @@
 It is the example codebase for an EPAM Canada leadership offsite (December 2026) where directors and above from delivery and account management learn to set up and use an SDLC hyperfactory: agents taking a feature request through elaboration, planning, development, testing and deployment (`docs/purpose.md:7-13`, `AGENTS.md:7`). Many attendees are not hands-on technical (`docs/purpose.md:30`).
 
 Session shape (`docs/purpose.md:19-21`):
-1. A trailer under 3 minutes tells Mirabel's story.
+1. A trailer of a little under five minutes plays at the offsite as a teaser and tells Mirabel's story.
 2. The whole room builds the **bounty board** (backlog item 7) together.
 3. Attendees pick their own feature requests and run the hyperfactory themselves.
 

@@ -1,341 +1,422 @@
 {
  "id": "trouble",
- "text": "The ledger cannot tell her. Favourite tomes run out. A bookwyrm is found asleep in Herbalism after consuming several books for breakfast, very full, and not at all sorry. And last week, a signed first edition bit a knight. Not a book. A mimic. Pip, the clerk, ran to the tavern to find adventurers to vanquish it. A price was agreed in haste. Nobody wrote it down.",
+ "voice": "narrator",
+ "text": "The ledger cannot tell her. Nor can it say which favourite is about to run out. Or which patron has bought a book every week for nine years. Or what the monsters cost. Then, one evening, the seal on the cellar door went out. Something grey and very old came up the stairs. A dust wraith. Not a pest. A dire incident. Pip, the clerk, ran to the tavern to find adventurers. A price was agreed in a doorway. Nobody wrote it down.",
  "words": [
   {
    "w": "The",
    "start": 0,
-   "end": 0.151
+   "end": 0.139
   },
   {
    "w": "ledger",
-   "start": 0.221,
+   "start": 0.209,
    "end": 0.511
   },
   {
    "w": "cannot",
-   "start": 0.557,
-   "end": 0.848
+   "start": 0.546,
+   "end": 0.824
   },
   {
    "w": "tell",
-   "start": 0.882,
-   "end": 1.091
+   "start": 0.859,
+   "end": 1.057
   },
   {
    "w": "her.",
-   "start": 1.173,
-   "end": 1.509
+   "start": 1.138,
+   "end": 1.486
   },
   {
-   "w": "Favourite",
-   "start": 1.823,
-   "end": 2.287
+   "w": "Nor",
+   "start": 1.846,
+   "end": 2.113
   },
   {
-   "w": "tomes",
-   "start": 2.322,
-   "end": 2.728
-  },
-  {
-   "w": "run",
-   "start": 2.798,
-   "end": 2.961
-  },
-  {
-   "w": "out.",
-   "start": 3.03,
-   "end": 3.437
-  },
-  {
-   "w": "A",
-   "start": 3.669,
-   "end": 3.762
-  },
-  {
-   "w": "bookwyrm",
-   "start": 3.855,
-   "end": 4.354
-  },
-  {
-   "w": "is",
-   "start": 4.4,
-   "end": 4.47
-  },
-  {
-   "w": "found",
-   "start": 4.54,
-   "end": 4.772
-  },
-  {
-   "w": "asleep",
-   "start": 4.841,
-   "end": 5.19
-  },
-  {
-   "w": "in",
-   "start": 5.236,
-   "end": 5.294
-  },
-  {
-   "w": "Herbalism",
-   "start": 5.387,
-   "end": 5.968
-  },
-  {
-   "w": "after",
-   "start": 6.327,
-   "end": 6.629
-  },
-  {
-   "w": "consuming",
-   "start": 6.676,
-   "end": 7.198
-  },
-  {
-   "w": "several",
-   "start": 7.279,
-   "end": 7.593
-  },
-  {
-   "w": "books",
-   "start": 7.639,
-   "end": 7.86
-  },
-  {
-   "w": "for",
-   "start": 7.895,
-   "end": 7.999
-  },
-  {
-   "w": "breakfast,",
-   "start": 8.046,
-   "end": 8.731
-  },
-  {
-   "w": "very",
-   "start": 8.928,
-   "end": 9.218
-  },
-  {
-   "w": "full,",
-   "start": 9.3,
-   "end": 9.648
-  },
-  {
-   "w": "and",
-   "start": 9.671,
-   "end": 9.822
-  },
-  {
-   "w": "not",
-   "start": 9.892,
-   "end": 10.043
-  },
-  {
-   "w": "at",
-   "start": 10.089,
-   "end": 10.147
-  },
-  {
-   "w": "all",
-   "start": 10.194,
-   "end": 10.356
-  },
-  {
-   "w": "sorry.",
-   "start": 10.437,
-   "end": 11.064
-  },
-  {
-   "w": "And",
-   "start": 11.552,
-   "end": 11.726
-  },
-  {
-   "w": "last",
-   "start": 11.819,
-   "end": 12.109
-  },
-  {
-   "w": "week,",
-   "start": 12.179,
-   "end": 12.493
-  },
-  {
-   "w": "a",
-   "start": 12.516,
-   "end": 12.585
-  },
-  {
-   "w": "signed",
-   "start": 12.678,
-   "end": 12.992
-  },
-  {
-   "w": "first",
-   "start": 13.061,
-   "end": 13.328
-  },
-  {
-   "w": "edition",
-   "start": 13.398,
-   "end": 13.874
-  },
-  {
-   "w": "bit",
-   "start": 14.002,
-   "end": 14.211
-  },
-  {
-   "w": "a",
-   "start": 14.257,
-   "end": 14.292
-  },
-  {
-   "w": "knight.",
-   "start": 14.362,
-   "end": 14.919
-  },
-  {
-   "w": "Not",
-   "start": 15.116,
-   "end": 15.337
-  },
-  {
-   "w": "a",
-   "start": 15.383,
-   "end": 15.407
-  },
-  {
-   "w": "book.",
-   "start": 15.453,
-   "end": 15.871
-  },
-  {
-   "w": "A",
-   "start": 15.918,
-   "end": 15.999
-  },
-  {
-   "w": "mimic.",
-   "start": 16.092,
-   "end": 16.684
-  },
-  {
-   "w": "Pip,",
-   "start": 17.357,
-   "end": 17.729
-  },
-  {
-   "w": "the",
-   "start": 17.752,
-   "end": 17.845
-  },
-  {
-   "w": "clerk,",
-   "start": 17.914,
-   "end": 18.379
-  },
-  {
-   "w": "ran",
-   "start": 18.448,
-   "end": 18.692
-  },
-  {
-   "w": "to",
-   "start": 18.762,
-   "end": 18.82
-  },
-  {
-   "w": "the",
-   "start": 18.89,
-   "end": 18.959
-  },
-  {
-   "w": "tavern",
-   "start": 19.006,
-   "end": 19.331
-  },
-  {
-   "w": "to",
-   "start": 19.366,
-   "end": 19.412
-  },
-  {
-   "w": "find",
-   "start": 19.493,
-   "end": 19.749
-  },
-  {
-   "w": "adventurers",
-   "start": 19.818,
-   "end": 20.503
-  },
-  {
-   "w": "to",
-   "start": 20.55,
-   "end": 20.608
-  },
-  {
-   "w": "vanquish",
-   "start": 20.689,
-   "end": 21.13
-  },
-  {
-   "w": "it.",
-   "start": 21.2,
-   "end": 21.514
-  },
-  {
-   "w": "A",
-   "start": 21.943,
-   "end": 22.024
-  },
-  {
-   "w": "price",
-   "start": 22.117,
-   "end": 22.442
-  },
-  {
-   "w": "was",
-   "start": 22.466,
-   "end": 22.57
-  },
-  {
-   "w": "agreed",
-   "start": 22.616,
-   "end": 23.023
-  },
-  {
-   "w": "in",
-   "start": 23.069,
-   "end": 23.127
-  },
-  {
-   "w": "haste.",
-   "start": 23.22,
-   "end": 23.754
-  },
-  {
-   "w": "Nobody",
-   "start": 23.917,
-   "end": 24.242
-  },
-  {
-   "w": "wrote",
-   "start": 24.288,
-   "end": 24.532
+   "w": "can",
+   "start": 2.183,
+   "end": 2.299
   },
   {
    "w": "it",
-   "start": 24.567,
-   "end": 24.637
+   "start": 2.345,
+   "end": 2.426
+  },
+  {
+   "w": "say",
+   "start": 2.508,
+   "end": 2.786
+  },
+  {
+   "w": "which",
+   "start": 2.868,
+   "end": 3.077
+  },
+  {
+   "w": "favourite",
+   "start": 3.158,
+   "end": 3.611
+  },
+  {
+   "w": "is",
+   "start": 3.646,
+   "end": 3.727
+  },
+  {
+   "w": "about",
+   "start": 3.773,
+   "end": 4.075
+  },
+  {
+   "w": "to",
+   "start": 4.122,
+   "end": 4.18
+  },
+  {
+   "w": "run",
+   "start": 4.261,
+   "end": 4.447
+  },
+  {
+   "w": "out.",
+   "start": 4.516,
+   "end": 5.004
+  },
+  {
+   "w": "Or",
+   "start": 5.492,
+   "end": 5.666
+  },
+  {
+   "w": "which",
+   "start": 5.735,
+   "end": 5.933
+  },
+  {
+   "w": "patron",
+   "start": 6.002,
+   "end": 6.432
+  },
+  {
+   "w": "has",
+   "start": 6.467,
+   "end": 6.548
+  },
+  {
+   "w": "bought",
+   "start": 6.594,
+   "end": 6.85
+  },
+  {
+   "w": "a",
+   "start": 6.885,
+   "end": 6.908
+  },
+  {
+   "w": "book",
+   "start": 6.978,
+   "end": 7.221
+  },
+  {
+   "w": "every",
+   "start": 7.349,
+   "end": 7.639
+  },
+  {
+   "w": "week",
+   "start": 7.709,
+   "end": 7.941
+  },
+  {
+   "w": "for",
+   "start": 8.011,
+   "end": 8.115
+  },
+  {
+   "w": "nine",
+   "start": 8.185,
+   "end": 8.452
+  },
+  {
+   "w": "years.",
+   "start": 8.499,
+   "end": 9.114
+  },
+  {
+   "w": "Or",
+   "start": 9.787,
+   "end": 9.961
+  },
+  {
+   "w": "what",
+   "start": 10.008,
+   "end": 10.159
+  },
+  {
+   "w": "the",
+   "start": 10.194,
+   "end": 10.263
+  },
+  {
+   "w": "monsters",
+   "start": 10.31,
+   "end": 10.728
+  },
+  {
+   "w": "cost.",
+   "start": 10.797,
+   "end": 11.355
+  },
+  {
+   "w": "Then,",
+   "start": 11.587,
+   "end": 11.958
+  },
+  {
+   "w": "one",
+   "start": 12.005,
+   "end": 12.202
+  },
+  {
+   "w": "evening,",
+   "start": 12.237,
+   "end": 12.678
+  },
+  {
+   "w": "the",
+   "start": 12.806,
+   "end": 12.922
+  },
+  {
+   "w": "seal",
+   "start": 12.991,
+   "end": 13.27
+  },
+  {
+   "w": "on",
+   "start": 13.351,
+   "end": 13.421
+  },
+  {
+   "w": "the",
+   "start": 13.456,
+   "end": 13.525
+  },
+  {
+   "w": "cellar",
+   "start": 13.572,
+   "end": 13.862
+  },
+  {
+   "w": "door",
+   "start": 13.932,
+   "end": 14.222
+  },
+  {
+   "w": "went",
+   "start": 14.303,
+   "end": 14.501
+  },
+  {
+   "w": "out.",
+   "start": 14.582,
+   "end": 15.035
+  },
+  {
+   "w": "Something",
+   "start": 15.522,
+   "end": 15.917
+  },
+  {
+   "w": "grey",
+   "start": 16.01,
+   "end": 16.335
+  },
+  {
+   "w": "and",
+   "start": 16.405,
+   "end": 16.486
+  },
+  {
+   "w": "very",
+   "start": 16.567,
+   "end": 16.823
+  },
+  {
+   "w": "old",
+   "start": 16.927,
+   "end": 17.287
+  },
+  {
+   "w": "came",
+   "start": 17.368,
+   "end": 17.566
+  },
+  {
+   "w": "up",
+   "start": 17.6,
+   "end": 17.693
+  },
+  {
+   "w": "the",
+   "start": 17.74,
+   "end": 17.809
+  },
+  {
+   "w": "stairs.",
+   "start": 17.844,
+   "end": 18.518
+  },
+  {
+   "w": "A",
+   "start": 18.785,
+   "end": 18.878
+  },
+  {
+   "w": "dust",
+   "start": 18.97,
+   "end": 19.237
+  },
+  {
+   "w": "wraith.",
+   "start": 19.261,
+   "end": 19.748
+  },
+  {
+   "w": "Not",
+   "start": 19.946,
+   "end": 20.143
+  },
+  {
+   "w": "a",
+   "start": 20.189,
+   "end": 20.213
+  },
+  {
+   "w": "pest.",
+   "start": 20.282,
+   "end": 20.84
+  },
+  {
+   "w": "A",
+   "start": 21.072,
+   "end": 21.165
+  },
+  {
+   "w": "dire",
+   "start": 21.258,
+   "end": 21.583
+  },
+  {
+   "w": "incident.",
+   "start": 21.652,
+   "end": 22.349
+  },
+  {
+   "w": "Pip,",
+   "start": 22.837,
+   "end": 23.22
+  },
+  {
+   "w": "the",
+   "start": 23.243,
+   "end": 23.347
+  },
+  {
+   "w": "clerk,",
+   "start": 23.394,
+   "end": 23.916
+  },
+  {
+   "w": "ran",
+   "start": 24.044,
+   "end": 24.288
+  },
+  {
+   "w": "to",
+   "start": 24.357,
+   "end": 24.427
+  },
+  {
+   "w": "the",
+   "start": 24.497,
+   "end": 24.566
+  },
+  {
+   "w": "tavern",
+   "start": 24.601,
+   "end": 24.926
+  },
+  {
+   "w": "to",
+   "start": 24.973,
+   "end": 25.019
+  },
+  {
+   "w": "find",
+   "start": 25.101,
+   "end": 25.368
+  },
+  {
+   "w": "adventurers.",
+   "start": 25.414,
+   "end": 26.262
+  },
+  {
+   "w": "A",
+   "start": 26.621,
+   "end": 26.703
+  },
+  {
+   "w": "price",
+   "start": 26.796,
+   "end": 27.132
+  },
+  {
+   "w": "was",
+   "start": 27.167,
+   "end": 27.272
+  },
+  {
+   "w": "agreed",
+   "start": 27.318,
+   "end": 27.724
+  },
+  {
+   "w": "in",
+   "start": 27.759,
+   "end": 27.817
+  },
+  {
+   "w": "a",
+   "start": 27.864,
+   "end": 27.887
+  },
+  {
+   "w": "doorway.",
+   "start": 27.933,
+   "end": 28.584
+  },
+  {
+   "w": "Nobody",
+   "start": 28.897,
+   "end": 29.222
+  },
+  {
+   "w": "wrote",
+   "start": 29.257,
+   "end": 29.466
+  },
+  {
+   "w": "it",
+   "start": 29.501,
+   "end": 29.57
   },
   {
    "w": "down.",
-   "start": 24.683,
-   "end": 25.496
+   "start": 29.617,
+   "end": 30.836
   }
  ]
 }
